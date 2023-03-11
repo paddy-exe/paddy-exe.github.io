@@ -1,6 +1,6 @@
 ---
 title: "{{ replace .Name "-" " " | title }}"
-date: {{ page.date }}
+date: {{ .Date }}
 draft: true
 ---
 
