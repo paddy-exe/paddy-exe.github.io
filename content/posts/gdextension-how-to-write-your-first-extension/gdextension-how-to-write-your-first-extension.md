@@ -1,7 +1,7 @@
 ---
 title: "Gdextension - How to Write Your First Extension"
 date: 2022-11-28
-draft: false
+draft: true
 enableEmoji: true
 ---
 ![GDExtension - How to get started in C++](img/Cover.png)
