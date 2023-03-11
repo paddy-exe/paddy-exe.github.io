@@ -5,6 +5,17 @@
     <link>https://paddy-exe.github.io/public/index.html/posts/</link>
     <description>Recent content in Posts on 🔥 Lizard&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="https://paddy-exe.github.io/public/index.html/posts/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
+    <lastBuildDate>Mon, 28 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://paddy-exe.github.io/public/index.html/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Gdextension - How to Write Your First Extension</title>
+      <link>https://paddy-exe.github.io/public/index.html/posts/gdextension-how-to-write-your-first-extension/gdextension-how-to-write-your-first-extension/</link>
+      <pubDate>Mon, 28 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://paddy-exe.github.io/public/index.html/posts/gdextension-how-to-write-your-first-extension/gdextension-how-to-write-your-first-extension/</guid>
+      <description>With Godot 4.0 on the horizon a lot of people want to try out the new technologies that are coming with the new version.
+One of these is the GDExtension system that will be replacing the older GDNative system. GDNative was introduced as a means to enhance the editor itself by embedding C++ libraries or new language bindings into Godot. This had the advantage that users wouldn&amp;rsquo;t need to build the engine themselves but import a dynamic library.</description>
+    </item>
+    
   </channel>
 </rss>
