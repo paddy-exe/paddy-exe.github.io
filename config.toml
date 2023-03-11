@@ -1,0 +1,64 @@
+title = "🔥 Lizard's Blog"
+baseURL = 'https://paddy-exe.github.io/'
+languageCode = 'en-us'
+theme = "hugo-blog-awesome"
+
+
+# set markup.highlight.noClasses=false to enable code highlight
+[markup]
+  [markup.highlight]
+    noClasses = false
+
+[menu]
+  [[menu.main]] 
+    # The page reference (pageRef) is useful for menu highlighting
+    # When pageRef is set, setting `url` is optional; it will be used as a fallback if the page is not found.
+    pageRef="/"
+    name = 'Home'
+    url = '/'
+    weight = 10
+  [[menu.main]]
+    pageRef="posts"
+    name = 'Posts'
+    url = '/posts/'
+    weight = 20
+  [[menu.main]]
+    pageRef="about"
+    name = 'About'
+    url = '/about/'
+    weight = 30
+
+[params]
+  sitename = "🔥 Lizard's Development Blog"
+  defaultColor = "dark" # set default color mode: dark or light
+  description = "A development blog about my programming projects with Godot Engine, Shaders and VFX"
+
+[params.author]
+  avatar = "general/img/FlameLizard_Profile.jpg"
+  intro = "Programming and Development Blog"
+  name = "Patrick aka 🔥 Lizard"
+  description = "A development blog about my programming projects with Godot Engine 🎮👾, Shaders and VFX ✨"
+
+[privacy]
+  [privacy.disqus]
+    disable = false
+  [privacy.googleAnalytics]
+    anonymizeIP = false
+    disable = false
+    respectDoNotTrack = false
+    useSessionStorage = false
+  [privacy.instagram]
+    disable = false
+    simple = false
+  [privacy.twitter]
+    disable = false
+    enableDNT = false
+    simple = false
+  [privacy.vimeo]
+    disable = false
+    enableDNT = false
+    simple = false
+  [privacy.youtube]
+    disable = false
+    privacyEnhanced = false
+
