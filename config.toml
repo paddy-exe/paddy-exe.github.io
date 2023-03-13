@@ -3,7 +3,6 @@ baseURL = 'https://paddy-exe.github.io/public/index.html'
 languageCode = 'en-us'
 theme = "hugo-blog-awesome"
 
-
 # set markup.highlight.noClasses=false to enable code highlight
 [markup]
   [markup.highlight]
