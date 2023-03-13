@@ -39,6 +39,26 @@ theme = "hugo-blog-awesome"
   name = "Patrick aka 🔥 Lizard"
   description = "A development blog about my programming projects with Godot Engine 🎮👾, Shaders and VFX ✨"
 
+ [[params.socialIcons]] 
+ name = "github" 
+ url = "https://github.com/paddy-exe" 
+  
+ [[params.socialIcons]] 
+ name = "twitter" 
+ url = "https://twitter.com/patrick_exe" 
+
+ [[params.socialIcons]]
+ name = "kofi"
+ url = "https://ko-fi.com/flamelizard"
+
+[[params.socialIcons]]
+ name = "twitch"
+ url = "https://www.twitch.tv/flamelizardcodes"
+  
+ [[params.socialIcons]] 
+ name = "Rss" 
+ url = "index.xml" 
+
 [privacy]
   [privacy.disqus]
     disable = false
