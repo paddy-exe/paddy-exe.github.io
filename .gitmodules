@@ -1,0 +1,4 @@
+[submodule "hugo-blog-awesome"]
+	path = hugo-blog-awesome
+	url = https://github.com/paddy-exe/hugo-blog-awesome.git
+	branch = main
