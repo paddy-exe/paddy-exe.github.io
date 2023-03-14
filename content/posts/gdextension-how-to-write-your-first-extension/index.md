@@ -51,7 +51,7 @@ The godot-cpp repository represents the C++ API for the Godot editor. It is buil
 
 We will clone the godot-cpp repo into the top folder.
 
-> :information_source: If you want to develop your game directly side-by-side you can simply clone the main repository but if you are using git as a version-control anyway I recommend you to add godot-cpp as a submodule.
+> :memo: If you want to develop your game directly side-by-side you can simply clone the main repository but if you are using git as a version-control anyway I recommend you to add godot-cpp as a submodule.
 
 ```shell
 git submodule add -b master https://github.com/godotengine/godot-cpp.git
