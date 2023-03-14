@@ -1,10 +1,9 @@
 ---
-title: "Gdextension - How to Write Your First Extension"
+title: "GDExtension - How to Write Your First Extension"
 date: 2022-11-28
-draft: true
-enableEmoji: true
+draft: false
 ---
-![GDExtension - How to get started in C++](img/Cover.png)
+![GDExtension - How to get started in C++](Cover.png)
 
 With Godot 4.0 on the horizon a lot of people want to try out the new technologies that are coming with the new version.
 
@@ -16,9 +15,9 @@ Since we settled how useful GDExtension will be for the future of Godot's extens
 
 > :warning: **Disclaimer**: I have no professional knowledge of C++. I learned everything you see from combing through the godot-cpp code and experimenting with it. Furthermore, I only guess about how the internals really are working. My recommendations for the work with GDExtension worked well for me but don't have to for you. I am not sure if they are as good as they could be. If you do have constructive criticism about this post, I will be happy to improve it.
 
-> :information_source: The code here is the same I am using for my [GDExtensionSummator template](https://github.com/paddy-exe/GDExtensionSummator). If you want to built on top of it or just jump right into the action, you can simply use the template and get a headstart.
+> :memo: The code here is the same I am using for my [GDExtensionSummator template](https://github.com/paddy-exe/GDExtensionSummator). If you want to built on top of it or just jump right into the action, you can simply use the template and get a headstart.
 
-![GDExtensionSummator - How to create a repo from the template](img/GDExtensionTemplate.png)
+![GDExtensionSummator - How to create a repo from the template](GDExtensionTemplate.png)
 Click on the button "Use this template" which creates a new repository to your GitHub account based on the template
 
 ## 0. Compilation requirements
@@ -366,13 +365,13 @@ Well, we need to add a script first to use the Summator reference type.
 
 You can create a simple scene with a Node type as Scene root (any is fine really) and add a script to it. In the script editor, you can now create a new Summator class instance and add numbers to it via the add() method. You can print out the count by calling the get_total() method. This should look similar to this screenshot:
 
-![How to use the extension in editor](img/UsingExtension.png)
+![How to use the extension in editor](UsingExtension.png)
 
 Congratulation🎉🎉🎉You created your first extension!
 
 As a little bonus: When Ctrl+Clicking on the Summator class you can get this here:
 
-![Automatic GDExtension Docs](img/ExtensionDocs.png)
+![Automatic GDExtension Docs](ExtensionDocs.png)
 
 Yes, your GDExtension automatically creates docs for you. Adding descriptions isn’t yet possible unfortunately but this is already very cool and useful.
 

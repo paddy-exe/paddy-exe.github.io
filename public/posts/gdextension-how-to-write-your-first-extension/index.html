@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en-us"><head>
+  <meta charset="utf-8">
+<meta http-equiv="content-type" content="text/html">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title itemprop="name">GDExtension - How to Write Your First Extension | 🔥 Lizard&#39;s Blog</title>
+<meta property="og:title" content="GDExtension - How to Write Your First Extension | 🔥 Lizard&#39;s Blog" />
+<meta name="twitter:title" content="GDExtension - How to Write Your First Extension | 🔥 Lizard&#39;s Blog" />
+<meta itemprop="name" content="GDExtension - How to Write Your First Extension | 🔥 Lizard&#39;s Blog" />
+<meta name="application-name" content="GDExtension - How to Write Your First Extension | 🔥 Lizard&#39;s Blog" />
+<meta property="og:site_name" content="🔥 Lizard&#39;s Development Blog" />
+
+<meta name="description" content="A development blog about my programming projects with Godot Engine, Shaders and VFX">
+<meta itemprop="description" content="A development blog about my programming projects with Godot Engine, Shaders and VFX" />
+<meta property="og:description" content="A development blog about my programming projects with Godot Engine, Shaders and VFX" />
+<meta name="twitter:description" content="A development blog about my programming projects with Godot Engine, Shaders and VFX" />
+
+<meta property="og:locale" content="en-us" />
+<meta name="language" content="en-us" />
+
+
+
+  <meta itemprop="image" content="https://paddy-exe.github.io/public/index.html" />
+  <meta property="og:image" content="https://paddy-exe.github.io/public/index.html" />
+  <meta name="twitter:image" content="https://paddy-exe.github.io/public/index.html" />
+  <meta name="twitter:image:src" content="https://paddy-exe.github.io/public/index.html" />
+
+
+
+
+    
+    
+    
+    
+
+    <meta property="og:type" content="article" />
+    <meta property="og:article:published_time" content=2022-11-28T00:00:00Z />
+    <meta property="article:published_time" content=2022-11-28T00:00:00Z />
+
+    
+
+    
+
+    <script defer type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "Article",
+        "headline": "GDExtension - How to Write Your First Extension",
+        "author": {
+        "@type": "Person",
+        "name": ""
+        },
+        "datePublished": "2022-11-28",
+        "description": "",
+        "wordCount":  2496 ,
+        "mainEntityOfPage": "True",
+        "dateModified": "2022-11-28",
+        "image": {
+        "@type": "imageObject",
+        "url": ""
+        },
+        "publisher": {
+        "@type": "Organization",
+        "name": "🔥 Lizard\u0027s Blog"
+        }
+    }
+    </script>
+
+  <meta name="generator" content="Hugo 0.111.2">
+
+  
+
+  <link rel="canonical" href="https://paddy-exe.github.io/public/index.html/posts/gdextension-how-to-write-your-first-extension/"><link href="/public/index.html/sass/main.min.00d1bc38a1f8a32004a1696c920dcc44d00df0f529a14b8a8f25765684da9707.css" rel="stylesheet"><link href="/public/index.html/code-highlight.min.706d31975fec544a864cb7f0d847a73ea55ca1df91bf495fd12a177138d807cf.css" rel="stylesheet">
+
+  
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/images/favicon/site.webmanifest">
+  <link rel="mask-icon" href="/images/favicon/safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="/images/favicon/favicon.ico">
+  <meta name="msapplication-TileColor" content="#2b5797">
+  <meta name="msapplication-config" content="/images/favicon/browserconfig.xml">
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <link rel="icon" type="image/svg+xml" href="/images/favicon/favicon.svg">
+
+  
+    </head><body data-theme = "dark" class="notransition">
+<script src="https://paddy-exe.github.io/public/index.html/js/themeLoader.min.4e9e1a253d543bbfec02e7f2460d9621e719fd739dc8a5256faa91cda6e12e03.js"></script><div class="navbar" role="navigation">
+  <nav class="menu" aria-label="Main Navigation">
+    <a href="/" class="logo">
+      <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" 
+viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="feather feather-home">
+<title>Home</title>
+<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+<polyline points="9 22 9 12 15 12 15 22"></polyline>
+</svg>
+    </a>
+    <input type="checkbox" id="menu-trigger" class="menu-trigger" />
+    <label for="menu-trigger">
+      <span class="menu-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" stroke="currentColor" fill="none" viewBox="0 0 14 14"><title>Menu</title><path stroke-linecap="round" stroke-linejoin="round" d="M10.595 7L3.40726 7"></path><path stroke-linecap="round" stroke-linejoin="round" d="M10.5096 3.51488L3.49301 3.51488"></path><path stroke-linecap="round" stroke-linejoin="round" d="M10.5096 10.4851H3.49301"></path><path stroke-linecap="round" stroke-linejoin="round" d="M0.5 12.5V1.5C0.5 0.947715 0.947715 0.5 1.5 0.5H12.5C13.0523 0.5 13.5 0.947715 13.5 1.5V12.5C13.5 13.0523 13.0523 13.5 12.5 13.5H1.5C0.947715 13.5 0.5 13.0523 0.5 12.5Z"></path></svg>
+      </span>
+    </label>
+
+    <div class="trigger">
+      <ul class="trigger-container">
+        
+        
+          <li>
+            <a 
+            class="menu-link "
+            href="/public/index.html/">
+            Home
+            </a>
+            
+          </li>
+        
+          <li>
+            <a 
+            class="menu-link active"
+            href="/public/index.html/posts/">
+            Posts
+            </a>
+            
+          </li>
+        
+          <li>
+            <a 
+            class="menu-link "
+            href="/public/index.html/about/">
+            About
+            </a>
+            
+          </li>
+        
+        <li class="menu-separator">
+          <span>|</span>
+        </li>
+      </ul>
+      <a id="mode" href="#">
+        <svg xmlns="http://www.w3.org/2000/svg" class="mode-sunny" width="21" height="21" viewBox="0 0 14 14" stroke-width="1">
+<title>LIGHT</title><g><circle cx="7" cy="7" r="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></circle><line x1="7" y1="0.5" x2="7" y2="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="2.4" y1="2.4" x2="3.82" y2="3.82" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="0.5" y1="7" x2="2.5" y2="7" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="2.4" y1="11.6" x2="3.82" y2="10.18" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="7" y1="13.5" x2="7" y2="11.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="11.6" y1="11.6" x2="10.18" y2="10.18" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="13.5" y1="7" x2="11.5" y2="7" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="11.6" y1="2.4" x2="10.18" y2="3.82" fill="none" stroke-linecap="round" stroke-linejoin="round"></line></g></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="mode-moon" width="21" height="21" viewBox="0 0 14 14" stroke-width="1">
+<title>DARK</title><g><circle cx="7" cy="7" r="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></circle><line x1="7" y1="0.5" x2="7" y2="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="2.4" y1="2.4" x2="3.82" y2="3.82" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="0.5" y1="7" x2="2.5" y2="7" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="2.4" y1="11.6" x2="3.82" y2="10.18" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="7" y1="13.5" x2="7" y2="11.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="11.6" y1="11.6" x2="10.18" y2="10.18" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="13.5" y1="7" x2="11.5" y2="7" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="11.6" y1="2.4" x2="10.18" y2="3.82" fill="none" stroke-linecap="round" stroke-linejoin="round"></line></g></svg>
+      </a>
+    </div>
+  </nav>
+</div>
+
+<div class="wrapper post">
+    <main class="page-content" aria-label="Content">
+        <article>
+            <header class="header">
+                <h1 class="header-title">GDExtension - How to Write Your First Extension</h1>
+                
+                <div class="post-meta">
+                    <time datetime="2022-11-28T00:00:00&#43;00:00" itemprop="datePublished"> Nov 28, 2022 </time>
+                </div>
+            </header>
+            <div class="page-content">
+                <p><img src="Cover.png" alt="GDExtension - How to get started in C++"></p>
+<p>With Godot 4.0 on the horizon a lot of people want to try out the new technologies that are coming with the new version.</p>
+<p>One of these is the GDExtension system that will be replacing the older GDNative system. GDNative was introduced as a means to enhance the editor itself by embedding C++ libraries or new language bindings into Godot. This had the advantage that users wouldn&rsquo;t need to build the engine themselves but import a dynamic library. The other way would be to write a custom module for Godot and compile it yourself. Both of these had their own disadvantages. GDNative doesn&rsquo;t have full access to the C++ engine API as modules do. On the other side, modules need to be compiled on the target computer or you need to have a CI/CD solution like GitHub Actions to compile the editor (like <a href="https://github.com/Gramps/GodotSteam">GodotSteam</a> does).</p>
+<p>Now, how&rsquo;s GDExtension different? It is designed to have the advantages of both modules and GDNative. You don&rsquo;t need to recompile the engine and you have more in-depth access to the C++ API in the Godot editor.</p>
+<p>Since we settled how useful GDExtension will be for the future of Godot&rsquo;s extensebility, let&rsquo;s write our first GDExtension. For this post here, we will be creating a Reference class which can add numbers together and keep track of its count.</p>
+<blockquote>
+<p>⚠️ <strong>Disclaimer</strong>: I have no professional knowledge of C++. I learned everything you see from combing through the godot-cpp code and experimenting with it. Furthermore, I only guess about how the internals really are working. My recommendations for the work with GDExtension worked well for me but don&rsquo;t have to for you. I am not sure if they are as good as they could be. If you do have constructive criticism about this post, I will be happy to improve it.</p>
+</blockquote>
+<blockquote>
+<p>📝 The code here is the same I am using for my <a href="https://github.com/paddy-exe/GDExtensionSummator">GDExtensionSummator template</a>. If you want to built on top of it or just jump right into the action, you can simply use the template and get a headstart.</p>
+</blockquote>
+<p><img src="GDExtensionTemplate.png" alt="GDExtensionSummator - How to create a repo from the template">
+Click on the button &ldquo;Use this template&rdquo; which creates a new repository to your GitHub account based on the template</p>
+<h2 id="0-compilation-requirements">0. Compilation requirements</h2>
+<p>To be able to compile and build your extension you will need the same software installed as you need to compile the editor itself.</p>
+<p>This means:</p>
+<ul>
+<li>SCons</li>
+<li>Python 3.5+</li>
+<li>Git</li>
+<li>MinGW or Visual Studio (for <strong>Windows</strong>)</li>
+<li>Apple Command Line Tools (rather lightweight) or XCode (heavy on disk space) (for <strong>MacOS</strong>)</li>
+</ul>
+<p>For further information, please refer to the Godot docs: <a href="https://docs.godotengine.org/en/stable/development/compiling/index.html">Compiling Godot</a>.</p>
+<h2 id="1-folder-structure">1. Folder structure</h2>
+<p>First and foremost you need to start with a project folder. This can be any name you want. You can also still change it later on.
+In this folder you will create another folder called &ldquo;extension&rdquo; and in there the folder &ldquo;src&rdquo; where all your C++ files will be when developing the extension. You will also create another folder called &ldquo;game&rdquo; where your Godot project will lie. The seperation of the Godot project and the extension files is recommended for clarity and for the export of the Godot project (if you do want to develop the game side-by-side with the extension).</p>
+<p>Your folder structure should look like this now:</p>
+<pre tabindex="0"><code>GDExtensionSummator
+ ┣ extension
+ ┃ ┣ src
+ ┃ ┃ ┣ ...                  &lt;- C++ files
+ ┃ ┣ game
+ ┃ ┃ ┗ ...                  &lt;- Godot project
+</code></pre><h2 id="2-godot-cpp-bindings">2. godot-cpp bindings</h2>
+<p>The godot-cpp repository represents the C++ API for the Godot editor. It is built on top of the godot-headers repository (which is C based).</p>
+<p>We will clone the godot-cpp repo into the top folder.</p>
+<blockquote>
+<p>ℹ️ If you want to develop your game directly side-by-side you can simply clone the main repository but if you are using git as a version-control anyway I recommend you to add godot-cpp as a submodule.</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">git submodule add -b master https://github.com/godotengine/godot-cpp.git
+</span></span></code></pre></div><p>After that, you will need to initialize the submodule:</p>
+<pre tabindex="0"><code>git submodule init
+</code></pre><p>Since we are currently still in beta stage of Godot 4, the master branch isn&rsquo;t stable. This is the same case for godot-cpp. To make sure that the editor works as expected with the bindings, you need to checkout the specific commit of godot-cpp that is compatible with the beta version we are using. For this post, I will be using <strong>beta 6</strong>. You can check the snapshot commits in this pinned issue on the repository. So using beta 6 I will go into the godot-cpp folder and checkout the commit <code>576bd17</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">cd</span> godot-cpp
+</span></span><span class="line"><span class="cl">git checkout 576bd17
+</span></span></code></pre></div><p>Now we are ready to get into the files themselves.</p>
+<h2 id="3-source-files">3. Source files</h2>
+<p>We will start with register_types.cpp:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;register_types.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;summator.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;godot/gdnative_interface.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;godot_cpp/core/class_db.hpp&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;godot_cpp/core/defs.hpp&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;godot_cpp/godot.hpp&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="k">namespace</span> <span class="n">godot</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">initialize_summator_types</span><span class="p">(</span><span class="n">ModuleInitializationLevel</span> <span class="n">p_level</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="n">p_level</span> <span class="o">!=</span> <span class="n">MODULE_INITIALIZATION_LEVEL_SCENE</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"> <span class="k">return</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="n">ClassDB</span><span class="o">::</span><span class="n">register_class</span><span class="o">&lt;</span><span class="n">Summator</span><span class="o">&gt;</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">uninitialize_summator_types</span><span class="p">(</span><span class="n">ModuleInitializationLevel</span> <span class="n">p_level</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="n">p_level</span> <span class="o">!=</span> <span class="n">MODULE_INITIALIZATION_LEVEL_SCENE</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"> <span class="k">return</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">extern</span> <span class="s">&#34;C&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Initialization.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="n">GDNativeBool</span> <span class="n">GDN_EXPORT</span> <span class="nf">summator_library_init</span><span class="p">(</span><span class="k">const</span> <span class="n">GDNativeInterface</span> <span class="o">*</span><span class="n">p_interface</span><span class="p">,</span> <span class="k">const</span> <span class="n">GDNativeExtensionClassLibraryPtr</span> <span class="n">p_library</span><span class="p">,</span> <span class="n">GDNativeInitialization</span> <span class="o">*</span><span class="n">r_initialization</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl"> <span class="n">GDExtensionBinding</span><span class="o">::</span><span class="n">InitObject</span> <span class="n">init_obj</span><span class="p">(</span><span class="n">p_interface</span><span class="p">,</span> <span class="n">p_library</span><span class="p">,</span> <span class="n">r_initialization</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> <span class="n">init_obj</span><span class="p">.</span><span class="n">register_initializer</span><span class="p">(</span><span class="n">initialize_summator_types</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"> <span class="n">init_obj</span><span class="p">.</span><span class="n">register_terminator</span><span class="p">(</span><span class="n">uninitialize_summator_types</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"> <span class="n">init_obj</span><span class="p">.</span><span class="n">set_minimum_library_initialization_level</span><span class="p">(</span><span class="n">MODULE_INITIALIZATION_LEVEL_SCENE</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> <span class="k">return</span> <span class="n">init_obj</span><span class="p">.</span><span class="n">init</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>In lines 1 to 6 we are including several header files. The first one is the <strong>register_types</strong> header file which defines the functions we are calling here. Also, we are including summator.h which is our extension header file so that we can register the class type to Godot. Line 3 to 6 are the basic ones we need to include to get the Extension to work. They represent the interface to interact with the Godot editor.</p>
+<p>Line 8 defines the namespace godot for all the godot classes we are calling here. This isn’t necessary but makes it easier to call them without writing <code>godot::</code> in front of everything.</p>
+<p>In line 10 we are writing the function <code>initialize_summator_types</code> in which we are registering the custom classes we are writing so that Godot knows of their existence. In line 18 you would call the uninitialized function. Since we are only writing a Custom Reference class we don’t have to write anything specific here. It can however be very important for the memory management of your extension.</p>
+<p>Line 29 calls a function <code>summator_library_init</code> of type <code>GDNativeBool</code>. In essence, this function creates a Binding Object for the extension and does the registration to Godot’s internals for us. The name of the function is important for later so choose a fitting name for your extension.</p>
+<h3 id="register_typesh"><code>register_types.h</code></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#ifndef SUMMATOR_REGISTER_TYPES_H
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define SUMMATOR_REGISTER_TYPES_H
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">initialize_summator_types</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">uninitialize_summator_types</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cp">#endif </span><span class="c1">// SUMMATOR_REGISTER_TYPES_H
+</span></span></span></code></pre></div><p>This header file is rather simple. C++ Macros are defined (I am not sure why and if they need to be there). Other than that, the functions for the cpp file are defined here.</p>
+<h3 id="summatorh"><code>summator.h</code></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">//© Copyright 2014-2022, Juan Linietsky, Ariel Manzur and the Godot community (CC-BY 3.0)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="cp">#ifndef SUMMATOR_CLASS_H
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define SUMMATOR_CLASS_H
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;godot_cpp/classes/ref.hpp&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="k">namespace</span> <span class="n">godot</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Summator</span> <span class="o">:</span> <span class="k">public</span> <span class="n">RefCounted</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">GDCLASS</span><span class="p">(</span><span class="n">Summator</span><span class="p">,</span> <span class="n">RefCounted</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">count</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">protected</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">static</span> <span class="kt">void</span> <span class="n">_bind_methods</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Summator</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="o">~</span><span class="n">Summator</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">add</span><span class="p">(</span><span class="kt">int</span> <span class="n">p_value</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">reset</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="nf">get_total</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cp">#endif </span><span class="c1">// SUMMATOR_CLASS_H
+</span></span></span></code></pre></div><p>In line 2 and 3 we define the Summator class macro if it doesn’t already exist.</p>
+<p>In line 5 we include the Ref(erence) header file from the Godot API.</p>
+<p>In line 9 creates a class Summator which inherits from the class RefCounted (from the Ref.hpp header file). In it, we call <code>GDCLASS</code> which is a internal Godot template macro to handle the class. Next, we also create an integer called <code>count</code> in line 19. This integer will hold the sum of the numbers we add to our Reference object.</p>
+<p>Line 22 shows the <code>_bind_methods</code> static method which is Godot’s internal method to bind well… methods to classes. This has to be added so that methods and properties can be bound to the class.</p>
+<p>Line 24 to 30 define the constructor and deconstructor of the Summator class as well as the methods for this class.</p>
+<h3 id="summatorcpp"><code>summator.cpp</code></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">//© Copyright 2014-2022, Juan Linietsky, Ariel Manzur and the Godot community (CC-BY 3.0)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="cp">#include</span> <span class="cpf">&#34;summator.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;godot_cpp/core/class_db.hpp&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="k">namespace</span> <span class="n">godot</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">Summator</span><span class="o">::</span><span class="n">Summator</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">Summator</span><span class="o">::~</span><span class="n">Summator</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">Summator</span><span class="o">::</span><span class="n">add</span><span class="p">(</span><span class="kt">int</span> <span class="n">p_value</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">count</span> <span class="o">+=</span> <span class="n">p_value</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">Summator</span><span class="o">::</span><span class="n">reset</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">Summator</span><span class="o">::</span><span class="n">get_total</span><span class="p">()</span> <span class="k">const</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">count</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">Summator</span><span class="o">::</span><span class="n">_bind_methods</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ClassDB</span><span class="o">::</span><span class="n">bind_method</span><span class="p">(</span><span class="n">D_METHOD</span><span class="p">(</span><span class="s">&#34;add&#34;</span><span class="p">,</span> <span class="s">&#34;value&#34;</span><span class="p">),</span> <span class="o">&amp;</span><span class="n">Summator</span><span class="o">::</span><span class="n">add</span><span class="p">,</span> <span class="n">DEFVAL</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ClassDB</span><span class="o">::</span><span class="n">bind_method</span><span class="p">(</span><span class="n">D_METHOD</span><span class="p">(</span><span class="s">&#34;reset&#34;</span><span class="p">),</span> <span class="o">&amp;</span><span class="n">Summator</span><span class="o">::</span><span class="n">reset</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ClassDB</span><span class="o">::</span><span class="n">bind_method</span><span class="p">(</span><span class="n">D_METHOD</span><span class="p">(</span><span class="s">&#34;get_total&#34;</span><span class="p">),</span> <span class="o">&amp;</span><span class="n">Summator</span><span class="o">::</span><span class="n">get_total</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>In line 4 we include <code>class_db.hpp</code> which is sort of like a class database of Godot. We call this class to bind methods and properties of custom types so that the Godot editor knows of them.</p>
+<p>Line 8 creates the constructor of the Summator class with a default value for the count variable.</p>
+<p>In line 13 we write the Deconstructor of Summator which doesn’t have any contents.</p>
+<p>In line 17 the <code>add()</code> method is written so that the argument of it will be added to the count variable.</p>
+<p>Line 22’s <code>reset()</code> method resets the count variable to the value 0.</p>
+<p>Line 27’s <code>get_total()</code> returns the current value of the count variable.</p>
+<p>In line 32 to 36 we write the <code>_bind_methods</code> method to bind the custom class methods we have written above.</p>
+<p>The syntax for <code>_bind_method</code> is as follows:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">ClassDB</span><span class="o">::</span><span class="n">bind_method</span><span class="p">(</span><span class="n">D_METHOD</span><span class="p">(</span><span class="s">&#34;method_name&#34;</span><span class="p">,</span> <span class="s">&#34;optional argument_name&#34;</span><span class="p">),</span> <span class="o">&amp;</span><span class="n">Summator</span><span class="o">::</span><span class="n">method_name</span><span class="p">,</span> <span class="n">DEFVAL</span><span class="p">(</span><span class="n">default_argument_value</span><span class="p">));</span>
+</span></span></code></pre></div><p><code>D_METHOD</code> is a Godot internal template.</p>
+<h3 id="sconstruct"><code>SConstruct</code></h3>
+<p>This file here is sort of the heart of your extension. It’s a python file (yes, even though it doesn’t have a .py ending). It tells the build process how to compile your files. It is very clever though and can figure out which files first to compile if they depend on each other in their functionality.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="ch">#!/usr/bin/env python</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">os</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">sys</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">env</span> <span class="o">=</span> <span class="n">SConscript</span><span class="p">(</span><span class="s2">&#34;godot-cpp/SConstruct&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># For the reference:</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># - CCFLAGS are compilation flags shared between C and C++</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># - CFLAGS are for C-specific compilation flags</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># - CXXFLAGS are for C++-specific compilation flags</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># - CPPFLAGS are for pre-processor flags</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># - CPPDEFINES are for pre-processor defines</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># - LINKFLAGS are for linking flags</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># tweak this if you want to use different folders, or more folders, to store your source code in.</span>
+</span></span><span class="line"><span class="cl"><span class="n">env</span><span class="o">.</span><span class="n">Append</span><span class="p">(</span><span class="n">CPPPATH</span><span class="o">=</span><span class="p">[</span><span class="s2">&#34;extension/src/&#34;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">sources</span> <span class="o">=</span> <span class="n">Glob</span><span class="p">(</span><span class="s2">&#34;extension/src/*.cpp&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="n">env</span><span class="p">[</span><span class="s2">&#34;platform&#34;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&#34;macos&#34;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">library</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">SharedLibrary</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;game/bin/summator/libgdsummator.</span><span class="si">{}</span><span class="s2">.</span><span class="si">{}</span><span class="s2">.framework/libgdsummator.</span><span class="si">{}</span><span class="s2">.</span><span class="si">{}</span><span class="s2">&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">            <span class="n">env</span><span class="p">[</span><span class="s2">&#34;platform&#34;</span><span class="p">],</span> <span class="n">env</span><span class="p">[</span><span class="s2">&#34;target&#34;</span><span class="p">],</span> <span class="n">env</span><span class="p">[</span><span class="s2">&#34;platform&#34;</span><span class="p">],</span> <span class="n">env</span><span class="p">[</span><span class="s2">&#34;target&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">        <span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="n">source</span><span class="o">=</span><span class="n">sources</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">library</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">SharedLibrary</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;game/bin/summator/libgdsummator</span><span class="si">{}{}</span><span class="s2">&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">env</span><span class="p">[</span><span class="s2">&#34;suffix&#34;</span><span class="p">],</span> <span class="n">env</span><span class="p">[</span><span class="s2">&#34;SHLIBSUFFIX&#34;</span><span class="p">]),</span>
+</span></span><span class="line"><span class="cl">        <span class="n">source</span><span class="o">=</span><span class="n">sources</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">Default</span><span class="p">(</span><span class="n">library</span><span class="p">)</span>
+</span></span></code></pre></div><p>The first line here is the famous shebang line which tells your operating system which interpreter it should be run by.</p>
+<p>Line 2 and 3 are includes to handle operating system and system functions.</p>
+<p>In line 5 we create an object for the build configuration of our extension which is available in the godot-cpp repository. This build configuration tells Scons how to compile the extension.</p>
+<p>Now that we have created the compilation environment, we need to add paths to it so it knows where to search for files to compile. This is what line 6 and 7 are for. You can append several file paths to your own SConstruct file. <code>Glob</code> searches for specific file patterns in a given file path.</p>
+<p>The lines 9 to 20 define how the library will be named when compiled. You can see flags like <code>platform</code>, <code>target</code> or <code>suffix</code> which will come in handy later. Since MacOS is a little bit different in terms of naming everything, it has a specific if statement block.</p>
+<p>Line 22 is the Default target selection mechanism. Scons will use its own algorithm to determine the target specifics. So for instance if I just run:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">scons
+</span></span></code></pre></div><p>Scons will actually run this in the background (plus a little more):</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">scons <span class="nv">platform</span><span class="o">=</span>windows <span class="nv">target</span><span class="o">=</span>template_debug -j11
+</span></span></code></pre></div><p>It can also automatically determine the number of my cores (which is 12) and set it to -1 of this number to run the compilation and speed it up since it can use more than one core. Quite clever, isn’t it?</p>
+<h2 id="4-compiling-your-extension">4. Compiling your extension</h2>
+<p>Since we now have everything together to be able to build our extension, let’s do that, shall we?</p>
+<p>First off, we need to build the godot-cpp. In your terminal you should go into the godot-cpp directory now and run:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">scons <span class="c1"># add -jN with N for the number of cores you want to use</span>
+</span></span></code></pre></div><p>You should see the following:</p>
+<pre tabindex="0"><code>scons: Reading SConscript files …
+Auto-detected 12 CPU cores available for build parallelism. Using 11 cores by default. You can override it with the -j argument.
+Building for architecture x86_64 on platform windows
+scons: done reading SConscript files.
+scons: Building targets …
+</code></pre><p>After that, a huge pile of text should appear and then all of a sudden:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">scons: <span class="k">done</span> building targets.
+</span></span></code></pre></div><p>The huge pile of text are the object files that were created for the compilation of the godot-cpp library. This step is also necessary to get autocompletion working for your code editor.</p>
+<p>Next, we go in the top directory and run scons again. This time we are compiling the actual extension. The procedure and outcome message should be the same as for the godot-cpp library. (If you do get any errors up until now, leave either a comment here or hit me up on <a href="https://twitter.com/patrick_exe">Twitter</a> or <a href="@flamelizard@mastodon.gamedev.place">Mastodon</a>)</p>
+<h2 id="5-the-extension-file">5. The extension file</h2>
+<p>The last step is this here. You need to create a summator.gdextension file which you put in the <code>bin/</code> folder. This file tells your Godot editor where to load your extension from. You can set different targets depending on release and debug (just like the editor itself). The file should look like this:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl"><span class="p">[</span><span class="l">configuration]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="l">entry_symbol = &#34;summator_library_init&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">[</span><span class="l">libraries]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="l">linux.x86_64.debug = &#34;res://bin/summator/libgdsummator.linux.template_debug.x86_64.so&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="l">linux.x86_64.release = &#34;res://bin/summator/libgdsummator.linux.template_release.x86_64.so&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="l">linux.debug.arm64 = &#34;res://bin/summator/libgdsummator.linux.template_debug.arm64.so&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="l">linux.release.arm64 = &#34;res://bin/summator/libgdsummator.linux.template_release.arm64.so&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="l">windows.x86_64.debug = &#34;res://bin/summator/libgdsummator.windows.template_debug.x86_64.dll&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="l">windows.x86_64.release = &#34;res://bin/summator/libgdsummator.windows.template_release.x86_64.dll&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="l">macos.debug = &#34;res://bin/summator/libgdsummator.macos.template_debug.framework&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="l">macos.release = &#34;res://bin/summator/libgdsummator.macos.template_release.framework&#34;</span><span class="w">
+</span></span></span></code></pre></div><p>The <code>[configuration]</code> part with the entry_symbol variable is the function that will get called to load the extension. We defined this method ealier in the register_types.cpp file.</p>
+<p>The <code>[libraries]</code> part is where you set the versions and flags you want to use for your extension. You can customize this a lot to your needs with the use of your SConstruct file. With that, you can release your extension for MacOS, Windows and Linux as both debug and release versions.</p>
+<h2 id="6-using-the-extension">6. Using the extension</h2>
+<p>Now let’s open Godot 4.0 beta 6 again and we see … nothing?
+Well, we need to add a script first to use the Summator reference type.</p>
+<p>You can create a simple scene with a Node type as Scene root (any is fine really) and add a script to it. In the script editor, you can now create a new Summator class instance and add numbers to it via the add() method. You can print out the count by calling the get_total() method. This should look similar to this screenshot:</p>
+<p><img src="UsingExtension.png" alt="How to use the extension in editor"></p>
+<p>Congratulation🎉🎉🎉You created your first extension!</p>
+<p>As a little bonus: When Ctrl+Clicking on the Summator class you can get this here:</p>
+<p><img src="ExtensionDocs.png" alt="Automatic GDExtension Docs"></p>
+<p>Yes, your GDExtension automatically creates docs for you. Adding descriptions isn’t yet possible unfortunately but this is already very cool and useful.</p>
+<p><strong>Thank you very much for reading!</strong></p>
+<p>If this blog post was helpful to you, I’d really appreciate a message, a like where I shared this post or you can support me by buying me a coffee :D.</p>
+<p>I have plans to add more tutorials as well (in VFX and Shaders especially) so stay tuned!</p>
+
+            </div>
+        </article>
+    </main>
+</div>
+<footer class="footer">
+    <span class="footer_item"> </span>
+    &nbsp;
+
+    <div class="footer_social-icons">
+<a href="https://github.com/paddy-exe" target="_blank" rel="noopener noreferrer me" title="Github">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+    </path>
+</svg>
+</a>
+<a href="https://twitter.com/patrick_exe" target="_blank" rel="noopener noreferrer me" title="Twitter">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z">
+    </path>
+</svg>
+</a>
+<a href="https://ko-fi.com/flamelizard" target="_blank" rel="noopener noreferrer me" title="Kofi">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid meet"
+    viewBox="0 -3 23 27" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+    stroke-linejoin="round">
+    <path
+        d="M23.881 8.948c-.773-4.085-4.859-4.593-4.859-4.593H.723c-.604 0-.679.798-.679.798s-.082 7.324-.022 11.822c.164 2.424 2.586 2.672 2.586 2.672s8.267-.023 11.966-.049c2.438-.426 2.683-2.566 2.658-3.734c4.352.24 7.422-2.831 6.649-6.916zm-11.062 3.511c-1.246 1.453-4.011 3.976-4.011 3.976s-.121.119-.31.023c-.076-.057-.108-.09-.108-.09c-.443-.441-3.368-3.049-4.034-3.954c-.709-.965-1.041-2.7-.091-3.71c.951-1.01 3.005-1.086 4.363.407c0 0 1.565-1.782 3.468-.963c1.904.82 1.832 3.011.723 4.311zm6.173.478c-.928.116-1.682.028-1.682.028V7.284h1.77s1.971.551 1.971 2.638c0 1.913-.985 2.667-2.059 3.015z" />
+</svg>
+</a>
+<a href="https://www.twitch.tv/flamelizardcodes" target="_blank" rel="noopener noreferrer me" title="Twitch">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 2H3v16h5v4l4-4h5l4-4V2zm-10 9V7m5 4V7"></path>
+</svg>
+</a>
+<a href="index.xml" target="_blank" rel="noopener noreferrer me" title="Rss">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 11a9 9 0 0 1 9 9" />
+    <path d="M4 4a16 16 0 0 1 16 16" />
+    <circle cx="5" cy="19" r="1" />
+</svg>
+</a></div>
+    <small class="footer_copyright">
+        © 2023 Patrick aka 🔥 Lizard.
+        Powered by <a href="https://github.com/hugo-sid/hugo-blog-awesome" target="_blank" rel="noreferrer noopener">Hugo blog awesome</a>
+        theme on
+        <a href="https://gohugo.io" target="_blank" rel="noreferrer noopener">Hugo</a>.
+    </small>
+</footer>
+<script src="https://paddy-exe.github.io/public/index.html/js/themeSwitchnMenu.min.2a402288242b6930b175a0722c267e2353055739b3975834df35e56d00dd8f50.js"></script></body>
+</html>
