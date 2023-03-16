@@ -6,10 +6,6 @@ theme = "hugo-blog-awesome"
 # Enable emojis globally
 enableEmoji = true
 
-# To enable Google Analytics 4 (gtag.js) provide G-MEASUREMENT_ID below.
-# To disable  Google Analytics, simply leave the field empty or remove the next line
-googleAnalytics = 'G-BL06NR0DLM' # G-MEASUREMENT_ID
-
 # set markup.highlight.noClasses=false to enable code highlight
 [markup]
   [markup.highlight]
@@ -67,18 +63,15 @@ googleAnalytics = 'G-BL06NR0DLM' # G-MEASUREMENT_ID
 
 [privacy]
   [privacy.disqus]
-    disable = false
+    disable = true
   [privacy.googleAnalytics]
-    anonymizeIP = false
-    disable = false
-    respectDoNotTrack = true
-    useSessionStorage = true
+    disable = true
   [privacy.instagram]
     disable = true
-    simple = false
   [privacy.twitter]
     disable = true
+  [privacy.vimeo]
+    disable = true
   [privacy.youtube]
-    disable = false
-    privacyEnhanced = true
+    disable = true
 
