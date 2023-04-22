@@ -513,3 +513,5 @@ Now that we have everything done, let's see how it looks like in the editor:
 ![Tutorial UV Node showcase inside the editor by using it on an example mesh](TutorialUVShowcase.png)
 
 **That's it! Congratulations!✨✨✨ You just created your own core Visual Shader Node! You also had a little look at how the internal structure of the engine works.**
+
+If you liked this blog post, I would appreciate it if you can share it. In case you want to support my work you can support me on [Ko-Fi](https://ko-fi.com/flamelizard).
