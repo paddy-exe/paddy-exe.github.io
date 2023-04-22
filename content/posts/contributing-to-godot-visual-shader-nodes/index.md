@@ -1,15 +1,17 @@
 ---
 title: "Contributing to Godot - Visual Shaders Nodes"
-date: 2022-04-06
-draft: true
+date: 2022-04-22
+draft: false
 ---
 ![Contributing Visual Shaders to Godot - Cover](Cover-Godot-VS-Contribution.png)
 
-# Introduction
-If you have ever wondered how (some) new features are getting added to each new iteration of the Godot Engine, you've come to the right place! In this post I will explain how you can Visual Shader nodes to the core engine [as I have](https://github.com/godotengine/godot/pull/64248) and give a little insight about the internal workings of the Godot source code.
+> :memo: The changed Godot icon was made by [Yuri Sizov (CC-BY 4.0)](https://github.com/YuriSizov/godot-emotes/blob/master/LICENSE)
 
-# The Structure of Visual Shaders nodes
-To understand how Visual Shader nodes can be written in C++ (even if you have almost no knowledge about C++) we need to have look at how you can create new Nodes in GDScript as addons/tool scripts. There is a [section about this in the docs](https://docs.godotengine.org/en/stable/tutorials/plugins/editor/visual_shader_plugins.html), so let's take a deep-dive into the code:
+# Introduction
+If you have ever wondered how (some) new features are getting added to each new iteration of the Godot Engine, you've come to the right place! In this post I will explain how you can add Visual Shader Nodes to the core engine [as I have](https://github.com/godotengine/godot/pull/64248) and get a little insight of the Godot source code.
+
+# The Structure of Visual Shaders Nodes
+To understand how Visual Shader Nodes can be written in C++ (even if you have almost no knowledge about C++) we need to have look at how you can create new Nodes in GDScript as addons/tool scripts. There is a [section about this in the docs](https://docs.godotengine.org/en/stable/tutorials/plugins/editor/visual_shader_plugins.html), so let's take a deep-dive into the code:
 
 ```gdscript
 © Copyright 2014-present Juan Linietsky, Ariel Manzur and the Godot community (CC BY 3.0). Revision c93d9373.
@@ -175,22 +177,22 @@ Let's this script run in the editor itself instead of only in the running game.
 Creates a new class extending from `VisualShaderNodeCustom` via the `extends` keyboard in the prior line.
 
 ### `_get_name()`
-Sets the title of the Visual Shader node.
+Sets the title of the Visual Shader Node.
 
 ### `_get_description()`
-Sets the description of the Visual Shader node.
+Sets the description of the Visual Shader Node.
 
 ### `_init()`
 Sets default values for input ports.
 
 ### `_get_return_icon_type()`
-Sets the icon type of the Visual Shader node in the `Add Node` dialogue of the Visual Shader editor.
+Sets the icon type of the Visual Shader Node in the `Add Node` dialogue of the Visual Shader editor.
 
 ### `_get_input_port_count()`
-Sets the number of input ports of the Visual Shader node.
+Sets the number of input ports of the Visual Shader Node.
 
 ### `_get_input_port_name()`
-Sets the Strings for the input ports of the Visual Shader node.
+Sets the Strings for the input ports of the Visual Shader Node.
 
 ### `_get_input_port_type()`
 Sets the type for the input port.
@@ -199,10 +201,10 @@ Sets the type for the input port.
 Sets the number of output ports.
 
 ### `_get_output_port_name()`
-Sets the String(s) of the output node(s).
+Sets the String(s) of the output Node(s).
 
 ### `_get_output_port_type()`
-Sets the type of the output port of the node.
+Sets the type of the output port of the Node.
 
 ### `_get_global_code()`
 Sets the global code which is added at the top of the generated written shader file.
@@ -212,9 +214,9 @@ Sets the code which is added inside the `vertex`, `fragment` or other function s
 
 # How to add Visual Shader Nodes in C++
 
-Now that we have established how the syntax works in GDScript, let's have a look at the C++ side. Later on, we will create a simple example Node: a node that only returns the UVs of a Mesh.
+Now that we have established how the syntax works in GDScript, let's have a look at the C++ side. Later on, we will create a simple example Node: a Node that only returns the UVs of a Mesh.
 
-The files you need to change to create new nodes are:
+The files you need to change to create new Nodes are:
 * ``scene/resources/visual_shader_nodes.cpp``
 * ``scene/resources/visual_shader_nodes.h``
 * ``scene/register_scene_types.cpp``
@@ -265,7 +267,7 @@ Sets the title of the Visual Shader Node. C++ equivalent of `_get_name()`.
 This is the constructor method of your class. In this method we will also set the default values just like in GDScript's ``_init()`` method.
 
 ## ``visual_shader_nodes.cpp``
-The C++ part of the new node is also built similarly to the GDScript side with some minor differences. Here is the code:
+The C++ part of the new Node is also built similarly to the GDScript side with some minor differences. Here is the code:
 
 ```cpp
 String VisualShaderNodeRemap::get_caption() const {
@@ -354,7 +356,7 @@ ReturnType ClassName::MethodName() additionalKeyword {
 }
 ```
 
-The ``const`` keyword in the context of a class method means that the object it is called upon doesn't change. Just like this, we also write the ``get_input_port_count()`` method but with an ``int`` as a return type.
+The ``const`` keyword in the context of a class method means that the object it is called upon doesn't change. Just like this, we also write the ``get_input_port_count()`` method but with an ``int`` as a return type. The ``override`` keyword can be used on virtual functions to - as the name suggests - override their behaviour and functionality. The base function has to be virtual first. 
 
 In the third method ``get_input_port_type()`` we encounter the parameter ``int p_port``. In the Godot source code you will encounter more examples of this type of function parameter namings. With this, it is easier to spot which is in fact a parameter variable passed down and which isn't. This comes in handy when there is more complex functionality programmed into a function. 
 
@@ -368,7 +370,7 @@ Notice how many parameters there are:
 Shader::Mode p_mode, VisualShader::Type p_type, int p_id, const String *p_input_vars, const String *p_output_vars, bool p_for_preview
 ```
 
-You CAN use them but don't have to. They enable you to write more complex shader code depending on many factors. As this method's name suggests, it generates the underlying shader code for the Visual Shader node. For instance the shader code can be completely different between a CanvasItem Shader and a Spatial Shader. But having to write two different kind of variants would be cumbersome and some repeated lines of code.
+You CAN use them but don't have to. They enable you to write more complex shader code depending on many factors. As this method's name suggests, it generates the underlying shader code for the Visual Shader Node. For instance the shader code can be completely different between a CanvasItem Shader and a Spatial Shader. But having to write two different kind of variants would be cumbersome and some repeated lines of code.
 
 ``Shader::Mode`` is the Shader type so for instance Spatial or CanvasItem Shader. ``VisualShader::Type`` is the specific Shader stage e.g. the ``vertex()`` or ``fragment()`` function. The ``p_id`` is the ID of the Node itself. This is hardly/never used as far as I know. The pointers for the input variables and output variables are used to format the Strings and fill in the values. The ``p_for_preview`` sets which output is used for previewing. The standard behaviour is that it picks the first output.
 
@@ -392,11 +394,13 @@ vformat("		%s", Variable);
 ```
 The ``%s`` sets the space where the variable is supposed to be pasted in. If there are several ``%s`` present, the order of the additional parameters behind the String is parsed through for each item to be replaced.
 
-> :memo: To prevent variable conflicts in the generated shader file we put ``{ }`` around the node's Shader String.
+> :memo: To prevent variable conflicts in the generated shader file we put ``{ }`` around the Node's Shader String.
 
-After we wrote each line, we ``return`` the String back.
+After we write each line, we ``return`` the String back.
 
-Now for the ``VisualShaderNodeRemap`` method there is not much to say except that you can set the default input values. I am not sure myself what the boolean ``simple_decl`` means. It isn't necessary to add for the node to function properly.
+Now for the ``VisualShaderNodeRemap`` method there is not much to say except that you can set the default input values. The boolean ``simple_decl`` can be set for simple Nodes that only need one line of code. It can be set optionally. 
+
+> :memo: If you use it, you don't need to put ``{}`` around your shader code then (see the example below).
 
 ## ``register_scene_types.cpp``
 The file itself is gigantic so search for ``Remap`` to find a line like this:
@@ -411,6 +415,101 @@ This file is also huge so search this time for ``VisualShaderNodeRemap`` to find
 add_options.push_back(AddOption("Remap", "Utility", "VisualShaderNodeRemap", TTR("Remaps a given input from the input range to the output range."), {}, VisualShaderNode::PORT_TYPE_SCALAR));
 ```
 
-This function adds the details about the correct category of the node, the class it uses, the documentation String which is being shown if you search in the Editor Docs (<kbd>F1</kbd>). If you have specific variants of your Node that changes depending on a dropdown, you set the option variable inside the ``{}``.
+This function adds the details about the correct category of the Node, the class it uses, the documentation String which is being shown if you search in the Editor Docs (<kbd>F1</kbd>). If you have specific variants of your Node that changes depending on a dropdown, you set the option variable inside the ``{}``. An example for this is the ``UVFunc`` Node:
 
+```cpp
+add_options.push_back(AddOption("UVPanning", "Textures/Functions", "VisualShaderNodeUVFunc", TTR("Apply panning function on texture coordinates."), { VisualShaderNodeUVFunc::FUNC_PANNING }, VisualShaderNode::PORT_TYPE_VECTOR_2D));
+add_options.push_back(AddOption("UVScaling", "Textures/Functions", "VisualShaderNodeUVFunc", TTR("Apply scaling function on texture coordinates."), { VisualShaderNodeUVFunc::FUNC_SCALING }, VisualShaderNode::PORT_TYPE_VECTOR_2D));
+```
 
+This is it for the basics. Now let us write our very own Visual Shader Node to apply the knowledge we gathered. Let's keep it simple and write a Node that just returns the UVs. We will call it ``TutorialUV`` and put it in the category ``Tutorial/UV``.
+
+Here is the code for it:
+
+### visual_shader_nodes.cpp
+
+```cpp
+String VisualShaderNodeTutorialUV::get_caption() const {
+	return "TutorialUV";
+}
+
+int VisualShaderNodeTutorialUV::get_input_port_count() const {
+	return 0;
+}
+
+VisualShaderNodeTutorialUV::PortType VisualShaderNodeTutorialUV::get_input_port_type(int p_port) const {
+	return PORT_TYPE_SCALAR;
+}
+
+String VisualShaderNodeTutorialUV::get_input_port_name(int p_port) const {
+	return "";
+}
+
+int VisualShaderNodeTutorialUV::get_output_port_count() const {
+	return 1;
+}
+
+VisualShaderNodeTutorialUV::PortType VisualShaderNodeTutorialUV::get_output_port_type(int p_port) const {
+	return PORT_TYPE_VECTOR_2D;
+}
+
+String VisualShaderNodeTutorialUV::get_output_port_name(int p_port) const {
+	return "TutorialUV";
+}
+
+String VisualShaderNodeTutorialUV::generate_code(Shader::Mode p_mode, VisualShader::Type p_type, int p_id, const String *p_input_vars, const String *p_output_vars, bool p_for_preview) const {
+	String code;
+	code += vformat("		%s = UV;\n", p_output_vars[0]);
+	return code;
+}
+
+VisualShaderNodeTutorialUV::VisualShaderNodeTutorialUV() {
+	simple_decl = true;
+}
+```
+
+### visual_shader_nodes.h
+```cpp
+class VisualShaderNodeTutorialUV : public VisualShaderNode {
+	GDCLASS(VisualShaderNodeTutorialUV, VisualShaderNode);
+
+public:
+	virtual String get_caption() const override;
+
+	virtual int get_input_port_count() const override;
+	virtual PortType get_input_port_type(int p_port) const override;
+	virtual String get_input_port_name(int p_port) const override;
+
+	virtual int get_output_port_count() const override;
+	virtual PortType get_output_port_type(int p_port) const override;
+	virtual String get_output_port_name(int p_port) const override;
+
+	virtual String generate_code(Shader::Mode p_mode, VisualShader::Type p_type, int p_id, const String *p_input_vars, const String *p_output_vars, bool p_for_preview = false) const override;
+
+	VisualShaderNodeTutorialUV();
+};
+```
+
+### register_scene_types.cpp
+
+```cpp
+GDREGISTER_CLASS(VisualShaderNodeRemap);
+GDREGISTER_CLASS(VisualShaderNodeTutorialUV);
+GDREGISTER_ABSTRACT_CLASS(VisualShaderNodeVarying);
+```
+
+### visual_shader_editor_plugin.cpp
+
+```cpp
+add_options.push_back(AddOption("TutorialUV", "Tutorial/UV", "VisualShaderNodeTutorialUV", TTR("This is a tutorial UV node to explain how to contribute to Godot's Visual Shader system."), {}, VisualShaderNode::PORT_TYPE_VECTOR_2D, TYPE_FLAGS_FRAGMENT, Shader::MODE_SPATIAL));
+```
+
+> :memo: If you need to know where exactly I put the snippets, you can check out the [branch commit on GitHub](https://github.com/godotengine/godot/commit/3fc4d12a2d5f4cd2d8ae3fff9e33fd45fe8c7a08).
+
+Now that we have everything done, let's see how it looks like in the editor:
+
+![Create Shader Node Dialogue showcasing the Tutorial UV Node](TutorialUVAddNodeDialogue.png)
+
+![Tutorial UV Node showcase inside the editor by using it on an example mesh](TutorialUVShowcase.png)
+
+**That's it! Congratulations!✨✨✨ You just created your own core Visual Shader Node! You also had a little look at how the internal structure of the engine works.**
