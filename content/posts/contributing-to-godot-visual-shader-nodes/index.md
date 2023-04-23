@@ -506,6 +506,20 @@ add_options.push_back(AddOption("TutorialUV", "Tutorial/UV", "VisualShaderNodeTu
 
 > :memo: If you need to know where exactly I put the snippets, you can check out the [branch commit on GitHub](https://github.com/godotengine/godot/commit/3fc4d12a2d5f4cd2d8ae3fff9e33fd45fe8c7a08).
 
+# Compiling Godot from source
+
+Before we can see the changes inside the editor we need to compile the Godot source code. To check how it is done for your Operating Systen (OS), please refer to the [official documentation](https://docs.godotengine.org/en/stable/contributing/development/compiling/index.html).
+
+Since I am on Windows I will run
+
+```shell
+scons platform=windows
+```
+
+scons will automatically fill out details I haven't supplied such as the cores it will use (it will use ``N-1``  of your available cores).
+
+# Using the custom Visual Shader Node
+
 Now that we have everything done, let's see how it looks like in the editor:
 
 ![Create Shader Node Dialogue showcasing the Tutorial UV Node](TutorialUVAddNodeDialogue.png)
