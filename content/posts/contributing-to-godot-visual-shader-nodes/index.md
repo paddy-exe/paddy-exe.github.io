@@ -7,10 +7,21 @@ draft: false
 
 > :memo: The changed Godot icon was made by [Yuri Sizov (CC-BY 4.0)](https://github.com/YuriSizov/godot-emotes/blob/master/LICENSE)
 
+<details>
+
+<summary><b>Table of Contents</b></summary>
+
+0. [Introduction](#introduction)
+1. [The structure of Visual Shaders Nodes](#the-structure-of-visual-shaders-nodes)
+2. [How to add Visual Shader Nodes in C++](#how-to-add-visual-shader-nodes-in-c)
+3. [Compiling Godot from source](#compiling-godot-from-source)
+4. [Using the custom Visual Shader Node](#using-the-custom-visual-shader-node)
+</details>
+
 # Introduction
 If you have ever wondered how (some) new features are getting added to each new iteration of the Godot Engine, you've come to the right place! In this post I will explain how you can add Visual Shader Nodes to the core engine [as I have](https://github.com/godotengine/godot/pull/64248) and get a little insight of the Godot source code.
 
-# The Structure of Visual Shaders Nodes
+# The structure of Visual Shaders Nodes
 To understand how Visual Shader Nodes can be written in C++ (even if you have almost no knowledge about C++) we need to have look at how you can create new Nodes in GDScript as addons/tool scripts. There is a [section about this in the docs](https://docs.godotengine.org/en/stable/tutorials/plugins/editor/visual_shader_plugins.html), so let's take a deep-dive into the code:
 
 ```gdscript
