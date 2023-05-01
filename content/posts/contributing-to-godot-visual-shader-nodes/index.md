@@ -1,6 +1,6 @@
 ---
 title: "Contributing to Godot - Visual Shaders Nodes"
-date: 2022-04-22
+date: 2023-04-22
 draft: false
 ---
 ![Contributing Visual Shaders to Godot - Cover](Cover-Godot-VS-Contribution.png)
