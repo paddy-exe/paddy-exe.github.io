@@ -5,6 +5,23 @@ draft: false
 ---
 ![GDExtension - How to get started in C++](Cover.png)
 
+<details>
+
+<summary><b>Table of Contents</b></summary>
+
+[Introduction](#introduction)
+
+0. [Compilation requirements](#0-compilation-requirements)
+1. [Folder structure](#1-folder-structure)
+2. [godot-cpp bindings](#2-godot-cpp-bindings)
+3. [Source files](#3-source-files)
+4. [Compiling your extension](#4-compiling-your-extension)
+5. [The extension file](#5-the-extension-file)
+6. [Using the extension](#6-using-the-extension)
+</details>
+
+## Introduction
+
 With Godot 4.0 on the horizon a lot of people want to try out the new technologies that are coming with the new version.
 
 One of these is the GDExtension system that will be replacing the older GDNative system. GDNative was introduced as a means to enhance the editor itself by embedding C++ libraries or new language bindings into Godot. This had the advantage that users wouldn't need to build the engine themselves but import a dynamic library. The other way would be to write a custom module for Godot and compile it yourself. Both of these had their own disadvantages. GDNative doesn't have full access to the C++ engine API as modules do. On the other side, modules need to be compiled on the target computer or you need to have a CI/CD solution like GitHub Actions to compile the editor (like [GodotSteam](https://github.com/Gramps/GodotSteam) does).
@@ -12,6 +29,8 @@ One of these is the GDExtension system that will be replacing the older GDNative
 Now, how's GDExtension different? It is designed to have the advantages of both modules and GDNative. You don't need to recompile the engine and you have more in-depth access to the C++ API in the Godot editor. 
 
 Since we settled how useful GDExtension will be for the future of Godot's extensebility, let's write our first GDExtension. For this post here, we will be creating a Reference class which can add numbers together and keep track of its count.
+
+> :warning::warning::warning: **Disclaimer**: The code snippets here are already outdated and have been updated. The main principles still apply though. Since I contributed the official documentation for it as well, please check that [out as well when getting started with the new system.](https://docs.godotengine.org/en/stable/tutorials/scripting/gdextension/what_is_gdextension.html)
 
 > :warning: **Disclaimer**: I have no professional knowledge of C++. I learned everything you see from combing through the godot-cpp code and experimenting with it. Furthermore, I only guess about how the internals really are working. My recommendations for the work with GDExtension worked well for me but don't have to for you. I am not sure if they are as good as they could be. If you do have constructive criticism about this post, I will be happy to improve it.
 
@@ -72,7 +91,9 @@ git checkout 576bd17
  Now we are ready to get into the files themselves.
 
  ## 3. Source files
- We will start with register_types.cpp:
+ We will first start with 
+ 
+ ### ``register_types.cpp``
 
  ```cpp
  #include "register_types.h"

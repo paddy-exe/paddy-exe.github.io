@@ -6,6 +6,13 @@ theme = "hugo-blog-awesome"
 # Enable emojis globally
 enableEmoji = true
 
+# This defines how dates are formatted
+defaultContentLanguage = "en-gb"
+
+# To enable Google Analytics 4 (gtag.js) provide G-MEASUREMENT_ID below.
+# To disable  Google Analytics, simply leave the field empty or remove the next line
+googleAnalytics = 'G-XVEX4GZF4S' # G-MEASUREMENT_ID
+
 # set markup.highlight.noClasses=false to enable code highlight
 [markup]
   [markup.highlight]
@@ -22,6 +29,8 @@ enableEmoji = true
     noHl = false
     style = 'hrdark'
     tabWidth = 4
+  [markup.goldmark.renderer]
+    unsafe = true
 
 [menu]
   [[menu.main]] 
@@ -44,14 +53,15 @@ enableEmoji = true
 
 [params]
   sitename = "🔥 Lizard's Development Blog"
-  defaultColor = "dark" # set default color mode: dark or light
-  description = "A development blog about my programming projects with Godot Engine, Shaders and VFX"
+  defaultColor = "auto" # set default color mode: dark or light or auto
+  description = "A blog about my programming projects with the Godot Engine 🎮👾, Shaders and VFX ✨ as well as C++ for GDExtension ⚙️"
+  mainSections = ['posts']
 
 [params.author]
-  avatar = "general/img/FlameLizard_Profile.jpg"
-  intro = "Programming and Development Blog"
+  avatar = "FlameLizard_Profile.jpg"
+  intro = "🔥 Lizard's Development Blog"
   name = "Patrick aka 🔥 Lizard"
-  description = "A development blog about my programming projects with Godot Engine 🎮👾, Shaders and VFX ✨"
+  description = "A blog about my programming projects with the Godot Engine 🎮👾, Shaders and VFX ✨ as well as C++ for GDExtension ⚙️"
 
  [[params.socialIcons]] 
  name = "github" 
