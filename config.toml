@@ -29,8 +29,6 @@ googleAnalytics = 'G-XVEX4GZF4S' # G-MEASUREMENT_ID
     noHl = false
     style = 'hrdark'
     tabWidth = 4
-  [markup.goldmark.renderer]
-    unsafe = true
 
 [menu]
   [[menu.main]] 

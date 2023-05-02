@@ -2,26 +2,16 @@
 title: "Contributing to Godot - Visual Shaders Nodes"
 date: 2023-04-22
 draft: false
+toc: true
 ---
 ![Contributing Visual Shaders to Godot - Cover](Cover-Godot-VS-Contribution.png)
 
 > :memo: The changed Godot icon was made by [Yuri Sizov (CC-BY 4.0)](https://github.com/YuriSizov/godot-emotes/blob/master/LICENSE)
 
-<details>
-
-<summary><b>Table of Contents</b></summary>
-
-0. [Introduction](#introduction)
-1. [The structure of Visual Shaders Nodes](#the-structure-of-visual-shaders-nodes)
-2. [How to add Visual Shader Nodes in C++](#how-to-add-visual-shader-nodes-in-c)
-3. [Compiling Godot from source](#compiling-godot-from-source)
-4. [Using the custom Visual Shader Node](#using-the-custom-visual-shader-node)
-</details>
-
-# Introduction
+## Introduction
 If you have ever wondered how (some) new features are getting added to each new iteration of the Godot Engine, you've come to the right place! In this post I will explain how you can add Visual Shader Nodes to the core engine [as I have](https://github.com/godotengine/godot/pull/64248) and get a little insight of the Godot source code.
 
-# The structure of Visual Shaders Nodes
+## The structure of Visual Shaders Nodes
 To understand how Visual Shader Nodes can be written in C++ (even if you have almost no knowledge about C++) we need to have look at how you can create new Nodes in GDScript as addons/tool scripts. There is a [section about this in the docs](https://docs.godotengine.org/en/stable/tutorials/plugins/editor/visual_shader_plugins.html), so let's take a deep-dive into the code:
 
 ```gdscript
@@ -223,7 +213,7 @@ Sets the global code which is added at the top of the generated written shader f
 ### `_get_code()`
 Sets the code which is added inside the `vertex`, `fragment` or other function stage of the shader.
 
-# How to add Visual Shader Nodes in C++
+## How to add Visual Shader Nodes in C++
 
 Now that we have established how the syntax works in GDScript, let's have a look at the C++ side. Later on, we will create a simple example Node: a Node that only returns the UVs of a Mesh.
 
@@ -235,7 +225,7 @@ The files you need to change to create new Nodes are:
 
 Let's start with the header file:
 
-## ``visual_shader_nodes.h``
+### ``visual_shader_nodes.h``
 
 In the header file we define the general structure of the methods we want to use. Since we are merely inheriting the `VisualShaderNode`, there is mostly just the same code as in the other Visual Shader Nodes. It can however get more complicated (but that is for later).
 
@@ -268,16 +258,16 @@ public:
 
 This is the part I've written for one my PRs for the Visual Shader system. You might recognize some functions from their GDScript equivalent and will notice that the differences are only limited to some typical C++ syntax keywords like `virtual`, `const` or `override`. But don't let these words intimidate you. Let's first have a detailed look at the unfamiliar methods:
 
-### ``GDCLASS()``
+#### ``GDCLASS()``
 This macro (C++ term for a sort-of function that let's you shorten code among other advantages) uses the underlying ClassDB system to create the class entry so Godot knows that this class exists.
 
-### ``get_caption()``
+#### ``get_caption()``
 Sets the title of the Visual Shader Node. C++ equivalent of `_get_name()`.
 
-### ``VisualShaderNodeRemap()``
+#### ``VisualShaderNodeRemap()``
 This is the constructor method of your class. In this method we will also set the default values just like in GDScript's ``_init()`` method.
 
-## ``visual_shader_nodes.cpp``
+### ``visual_shader_nodes.cpp``
 The C++ part of the new Node is also built similarly to the GDScript side with some minor differences. Here is the code:
 
 ```cpp
@@ -413,14 +403,14 @@ Now for the ``VisualShaderNodeRemap`` method there is not much to say except tha
 
 > :memo: If you use it, you don't need to put ``{}`` around your shader code then (see the example below).
 
-## ``register_scene_types.cpp``
+### ``register_scene_types.cpp``
 The file itself is gigantic so search for ``Remap`` to find a line like this:
 ```cpp
 GDREGISTER_CLASS(VisualShaderNodeRemap);
 ```
 This method registers your class so you can use it in GDScript and built on top of it (if you so choose).
 
-## ``visual_shader_editor_plugin.cpp``
+### ``visual_shader_editor_plugin.cpp``
 This file is also huge so search this time for ``VisualShaderNodeRemap`` to find a line like this:
 ```cpp
 add_options.push_back(AddOption("Remap", "Utility", "VisualShaderNodeRemap", TTR("Remaps a given input from the input range to the output range."), {}, VisualShaderNode::PORT_TYPE_SCALAR));
@@ -437,7 +427,7 @@ This is it for the basics. Now let us write our very own Visual Shader Node to a
 
 Here is the code for it:
 
-### visual_shader_nodes.cpp
+#### visual_shader_nodes.cpp
 
 ```cpp
 String VisualShaderNodeTutorialUV::get_caption() const {
@@ -479,7 +469,7 @@ VisualShaderNodeTutorialUV::VisualShaderNodeTutorialUV() {
 }
 ```
 
-### visual_shader_nodes.h
+#### visual_shader_nodes.h
 ```cpp
 class VisualShaderNodeTutorialUV : public VisualShaderNode {
 	GDCLASS(VisualShaderNodeTutorialUV, VisualShaderNode);
@@ -501,7 +491,7 @@ public:
 };
 ```
 
-### register_scene_types.cpp
+#### register_scene_types.cpp
 
 ```cpp
 GDREGISTER_CLASS(VisualShaderNodeRemap);
@@ -509,7 +499,7 @@ GDREGISTER_CLASS(VisualShaderNodeTutorialUV);
 GDREGISTER_ABSTRACT_CLASS(VisualShaderNodeVarying);
 ```
 
-### visual_shader_editor_plugin.cpp
+#### visual_shader_editor_plugin.cpp
 
 ```cpp
 add_options.push_back(AddOption("TutorialUV", "Tutorial/UV", "VisualShaderNodeTutorialUV", TTR("This is a tutorial UV node to explain how to contribute to Godot's Visual Shader system."), {}, VisualShaderNode::PORT_TYPE_VECTOR_2D, TYPE_FLAGS_FRAGMENT, Shader::MODE_SPATIAL));
@@ -517,7 +507,7 @@ add_options.push_back(AddOption("TutorialUV", "Tutorial/UV", "VisualShaderNodeTu
 
 > :memo: If you need to know where exactly I put the snippets, you can check out the [branch commit on GitHub](https://github.com/godotengine/godot/commit/3fc4d12a2d5f4cd2d8ae3fff9e33fd45fe8c7a08).
 
-# Compiling Godot from source
+## Compiling Godot from source
 
 Before we can see the changes inside the editor we need to compile the Godot source code. To check how it is done for your Operating Systen (OS), please refer to the [official documentation](https://docs.godotengine.org/en/stable/contributing/development/compiling/index.html).
 
@@ -529,7 +519,7 @@ scons platform=windows
 
 scons will automatically fill out details I haven't supplied such as the cores it will use (it will use ``N-1``  of your available cores).
 
-# Using the custom Visual Shader Node
+## Using the custom Visual Shader Node
 
 Now that we have everything done, let's see how it looks like in the editor:
 

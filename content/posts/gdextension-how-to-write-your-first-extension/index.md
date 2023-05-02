@@ -2,23 +2,9 @@
 title: "GDExtension - How to Write Your First Extension"
 date: 2022-11-28
 draft: false
+toc: true
 ---
 ![GDExtension - How to get started in C++](Cover.png)
-
-<details>
-
-<summary><b>Table of Contents</b></summary>
-
-[Introduction](#introduction)
-
-0. [Compilation requirements](#0-compilation-requirements)
-1. [Folder structure](#1-folder-structure)
-2. [godot-cpp bindings](#2-godot-cpp-bindings)
-3. [Source files](#3-source-files)
-4. [Compiling your extension](#4-compiling-your-extension)
-5. [The extension file](#5-the-extension-file)
-6. [Using the extension](#6-using-the-extension)
-</details>
 
 ## Introduction
 
