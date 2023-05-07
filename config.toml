@@ -54,6 +54,7 @@ googleAnalytics = 'G-XVEX4GZF4S' # G-MEASUREMENT_ID
   defaultColor = "auto" # set default color mode: dark or light or auto
   description = "A blog about my programming projects with the Godot Engine 🎮👾, Shaders and VFX ✨ as well as C++ for GDExtension ⚙️"
   mainSections = ['posts']
+  goToTop = true # set to false to disable 'go to top' button
 
 [params.author]
   avatar = "FlameLizard_Profile.jpg"
