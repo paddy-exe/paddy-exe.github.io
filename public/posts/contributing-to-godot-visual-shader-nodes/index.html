@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en-gb"><head><meta charset="utf-8">
+<meta http-equiv="content-type" content="text/html">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title itemprop="name">Contributing to Godot - Visual Shaders Nodes | 🔥 Lizard&#39;s Blog</title>
+<meta property="og:title" content="Contributing to Godot - Visual Shaders Nodes | 🔥 Lizard&#39;s Blog" />
+<meta name="twitter:title" content="Contributing to Godot - Visual Shaders Nodes | 🔥 Lizard&#39;s Blog" />
+<meta itemprop="name" content="Contributing to Godot - Visual Shaders Nodes | 🔥 Lizard&#39;s Blog" />
+<meta name="application-name" content="Contributing to Godot - Visual Shaders Nodes | 🔥 Lizard&#39;s Blog" />
+<meta property="og:site_name" content="🔥 Lizard&#39;s Development Blog" />
+
+<meta name="description" content="A blog about my programming projects with the Godot Engine 🎮👾, Shaders and VFX ✨ as well as C&#43;&#43; for GDExtension ⚙️">
+<meta itemprop="description" content="A blog about my programming projects with the Godot Engine 🎮👾, Shaders and VFX ✨ as well as C&#43;&#43; for GDExtension ⚙️" />
+<meta property="og:description" content="A blog about my programming projects with the Godot Engine 🎮👾, Shaders and VFX ✨ as well as C&#43;&#43; for GDExtension ⚙️" />
+<meta name="twitter:description" content="A blog about my programming projects with the Godot Engine 🎮👾, Shaders and VFX ✨ as well as C&#43;&#43; for GDExtension ⚙️" />
+
+<meta property="og:locale" content="en-gb" />
+<meta name="language" content="en-gb" />
+
+
+
+  <meta itemprop="image" content="https://paddy-exe.github.io/public/index.html" />
+  <meta property="og:image" content="https://paddy-exe.github.io/public/index.html" />
+  <meta name="twitter:image" content="https://paddy-exe.github.io/public/index.html" />
+  <meta name="twitter:image:src" content="https://paddy-exe.github.io/public/index.html" />
+
+
+
+
+    
+    
+    
+    
+
+    <meta property="og:type" content="article" />
+    <meta property="og:article:published_time" content=2023-04-22T00:00:00Z />
+    <meta property="article:published_time" content=2023-04-22T00:00:00Z />
+
+    
+
+    
+
+    <script defer type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "Article",
+        "headline": "Contributing to Godot - Visual Shaders Nodes",
+        "author": {
+        "@type": "Person",
+        "name": ""
+        },
+        "datePublished": "2023-04-22",
+        "description": "",
+        "wordCount":  2678 ,
+        "mainEntityOfPage": "True",
+        "dateModified": "2023-04-22",
+        "image": {
+        "@type": "imageObject",
+        "url": ""
+        },
+        "publisher": {
+        "@type": "Organization",
+        "name": "🔥 Lizard\u0027s Blog"
+        }
+    }
+    </script>
+
+
+<meta name="generator" content="Hugo 0.120.4">
+    <script async src="https://eu.umami.is/script.js" data-website-id="5e71174a-7f03-4d2c-b04f-adfa793aad77"></script>
+
+    
+
+    <link rel="canonical" href="https://paddy-exe.github.io/public/index.html/posts/contributing-to-godot-visual-shader-nodes/">
+    <link href="/public/index.html/style.min.9bd04d0fad85388343088ec85e9afd787ea003e72914d7f57df39c17ab2e7173.css" rel="stylesheet">
+    <link href="/public/index.html/code-highlight.min.706d31975fec544a864cb7f0d847a73ea55ca1df91bf495fd12a177138d807cf.css" rel="stylesheet">
+
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/public/index.html/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/public/index.html/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/public/index.html/icons/favicon-16x16.png">
+    <link rel="mask-icon" href="/public/index.html/icons/safari-pinned-tab.svg">
+    <link rel="shortcut icon" href="/public/index.html/favicon.ico">
+
+
+
+
+<link rel="manifest" href="https://paddy-exe.github.io/public/index.html/site.webmanifest">
+
+<meta name="msapplication-config" content="/public/index.html/browserconfig.xml">
+<meta name="msapplication-TileColor" content="#2d89ef">
+<meta name="theme-color" content="#434648">
+
+    
+    <link rel="icon" type="image/svg+xml" href="/public/index.html/icons/favicon.svg">
+
+    
+    </head>
+<body data-theme = "auto" class="notransition">
+
+<script src="/public/index.html/js/theme.min.8961c317c5b88b953fe27525839672c9343f1058ab044696ca225656c8ba2ab0.js" integrity="sha256-iWHDF8W4i5U/4nUlg5ZyyTQ/EFirBEaWyiJWVsi6KrA="></script>
+
+<div class="navbar" role="navigation">
+    <nav class="menu" aria-label="Main Navigation">
+        <a href="https://paddy-exe.github.io/public/index.html/" class="logo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" 
+viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="feather feather-home">
+<title>Home</title>
+<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+<polyline points="9 22 9 12 15 12 15 22"></polyline>
+</svg>
+        </a>
+        <input type="checkbox" id="menu-trigger" class="menu-trigger" />
+        <label for="menu-trigger">
+            <span class="menu-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" stroke="currentColor" fill="none" viewBox="0 0 14 14"><title>Menu</title><path stroke-linecap="round" stroke-linejoin="round" d="M10.595 7L3.40726 7"></path><path stroke-linecap="round" stroke-linejoin="round" d="M10.5096 3.51488L3.49301 3.51488"></path><path stroke-linecap="round" stroke-linejoin="round" d="M10.5096 10.4851H3.49301"></path><path stroke-linecap="round" stroke-linejoin="round" d="M0.5 12.5V1.5C0.5 0.947715 0.947715 0.5 1.5 0.5H12.5C13.0523 0.5 13.5 0.947715 13.5 1.5V12.5C13.5 13.0523 13.0523 13.5 12.5 13.5H1.5C0.947715 13.5 0.5 13.0523 0.5 12.5Z"></path></svg>
+            </span>
+        </label>
+
+        <div class="trigger">
+            <ul class="trigger-container">
+                
+                
+                <li>
+                    <a class="menu-link " href="/public/index.html/">
+                        Home
+                    </a>
+                    
+                </li>
+                
+                <li>
+                    <a class="menu-link active" href="/public/index.html/posts/">
+                        Posts
+                    </a>
+                    
+                </li>
+                
+                <li>
+                    <a class="menu-link " href="/public/index.html/pages/about/">
+                        About
+                    </a>
+                    
+                </li>
+                
+                <li class="menu-separator">
+                    <span>|</span>
+                </li>
+                
+                
+            </ul>
+            <a id="mode" href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" class="mode-sunny" width="21" height="21" viewBox="0 0 14 14" stroke-width="1">
+<title>LIGHT</title><g><circle cx="7" cy="7" r="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></circle><line x1="7" y1="0.5" x2="7" y2="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="2.4" y1="2.4" x2="3.82" y2="3.82" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="0.5" y1="7" x2="2.5" y2="7" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="2.4" y1="11.6" x2="3.82" y2="10.18" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="7" y1="13.5" x2="7" y2="11.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="11.6" y1="11.6" x2="10.18" y2="10.18" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="13.5" y1="7" x2="11.5" y2="7" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="11.6" y1="2.4" x2="10.18" y2="3.82" fill="none" stroke-linecap="round" stroke-linejoin="round"></line></g></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" class="mode-moon" width="21" height="21" viewBox="0 0 14 14" stroke-width="1">
+<title>DARK</title><g><circle cx="7" cy="7" r="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></circle><line x1="7" y1="0.5" x2="7" y2="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="2.4" y1="2.4" x2="3.82" y2="3.82" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="0.5" y1="7" x2="2.5" y2="7" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="2.4" y1="11.6" x2="3.82" y2="10.18" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="7" y1="13.5" x2="7" y2="11.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="11.6" y1="11.6" x2="10.18" y2="10.18" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="13.5" y1="7" x2="11.5" y2="7" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="11.6" y1="2.4" x2="10.18" y2="3.82" fill="none" stroke-linecap="round" stroke-linejoin="round"></line></g></svg>
+            </a>
+        </div>
+    </nav>
+</div>
+
+<div class="wrapper post">
+    <main class="page-content" aria-label="Content">
+        <article>
+            <header class="header">
+                <h1 class="header-title">Contributing to Godot - Visual Shaders Nodes</h1>
+                
+                
+                <div class="post-meta">
+                    <time datetime="2023-04-22T00:00:00&#43;00:00" itemprop="datePublished"> 22 Apr 2023 </time>
+                </div>
+                
+            </header>
+            
+    
+    <details class="toc" ZgotmplZ>
+        <summary><b>Table of Contents</b></summary>
+        <nav id="TableOfContents">
+  <ol>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#the-structure-of-visual-shaders-nodes">The structure of Visual Shaders Nodes</a>
+      <ol>
+        <li><a href="#tool"><code>@tool</code></a></li>
+        <li><a href="#visualshadernodeperlinnoise3d"><code>VisualShaderNodePerlinNoise3D</code></a></li>
+        <li><a href="#_get_name"><code>_get_name()</code></a></li>
+        <li><a href="#_get_description"><code>_get_description()</code></a></li>
+        <li><a href="#_init"><code>_init()</code></a></li>
+        <li><a href="#_get_return_icon_type"><code>_get_return_icon_type()</code></a></li>
+        <li><a href="#_get_input_port_count"><code>_get_input_port_count()</code></a></li>
+        <li><a href="#_get_input_port_name"><code>_get_input_port_name()</code></a></li>
+        <li><a href="#_get_input_port_type"><code>_get_input_port_type()</code></a></li>
+        <li><a href="#_get_output_port_count"><code>_get_output_port_count()</code></a></li>
+        <li><a href="#_get_output_port_name"><code>_get_output_port_name()</code></a></li>
+        <li><a href="#_get_output_port_type"><code>_get_output_port_type()</code></a></li>
+        <li><a href="#_get_global_code"><code>_get_global_code()</code></a></li>
+        <li><a href="#_get_code"><code>_get_code()</code></a></li>
+      </ol>
+    </li>
+    <li><a href="#how-to-add-visual-shader-nodes-in-c">How to add Visual Shader Nodes in C++</a>
+      <ol>
+        <li><a href="#visual_shader_nodesh"><code>visual_shader_nodes.h</code></a>
+          <ol>
+            <li><a href="#gdclass"><code>GDCLASS()</code></a></li>
+            <li><a href="#get_caption"><code>get_caption()</code></a></li>
+            <li><a href="#visualshadernoderemap"><code>VisualShaderNodeRemap()</code></a></li>
+          </ol>
+        </li>
+        <li><a href="#visual_shader_nodescpp"><code>visual_shader_nodes.cpp</code></a></li>
+        <li><a href="#register_scene_typescpp"><code>register_scene_types.cpp</code></a></li>
+        <li><a href="#visual_shader_editor_plugincpp"><code>visual_shader_editor_plugin.cpp</code></a>
+          <ol>
+            <li><a href="#visual_shader_nodescpp-1">visual_shader_nodes.cpp</a></li>
+            <li><a href="#visual_shader_nodesh-1">visual_shader_nodes.h</a></li>
+            <li><a href="#register_scene_typescpp-1">register_scene_types.cpp</a></li>
+            <li><a href="#visual_shader_editor_plugincpp-1">visual_shader_editor_plugin.cpp</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#compiling-godot-from-source">Compiling Godot from source</a></li>
+    <li><a href="#using-the-custom-visual-shader-node">Using the custom Visual Shader Node</a></li>
+  </ol>
+</nav>
+    </details>
+            <div class="page-content">
+                <p><img src="Cover-Godot-VS-Contribution.png" alt="Contributing Visual Shaders to Godot - Cover"></p>
+<blockquote>
+<p>&#x1f4dd; The changed Godot icon was made by <a href="https://github.com/YuriSizov/godot-emotes/blob/master/LICENSE">Yuri Sizov (CC-BY 4.0)</a></p>
+</blockquote>
+<h2 id="introduction">Introduction</h2>
+<p>If you have ever wondered how (some) new features are getting added to each new iteration of the Godot Engine, you&rsquo;ve come to the right place! In this post I will explain how you can add Visual Shader Nodes to the core engine <a href="https://github.com/godotengine/godot/pull/64248">as I have</a> and get a little insight of the Godot source code.</p>
+<h2 id="the-structure-of-visual-shaders-nodes">The structure of Visual Shaders Nodes</h2>
+<p>To understand how Visual Shader Nodes can be written in C++ (even if you have almost no knowledge about C++) we need to have look at how you can create new Nodes in GDScript as addons/tool scripts. There is a <a href="https://docs.godotengine.org/en/stable/tutorials/plugins/editor/visual_shader_plugins.html">section about this in the docs</a>, so let&rsquo;s take a deep-dive into the code:</p>
+<div class="highlight"><pre tabindex="0" style="color:#1d2432;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-gdscript" data-lang="gdscript"><span style="display:flex;"><span>© <span style="color:#58a1dd">Copyright</span> <span style="color:#a6be9d">2014</span><span style="color:#ff636f">-</span><span style="color:#58a1dd">present</span> <span style="color:#58a1dd">Juan</span> <span style="color:#58a1dd">Linietsky</span>, <span style="color:#58a1dd">Ariel</span> <span style="color:#58a1dd">Manzur</span> <span style="color:#ff636f">and</span> <span style="color:#58a1dd">the</span> <span style="color:#58a1dd">Godot</span> <span style="color:#58a1dd">community</span> (<span style="color:#58a1dd">CC</span> <span style="color:#58a1dd">BY</span> <span style="color:#a6be9d">3.0</span>)<span style="color:#ff636f">.</span> <span style="color:#58a1dd">Revision</span> <span style="color:#58a1dd">c93d9373</span><span style="color:#ff636f">.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#828b96;font-style:italic"># PerlinNoise3D.gd</span>
+</span></span><span style="display:flex;"><span><span style="color:#58a1dd">@tool</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff636f">extends</span> <span style="color:#58a1dd">VisualShaderNodeCustom</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff636f">class_name</span> <span style="color:#58a1dd">VisualShaderNodePerlinNoise3D</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff636f">func</span> <span style="color:#58a1dd">_get_name</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#ff636f">return</span> <span style="color:#a6be9d">&#34;PerlinNoise3D&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff636f">func</span> <span style="color:#58a1dd">_get_category</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#ff636f">return</span> <span style="color:#a6be9d">&#34;MyShaderNodes&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff636f">func</span> <span style="color:#58a1dd">_get_description</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#ff636f">return</span> <span style="color:#a6be9d">&#34;Classic Perlin-Noise-3D function (by Curly-Brace)&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff636f">func</span> <span style="color:#58a1dd">_init</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#58a1dd">set_input_port_default_value</span>(<span style="color:#a6be9d">2</span>, <span style="color:#a6be9d">0.0</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff636f">func</span> <span style="color:#58a1dd">_get_return_icon_type</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#ff636f">return</span> <span style="color:#58a1dd">VisualShaderNode</span><span style="color:#ff636f">.</span><span style="color:#58a1dd">PORT_TYPE_SCALAR</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff636f">func</span> <span style="color:#58a1dd">_get_input_port_count</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#ff636f">return</span> <span style="color:#a6be9d">4</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff636f">func</span> <span style="color:#58a1dd">_get_input_port_name</span>(<span style="color:#58a1dd">port</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#ff636f">match</span> <span style="color:#58a1dd">port</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#a6be9d">0</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#ff636f">return</span> <span style="color:#a6be9d">&#34;uv&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6be9d">1</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#ff636f">return</span> <span style="color:#a6be9d">&#34;offset&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6be9d">2</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#ff636f">return</span> <span style="color:#a6be9d">&#34;scale&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6be9d">3</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#ff636f">return</span> <span style="color:#a6be9d">&#34;time&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff636f">func</span> <span style="color:#58a1dd">_get_input_port_type</span>(<span style="color:#58a1dd">port</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#ff636f">match</span> <span style="color:#58a1dd">port</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#a6be9d">0</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#ff636f">return</span> <span style="color:#58a1dd">VisualShaderNode</span><span style="color:#ff636f">.</span><span style="color:#58a1dd">PORT_TYPE_VECTOR_3D</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6be9d">1</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#ff636f">return</span> <span style="color:#58a1dd">VisualShaderNode</span><span style="color:#ff636f">.</span><span style="color:#58a1dd">PORT_TYPE_VECTOR_3D</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6be9d">2</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#ff636f">return</span> <span style="color:#58a1dd">VisualShaderNode</span><span style="color:#ff636f">.</span><span style="color:#58a1dd">PORT_TYPE_SCALAR</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6be9d">3</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#ff636f">return</span> <span style="color:#58a1dd">VisualShaderNode</span><span style="color:#ff636f">.</span><span style="color:#58a1dd">PORT_TYPE_SCALAR</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff636f">func</span> <span style="color:#58a1dd">_get_output_port_count</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#ff636f">return</span> <span style="color:#a6be9d">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff636f">func</span> <span style="color:#58a1dd">_get_output_port_name</span>(<span style="color:#58a1dd">port</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#ff636f">return</span> <span style="color:#a6be9d">&#34;result&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff636f">func</span> <span style="color:#58a1dd">_get_output_port_type</span>(<span style="color:#58a1dd">port</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#ff636f">return</span> <span style="color:#58a1dd">VisualShaderNode</span><span style="color:#ff636f">.</span><span style="color:#58a1dd">PORT_TYPE_SCALAR</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff636f">func</span> <span style="color:#58a1dd">_get_global_code</span>(<span style="color:#58a1dd">mode</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#ff636f">return</span> <span style="color:#a6be9d">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">        vec3 mod289_3(vec3 x) {
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">            return x - floor(x * (1.0 / 289.0)) * 289.0;
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">        }
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">        vec4 mod289_4(vec4 x) {
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">            return x - floor(x * (1.0 / 289.0)) * 289.0;
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">        }
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">        vec4 permute(vec4 x) {
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">            return mod289_4(((x * 34.0) + 1.0) * x);
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">        }
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">        vec4 taylorInvSqrt(vec4 r) {
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">            return 1.79284291400159 - 0.85373472095314 * r;
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">        }
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">        vec3 fade(vec3 t) {
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">            return t * t * t * (t * (t * 6.0 - 15.0) + 10.0);
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">        }
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">        // Classic Perlin noise.
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">        float cnoise(vec3 P) {
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">            vec3 Pi0 = floor(P); // Integer part for indexing.
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">            vec3 Pi1 = Pi0 + vec3(1.0); // Integer part + 1.
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">            Pi0 = mod289_3(Pi0);
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">            Pi1 = mod289_3(Pi1);
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">            vec3 Pf0 = fract(P); // Fractional part for interpolation.
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">            vec3 Pf1 = Pf0 - vec3(1.0); // Fractional part - 1.0.
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">            vec4 ix = vec4(Pi0.x, Pi1.x, Pi0.x, Pi1.x);
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">            vec4 iy = vec4(Pi0.yy, Pi1.yy);
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">            vec4 iz0 = vec4(Pi0.z);
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">            vec4 iz1 = vec4(Pi1.z);
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">            vec4 ixy = permute(permute(ix) + iy);
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">            vec4 ixy0 = permute(ixy + iz0);
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">            vec4 ixy1 = permute(ixy + iz1);
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">            vec4 gx0 = ixy0 * (1.0 / 7.0);
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">            vec4 gy0 = fract(floor(gx0) * (1.0 / 7.0)) - 0.5;
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">            gx0 = fract(gx0);
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">            vec4 gz0 = vec4(0.5) - abs(gx0) - abs(gy0);
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">            vec4 sz0 = step(gz0, vec4(0.0));
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">            gx0 -= sz0 * (step(0.0, gx0) - 0.5);
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">            gy0 -= sz0 * (step(0.0, gy0) - 0.5);
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">            vec4 gx1 = ixy1 * (1.0 / 7.0);
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">            vec4 gy1 = fract(floor(gx1) * (1.0 / 7.0)) - 0.5;
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">            gx1 = fract(gx1);
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">            vec4 gz1 = vec4(0.5) - abs(gx1) - abs(gy1);
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">            vec4 sz1 = step(gz1, vec4(0.0));
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">            gx1 -= sz1 * (step(0.0, gx1) - 0.5);
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">            gy1 -= sz1 * (step(0.0, gy1) - 0.5);
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">            vec3 g000 = vec3(gx0.x, gy0.x, gz0.x);
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">            vec3 g100 = vec3(gx0.y, gy0.y, gz0.y);
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">            vec3 g010 = vec3(gx0.z, gy0.z, gz0.z);
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">            vec3 g110 = vec3(gx0.w, gy0.w, gz0.w);
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">            vec3 g001 = vec3(gx1.x, gy1.x, gz1.x);
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">            vec3 g101 = vec3(gx1.y, gy1.y, gz1.y);
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">            vec3 g011 = vec3(gx1.z, gy1.z, gz1.z);
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">            vec3 g111 = vec3(gx1.w, gy1.w, gz1.w);
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">            vec4 norm0 = taylorInvSqrt(vec4(dot(g000, g000), dot(g010, g010), dot(g100, g100), dot(g110, g110)));
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">            g000 *= norm0.x;
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">            g010 *= norm0.y;
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">            g100 *= norm0.z;
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">            g110 *= norm0.w;
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">            vec4 norm1 = taylorInvSqrt(vec4(dot(g001, g001), dot(g011, g011), dot(g101, g101), dot(g111, g111)));
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">            g001 *= norm1.x;
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">            g011 *= norm1.y;
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">            g101 *= norm1.z;
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">            g111 *= norm1.w;
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">            float n000 = dot(g000, Pf0);
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">            float n100 = dot(g100, vec3(Pf1.x, Pf0.yz));
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">            float n010 = dot(g010, vec3(Pf0.x, Pf1.y, Pf0.z));
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">            float n110 = dot(g110, vec3(Pf1.xy, Pf0.z));
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">            float n001 = dot(g001, vec3(Pf0.xy, Pf1.z));
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">            float n101 = dot(g101, vec3(Pf1.x, Pf0.y, Pf1.z));
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">            float n011 = dot(g011, vec3(Pf0.x, Pf1.yz));
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">            float n111 = dot(g111, Pf1);
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">            vec3 fade_xyz = fade(Pf0);
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">            vec4 n_z = mix(vec4(n000, n100, n010, n110), vec4(n001, n101, n011, n111), fade_xyz.z);
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">            vec2 n_yz = mix(n_z.xy, n_z.zw, fade_xyz.y);
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">            float n_xyz = mix(n_yz.x, n_yz.y, fade_xyz.x);
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">            return 2.2 * n_xyz;
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">        }
+</span></span></span><span style="display:flex;"><span><span style="color:#a6be9d">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff636f">func</span> <span style="color:#58a1dd">_get_code</span>(<span style="color:#58a1dd">input_vars</span>, <span style="color:#58a1dd">output_vars</span>, <span style="color:#58a1dd">mode</span>, <span style="color:#58a1dd">type</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#ff636f">return</span> <span style="color:#58a1dd">output_vars</span>[<span style="color:#a6be9d">0</span>] <span style="color:#ff636f">+</span> <span style="color:#a6be9d">&#34; = cnoise(vec3((</span><span style="color:#a6be9d">%s</span><span style="color:#a6be9d">.xy + </span><span style="color:#a6be9d">%s</span><span style="color:#a6be9d">.xy) * </span><span style="color:#a6be9d">%s</span><span style="color:#a6be9d">, </span><span style="color:#a6be9d">%s</span><span style="color:#a6be9d">)) * 0.5 + 0.5;&#34;</span> <span style="color:#ff636f">%</span> [<span style="color:#58a1dd">input_vars</span>[<span style="color:#a6be9d">0</span>], <span style="color:#58a1dd">input_vars</span>[<span style="color:#a6be9d">1</span>], <span style="color:#58a1dd">input_vars</span>[<span style="color:#a6be9d">2</span>], <span style="color:#58a1dd">input_vars</span>[<span style="color:#a6be9d">3</span>]]
+</span></span></code></pre></div><p>The meaning behind this can be read in the docs as well but here&rsquo;s a description for each used method so you don&rsquo;t have to look it up yourself:</p>
+<p><img src="VisualShaderNodeAufbau.png" alt="Visual Shader Node - What is what"></p>
+<h3 id="tool"><code>@tool</code></h3>
+<p>Let&rsquo;s this script run in the editor itself instead of only in the running game.</p>
+<h3 id="visualshadernodeperlinnoise3d"><code>VisualShaderNodePerlinNoise3D</code></h3>
+<p>Creates a new class extending from <code>VisualShaderNodeCustom</code> via the <code>extends</code> keyboard in the prior line.</p>
+<h3 id="_get_name"><code>_get_name()</code></h3>
+<p>Sets the title of the Visual Shader Node.</p>
+<h3 id="_get_description"><code>_get_description()</code></h3>
+<p>Sets the description of the Visual Shader Node.</p>
+<h3 id="_init"><code>_init()</code></h3>
+<p>Sets default values for input ports.</p>
+<h3 id="_get_return_icon_type"><code>_get_return_icon_type()</code></h3>
+<p>Sets the icon type of the Visual Shader Node in the <code>Add Node</code> dialogue of the Visual Shader editor.</p>
+<h3 id="_get_input_port_count"><code>_get_input_port_count()</code></h3>
+<p>Sets the number of input ports of the Visual Shader Node.</p>
+<h3 id="_get_input_port_name"><code>_get_input_port_name()</code></h3>
+<p>Sets the Strings for the input ports of the Visual Shader Node.</p>
+<h3 id="_get_input_port_type"><code>_get_input_port_type()</code></h3>
+<p>Sets the type for the input port.</p>
+<h3 id="_get_output_port_count"><code>_get_output_port_count()</code></h3>
+<p>Sets the number of output ports.</p>
+<h3 id="_get_output_port_name"><code>_get_output_port_name()</code></h3>
+<p>Sets the String(s) of the output Node(s).</p>
+<h3 id="_get_output_port_type"><code>_get_output_port_type()</code></h3>
+<p>Sets the type of the output port of the Node.</p>
+<h3 id="_get_global_code"><code>_get_global_code()</code></h3>
+<p>Sets the global code which is added at the top of the generated written shader file.</p>
+<h3 id="_get_code"><code>_get_code()</code></h3>
+<p>Sets the code which is added inside the <code>vertex</code>, <code>fragment</code> or other function stage of the shader.</p>
+<h2 id="how-to-add-visual-shader-nodes-in-c">How to add Visual Shader Nodes in C++</h2>
+<p>Now that we have established how the syntax works in GDScript, let&rsquo;s have a look at the C++ side. Later on, we will create a simple example Node: a Node that only returns the UVs of a Mesh.</p>
+<p>The files you need to change to create new Nodes are:</p>
+<ul>
+<li><code>scene/resources/visual_shader_nodes.cpp</code></li>
+<li><code>scene/resources/visual_shader_nodes.h</code></li>
+<li><code>scene/register_scene_types.cpp</code></li>
+<li><code>editor/plugins/visual_shader_editor_plugin.cpp</code></li>
+</ul>
+<p>Let&rsquo;s start with the header file:</p>
+<h3 id="visual_shader_nodesh"><code>visual_shader_nodes.h</code></h3>
+<p>In the header file we define the general structure of the methods we want to use. Since we are merely inheriting the <code>VisualShaderNode</code>, there is mostly just the same code as in the other Visual Shader Nodes. It can however get more complicated (but that is for later).</p>
+<p>If you scroll to the end of the file you will see either this or something similar:</p>
+<div class="highlight"><pre tabindex="0" style="color:#1d2432;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff636f">class</span> <span style="color:#58a1dd">VisualShaderNodeRemap</span> <span style="color:#ff636f">:</span> <span style="color:#ff636f">public</span> <span style="color:#58a1dd">VisualShaderNode</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#58a1dd">GDCLASS</span>(<span style="color:#58a1dd">VisualShaderNodeRemap</span>, <span style="color:#58a1dd">VisualShaderNode</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff636f">public</span><span style="color:#ff636f">:</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#ff636f">virtual</span> <span style="color:#58a1dd">String</span> <span style="color:#58a1dd">get_caption</span>() <span style="color:#ff636f">const</span> <span style="color:#ff636f">override</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#ff636f">virtual</span> <span style="color:#ff636f">int</span> <span style="color:#58a1dd">get_input_port_count</span>() <span style="color:#ff636f">const</span> <span style="color:#ff636f">override</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#ff636f">virtual</span> <span style="color:#58a1dd">PortType</span> <span style="color:#58a1dd">get_input_port_type</span>(<span style="color:#ff636f">int</span> <span style="color:#58a1dd">p_port</span>) <span style="color:#ff636f">const</span> <span style="color:#ff636f">override</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#ff636f">virtual</span> <span style="color:#58a1dd">String</span> <span style="color:#58a1dd">get_input_port_name</span>(<span style="color:#ff636f">int</span> <span style="color:#58a1dd">p_port</span>) <span style="color:#ff636f">const</span> <span style="color:#ff636f">override</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#ff636f">virtual</span> <span style="color:#ff636f">int</span> <span style="color:#58a1dd">get_output_port_count</span>() <span style="color:#ff636f">const</span> <span style="color:#ff636f">override</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#ff636f">virtual</span> <span style="color:#58a1dd">PortType</span> <span style="color:#58a1dd">get_output_port_type</span>(<span style="color:#ff636f">int</span> <span style="color:#58a1dd">p_port</span>) <span style="color:#ff636f">const</span> <span style="color:#ff636f">override</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#ff636f">virtual</span> <span style="color:#58a1dd">String</span> <span style="color:#58a1dd">get_output_port_name</span>(<span style="color:#ff636f">int</span> <span style="color:#58a1dd">p_port</span>) <span style="color:#ff636f">const</span> <span style="color:#ff636f">override</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#ff636f">virtual</span> <span style="color:#58a1dd">String</span> <span style="color:#58a1dd">generate_code</span>(<span style="color:#58a1dd">Shader</span><span style="color:#ff636f">::</span><span style="color:#58a1dd">Mode</span> <span style="color:#58a1dd">p_mode</span>, <span style="color:#58a1dd">VisualShader</span><span style="color:#ff636f">::</span><span style="color:#58a1dd">Type</span> <span style="color:#58a1dd">p_type</span>, <span style="color:#ff636f">int</span> <span style="color:#58a1dd">p_id</span>, <span style="color:#ff636f">const</span> <span style="color:#58a1dd">String</span> <span style="color:#ff636f">*</span><span style="color:#58a1dd">p_input_vars</span>, <span style="color:#ff636f">const</span> <span style="color:#58a1dd">String</span> <span style="color:#ff636f">*</span><span style="color:#58a1dd">p_output_vars</span>, <span style="color:#ff636f">bool</span> <span style="color:#58a1dd">p_for_preview</span> <span style="color:#ff636f">=</span> <span style="color:#58a1dd">false</span>) <span style="color:#ff636f">const</span> <span style="color:#ff636f">override</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#58a1dd">VisualShaderNodeRemap</span>();
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#828b96;font-style:italic">#endif </span><span style="color:#828b96;font-style:italic">// VISUAL_SHADER_NODES_H
+</span></span></span></code></pre></div><p>This is the part I&rsquo;ve written for one my PRs for the Visual Shader system. You might recognize some functions from their GDScript equivalent and will notice that the differences are only limited to some typical C++ syntax keywords like <code>virtual</code>, <code>const</code> or <code>override</code>. But don&rsquo;t let these words intimidate you. Let&rsquo;s first have a detailed look at the unfamiliar methods:</p>
+<h4 id="gdclass"><code>GDCLASS()</code></h4>
+<p>This macro (C++ term for a sort-of function that let&rsquo;s you shorten code among other advantages) uses the underlying ClassDB system to create the class entry so Godot knows that this class exists.</p>
+<h4 id="get_caption"><code>get_caption()</code></h4>
+<p>Sets the title of the Visual Shader Node. C++ equivalent of <code>_get_name()</code>.</p>
+<h4 id="visualshadernoderemap"><code>VisualShaderNodeRemap()</code></h4>
+<p>This is the constructor method of your class. In this method we will also set the default values just like in GDScript&rsquo;s <code>_init()</code> method.</p>
+<h3 id="visual_shader_nodescpp"><code>visual_shader_nodes.cpp</code></h3>
+<p>The C++ part of the new Node is also built similarly to the GDScript side with some minor differences. Here is the code:</p>
+<div class="highlight"><pre tabindex="0" style="color:#1d2432;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#58a1dd">String</span> <span style="color:#58a1dd">VisualShaderNodeRemap</span><span style="color:#ff636f">::</span><span style="color:#58a1dd">get_caption</span>() <span style="color:#ff636f">const</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#ff636f">return</span> <span style="color:#a6be9d">&#34;Remap&#34;</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff636f">int</span> <span style="color:#58a1dd">VisualShaderNodeRemap</span><span style="color:#ff636f">::</span><span style="color:#58a1dd">get_input_port_count</span>() <span style="color:#ff636f">const</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#ff636f">return</span> <span style="color:#a6be9d">5</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#58a1dd">VisualShaderNodeRemap</span><span style="color:#ff636f">::</span><span style="color:#58a1dd">PortType</span> <span style="color:#58a1dd">VisualShaderNodeRemap</span><span style="color:#ff636f">::</span><span style="color:#58a1dd">get_input_port_type</span>(<span style="color:#ff636f">int</span> <span style="color:#58a1dd">p_port</span>) <span style="color:#ff636f">const</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#ff636f">switch</span> (<span style="color:#58a1dd">p_port</span>) {
+</span></span><span style="display:flex;"><span>		<span style="color:#ff636f">case</span> <span style="color:#a6be9d">0</span><span style="color:#ff636f">:</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#ff636f">return</span> <span style="color:#58a1dd">PORT_TYPE_SCALAR</span>;
+</span></span><span style="display:flex;"><span>		<span style="color:#ff636f">case</span> <span style="color:#a6be9d">1</span><span style="color:#ff636f">:</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#ff636f">return</span> <span style="color:#58a1dd">PORT_TYPE_SCALAR</span>;
+</span></span><span style="display:flex;"><span>		<span style="color:#ff636f">case</span> <span style="color:#a6be9d">2</span><span style="color:#ff636f">:</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#ff636f">return</span> <span style="color:#58a1dd">PORT_TYPE_SCALAR</span>;
+</span></span><span style="display:flex;"><span>		<span style="color:#ff636f">case</span> <span style="color:#a6be9d">3</span><span style="color:#ff636f">:</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#ff636f">return</span> <span style="color:#58a1dd">PORT_TYPE_SCALAR</span>;
+</span></span><span style="display:flex;"><span>		<span style="color:#ff636f">case</span> <span style="color:#a6be9d">4</span><span style="color:#ff636f">:</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#ff636f">return</span> <span style="color:#58a1dd">PORT_TYPE_SCALAR</span>;
+</span></span><span style="display:flex;"><span>		<span style="color:#ff636f">default</span><span style="color:#ff636f">:</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#ff636f">break</span>;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#ff636f">return</span> <span style="color:#58a1dd">PORT_TYPE_SCALAR</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#58a1dd">String</span> <span style="color:#58a1dd">VisualShaderNodeRemap</span><span style="color:#ff636f">::</span><span style="color:#58a1dd">get_input_port_name</span>(<span style="color:#ff636f">int</span> <span style="color:#58a1dd">p_port</span>) <span style="color:#ff636f">const</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#ff636f">switch</span> (<span style="color:#58a1dd">p_port</span>) {
+</span></span><span style="display:flex;"><span>		<span style="color:#ff636f">case</span> <span style="color:#a6be9d">0</span><span style="color:#ff636f">:</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#ff636f">return</span> <span style="color:#a6be9d">&#34;value&#34;</span>;
+</span></span><span style="display:flex;"><span>		<span style="color:#ff636f">case</span> <span style="color:#a6be9d">1</span><span style="color:#ff636f">:</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#ff636f">return</span> <span style="color:#a6be9d">&#34;input min&#34;</span>;
+</span></span><span style="display:flex;"><span>		<span style="color:#ff636f">case</span> <span style="color:#a6be9d">2</span><span style="color:#ff636f">:</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#ff636f">return</span> <span style="color:#a6be9d">&#34;input max&#34;</span>;
+</span></span><span style="display:flex;"><span>		<span style="color:#ff636f">case</span> <span style="color:#a6be9d">3</span><span style="color:#ff636f">:</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#ff636f">return</span> <span style="color:#a6be9d">&#34;output min&#34;</span>;
+</span></span><span style="display:flex;"><span>		<span style="color:#ff636f">case</span> <span style="color:#a6be9d">4</span><span style="color:#ff636f">:</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#ff636f">return</span> <span style="color:#a6be9d">&#34;output max&#34;</span>;
+</span></span><span style="display:flex;"><span>		<span style="color:#ff636f">default</span><span style="color:#ff636f">:</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#ff636f">break</span>;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#ff636f">return</span> <span style="color:#a6be9d">&#34;&#34;</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff636f">int</span> <span style="color:#58a1dd">VisualShaderNodeRemap</span><span style="color:#ff636f">::</span><span style="color:#58a1dd">get_output_port_count</span>() <span style="color:#ff636f">const</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#ff636f">return</span> <span style="color:#a6be9d">1</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#58a1dd">VisualShaderNodeRemap</span><span style="color:#ff636f">::</span><span style="color:#58a1dd">PortType</span> <span style="color:#58a1dd">VisualShaderNodeRemap</span><span style="color:#ff636f">::</span><span style="color:#58a1dd">get_output_port_type</span>(<span style="color:#ff636f">int</span> <span style="color:#58a1dd">p_port</span>) <span style="color:#ff636f">const</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#ff636f">return</span> <span style="color:#58a1dd">PORT_TYPE_SCALAR</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#58a1dd">String</span> <span style="color:#58a1dd">VisualShaderNodeRemap</span><span style="color:#ff636f">::</span><span style="color:#58a1dd">get_output_port_name</span>(<span style="color:#ff636f">int</span> <span style="color:#58a1dd">p_port</span>) <span style="color:#ff636f">const</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#ff636f">return</span> <span style="color:#a6be9d">&#34;value&#34;</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#58a1dd">String</span> <span style="color:#58a1dd">VisualShaderNodeRemap</span><span style="color:#ff636f">::</span><span style="color:#58a1dd">generate_code</span>(<span style="color:#58a1dd">Shader</span><span style="color:#ff636f">::</span><span style="color:#58a1dd">Mode</span> <span style="color:#58a1dd">p_mode</span>, <span style="color:#58a1dd">VisualShader</span><span style="color:#ff636f">::</span><span style="color:#58a1dd">Type</span> <span style="color:#58a1dd">p_type</span>, <span style="color:#ff636f">int</span> <span style="color:#58a1dd">p_id</span>, <span style="color:#ff636f">const</span> <span style="color:#58a1dd">String</span> <span style="color:#ff636f">*</span><span style="color:#58a1dd">p_input_vars</span>, <span style="color:#ff636f">const</span> <span style="color:#58a1dd">String</span> <span style="color:#ff636f">*</span><span style="color:#58a1dd">p_output_vars</span>, <span style="color:#ff636f">bool</span> <span style="color:#58a1dd">p_for_preview</span>) <span style="color:#ff636f">const</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#58a1dd">String</span> <span style="color:#58a1dd">code</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#58a1dd">code</span> <span style="color:#ff636f">+=</span> <span style="color:#a6be9d">&#34;	{</span><span style="color:#a6be9d">\n</span><span style="color:#a6be9d">&#34;</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#58a1dd">code</span> <span style="color:#ff636f">+=</span> <span style="color:#58a1dd">vformat</span>(<span style="color:#a6be9d">&#34;		float __input_range = %s - %s;</span><span style="color:#a6be9d">\n</span><span style="color:#a6be9d">&#34;</span>, <span style="color:#58a1dd">p_input_vars</span>[<span style="color:#a6be9d">2</span>], <span style="color:#58a1dd">p_input_vars</span>[<span style="color:#a6be9d">1</span>]);
+</span></span><span style="display:flex;"><span>	<span style="color:#58a1dd">code</span> <span style="color:#ff636f">+=</span> <span style="color:#58a1dd">vformat</span>(<span style="color:#a6be9d">&#34;		float __output_range = %s - %s;</span><span style="color:#a6be9d">\n</span><span style="color:#a6be9d">&#34;</span>, <span style="color:#58a1dd">p_input_vars</span>[<span style="color:#a6be9d">4</span>], <span style="color:#58a1dd">p_input_vars</span>[<span style="color:#a6be9d">3</span>]);
+</span></span><span style="display:flex;"><span>	<span style="color:#58a1dd">code</span> <span style="color:#ff636f">+=</span> <span style="color:#58a1dd">vformat</span>(<span style="color:#a6be9d">&#34;		%s = %s + __output_range * ((%s - %s) / __input_range);</span><span style="color:#a6be9d">\n</span><span style="color:#a6be9d">&#34;</span>, <span style="color:#58a1dd">p_output_vars</span>[<span style="color:#a6be9d">0</span>], <span style="color:#58a1dd">p_input_vars</span>[<span style="color:#a6be9d">3</span>], <span style="color:#58a1dd">p_input_vars</span>[<span style="color:#a6be9d">0</span>], <span style="color:#58a1dd">p_input_vars</span>[<span style="color:#a6be9d">1</span>]);
+</span></span><span style="display:flex;"><span>	<span style="color:#58a1dd">code</span> <span style="color:#ff636f">+=</span> <span style="color:#a6be9d">&#34;	}</span><span style="color:#a6be9d">\n</span><span style="color:#a6be9d">&#34;</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#ff636f">return</span> <span style="color:#58a1dd">code</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#58a1dd">VisualShaderNodeRemap</span><span style="color:#ff636f">::</span><span style="color:#58a1dd">VisualShaderNodeRemap</span>() {
+</span></span><span style="display:flex;"><span>	<span style="color:#58a1dd">set_input_port_default_value</span>(<span style="color:#a6be9d">1</span>, <span style="color:#a6be9d">0.0</span>);
+</span></span><span style="display:flex;"><span>	<span style="color:#58a1dd">set_input_port_default_value</span>(<span style="color:#a6be9d">2</span>, <span style="color:#a6be9d">1.0</span>);
+</span></span><span style="display:flex;"><span>	<span style="color:#58a1dd">set_input_port_default_value</span>(<span style="color:#a6be9d">3</span>, <span style="color:#a6be9d">0.0</span>);
+</span></span><span style="display:flex;"><span>	<span style="color:#58a1dd">set_input_port_default_value</span>(<span style="color:#a6be9d">4</span>, <span style="color:#a6be9d">1.0</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#58a1dd">simple_decl</span> <span style="color:#ff636f">=</span> <span style="color:#58a1dd">false</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>In the first method we set the title String for the node. Here, we call it <code>Remap</code>. Notice how you write the syntax for methods in C++:</p>
+<div class="highlight"><pre tabindex="0" style="color:#1d2432;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#58a1dd">ReturnType</span> <span style="color:#58a1dd">ClassName</span><span style="color:#ff636f">::</span><span style="color:#58a1dd">MethodName</span>() <span style="color:#58a1dd">additionalKeyword</span> {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The <code>const</code> keyword in the context of a class method means that the object it is called upon doesn&rsquo;t change. Just like this, we also write the <code>get_input_port_count()</code> method but with an <code>int</code> as a return type. The <code>override</code> keyword can be used on virtual functions to - as the name suggests - override their behaviour and functionality. The base function has to be virtual first.</p>
+<p>In the third method <code>get_input_port_type()</code> we encounter the parameter <code>int p_port</code>. In the Godot source code you will encounter more examples of this type of function parameter namings. With this, it is easier to spot which is in fact a parameter variable passed down and which isn&rsquo;t. This comes in handy when there is more complex functionality programmed into a function.</p>
+<p>The return values here are just like in GDScript e.g. <code>PORT_TYPE_SCALAR</code> and <code>PORT_TYPE_VECTOR_3D</code>. Other than also having a differnt keyword for switch statements (<code>switch</code> in C++ and <code>match</code> in GDScript), you have to return a default value in C++ outside of the switch statement.</p>
+<p>Every method after that except <code>generate_code()</code> and <code>VisualShaderNodeRemap()</code> falls under the already described rules so I won&rsquo;t go into them anymore.</p>
+<p>Now for the <code>generate_code</code> method:
+Notice how many parameters there are:</p>
+<pre tabindex="0"><code>Shader::Mode p_mode, VisualShader::Type p_type, int p_id, const String *p_input_vars, const String *p_output_vars, bool p_for_preview
+</code></pre><p>You CAN use them but don&rsquo;t have to. They enable you to write more complex shader code depending on many factors. As this method&rsquo;s name suggests, it generates the underlying shader code for the Visual Shader Node. For instance the shader code can be completely different between a CanvasItem Shader and a Spatial Shader. But having to write two different kind of variants would be cumbersome and some repeated lines of code.</p>
+<p><code>Shader::Mode</code> is the Shader type so for instance Spatial or CanvasItem Shader. <code>VisualShader::Type</code> is the specific Shader stage e.g. the <code>vertex()</code> or <code>fragment()</code> function. The <code>p_id</code> is the ID of the Node itself. This is hardly/never used as far as I know. The pointers for the input variables and output variables are used to format the Strings and fill in the values. The <code>p_for_preview</code> sets which output is used for previewing. The standard behaviour is that it picks the first output.</p>
+<p>The body of the method creates a String called <code>code</code> and then uses the <code>vformat()</code> function to fill the values of the input variables and output variables into the String.</p>
+<div class="highlight"><pre tabindex="0" style="color:#1d2432;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#58a1dd">String</span> <span style="color:#58a1dd">code</span>;
+</span></span><span style="display:flex;"><span><span style="color:#58a1dd">code</span> <span style="color:#ff636f">+=</span> <span style="color:#a6be9d">&#34;	{</span><span style="color:#a6be9d">\n</span><span style="color:#a6be9d">&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#58a1dd">code</span> <span style="color:#ff636f">+=</span> <span style="color:#58a1dd">vformat</span>(<span style="color:#a6be9d">&#34;		float __input_range = %s - %s;</span><span style="color:#a6be9d">\n</span><span style="color:#a6be9d">&#34;</span>, <span style="color:#58a1dd">p_input_vars</span>[<span style="color:#a6be9d">2</span>], <span style="color:#58a1dd">p_input_vars</span>[<span style="color:#a6be9d">1</span>]);
+</span></span><span style="display:flex;"><span><span style="color:#58a1dd">code</span> <span style="color:#ff636f">+=</span> <span style="color:#58a1dd">vformat</span>(<span style="color:#a6be9d">&#34;		float __output_range = %s - %s;</span><span style="color:#a6be9d">\n</span><span style="color:#a6be9d">&#34;</span>, <span style="color:#58a1dd">p_input_vars</span>[<span style="color:#a6be9d">4</span>], <span style="color:#58a1dd">p_input_vars</span>[<span style="color:#a6be9d">3</span>]);
+</span></span><span style="display:flex;"><span><span style="color:#58a1dd">code</span> <span style="color:#ff636f">+=</span> <span style="color:#58a1dd">vformat</span>(<span style="color:#a6be9d">&#34;		%s = %s + __output_range * ((%s - %s) / __input_range);</span><span style="color:#a6be9d">\n</span><span style="color:#a6be9d">&#34;</span>, <span style="color:#58a1dd">p_output_vars</span>[<span style="color:#a6be9d">0</span>], <span style="color:#58a1dd">p_input_vars</span>[<span style="color:#a6be9d">3</span>], <span style="color:#58a1dd">p_input_vars</span>[<span style="color:#a6be9d">0</span>], <span style="color:#58a1dd">p_input_vars</span>[<span style="color:#a6be9d">1</span>]);
+</span></span><span style="display:flex;"><span><span style="color:#58a1dd">code</span> <span style="color:#ff636f">+=</span> <span style="color:#a6be9d">&#34;	}</span><span style="color:#a6be9d">\n</span><span style="color:#a6be9d">&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#ff636f">return</span> <span style="color:#58a1dd">code</span>;
+</span></span></code></pre></div><p>To write the shader content to the String we write each line as a seperate String embedded in the <code>vformat</code> function and add this String to the <code>code</code> String.</p>
+<p>The syntax for the <code>vformat</code> function is as follows:</p>
+<div class="highlight"><pre tabindex="0" style="color:#1d2432;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#58a1dd">vformat</span>(<span style="color:#a6be9d">&#34;		%s&#34;</span>, <span style="color:#58a1dd">Variable</span>);
+</span></span></code></pre></div><p>The <code>%s</code> sets the space where the variable is supposed to be pasted in. If there are several <code>%s</code> present, the order of the additional parameters behind the String is parsed through for each item to be replaced.</p>
+<blockquote>
+<p>&#x1f4dd; To prevent variable conflicts in the generated shader file we put <code>{ }</code> around the Node&rsquo;s Shader String.</p>
+</blockquote>
+<p>After we write each line, we <code>return</code> the String back.</p>
+<p>Now for the <code>VisualShaderNodeRemap</code> method there is not much to say except that you can set the default input values. The boolean <code>simple_decl</code> can be set for simple Nodes that only need one line of code. It can be set optionally.</p>
+<blockquote>
+<p>&#x1f4dd; If you use it, you don&rsquo;t need to put <code>{}</code> around your shader code then (see the example below).</p>
+</blockquote>
+<h3 id="register_scene_typescpp"><code>register_scene_types.cpp</code></h3>
+<p>The file itself is gigantic so search for <code>Remap</code> to find a line like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#1d2432;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#58a1dd">GDREGISTER_CLASS</span>(<span style="color:#58a1dd">VisualShaderNodeRemap</span>);
+</span></span></code></pre></div><p>This method registers your class so you can use it in GDScript and built on top of it (if you so choose).</p>
+<h3 id="visual_shader_editor_plugincpp"><code>visual_shader_editor_plugin.cpp</code></h3>
+<p>This file is also huge so search this time for <code>VisualShaderNodeRemap</code> to find a line like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#1d2432;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#58a1dd">add_options</span>.<span style="color:#58a1dd">push_back</span>(<span style="color:#58a1dd">AddOption</span>(<span style="color:#a6be9d">&#34;Remap&#34;</span>, <span style="color:#a6be9d">&#34;Utility&#34;</span>, <span style="color:#a6be9d">&#34;VisualShaderNodeRemap&#34;</span>, <span style="color:#58a1dd">TTR</span>(<span style="color:#a6be9d">&#34;Remaps a given input from the input range to the output range.&#34;</span>), {}, <span style="color:#58a1dd">VisualShaderNode</span><span style="color:#ff636f">::</span><span style="color:#58a1dd">PORT_TYPE_SCALAR</span>));
+</span></span></code></pre></div><p>This function adds the details about the correct category of the Node, the class it uses, the documentation String which is being shown if you search in the Editor Docs (<kbd>F1</kbd>). If you have specific variants of your Node that changes depending on a dropdown, you set the option variable inside the <code>{}</code>. An example for this is the <code>UVFunc</code> Node:</p>
+<div class="highlight"><pre tabindex="0" style="color:#1d2432;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#58a1dd">add_options</span>.<span style="color:#58a1dd">push_back</span>(<span style="color:#58a1dd">AddOption</span>(<span style="color:#a6be9d">&#34;UVPanning&#34;</span>, <span style="color:#a6be9d">&#34;Textures/Functions&#34;</span>, <span style="color:#a6be9d">&#34;VisualShaderNodeUVFunc&#34;</span>, <span style="color:#58a1dd">TTR</span>(<span style="color:#a6be9d">&#34;Apply panning function on texture coordinates.&#34;</span>), { <span style="color:#58a1dd">VisualShaderNodeUVFunc</span><span style="color:#ff636f">::</span><span style="color:#58a1dd">FUNC_PANNING</span> }, <span style="color:#58a1dd">VisualShaderNode</span><span style="color:#ff636f">::</span><span style="color:#58a1dd">PORT_TYPE_VECTOR_2D</span>));
+</span></span><span style="display:flex;"><span><span style="color:#58a1dd">add_options</span>.<span style="color:#58a1dd">push_back</span>(<span style="color:#58a1dd">AddOption</span>(<span style="color:#a6be9d">&#34;UVScaling&#34;</span>, <span style="color:#a6be9d">&#34;Textures/Functions&#34;</span>, <span style="color:#a6be9d">&#34;VisualShaderNodeUVFunc&#34;</span>, <span style="color:#58a1dd">TTR</span>(<span style="color:#a6be9d">&#34;Apply scaling function on texture coordinates.&#34;</span>), { <span style="color:#58a1dd">VisualShaderNodeUVFunc</span><span style="color:#ff636f">::</span><span style="color:#58a1dd">FUNC_SCALING</span> }, <span style="color:#58a1dd">VisualShaderNode</span><span style="color:#ff636f">::</span><span style="color:#58a1dd">PORT_TYPE_VECTOR_2D</span>));
+</span></span></code></pre></div><p>This is it for the basics. Now let us write our very own Visual Shader Node to apply the knowledge we gathered. Let&rsquo;s keep it simple and write a Node that just returns the UVs. We will call it <code>TutorialUV</code> and put it in the category <code>Tutorial/UV</code>.</p>
+<p>Here is the code for it:</p>
+<h4 id="visual_shader_nodescpp-1">visual_shader_nodes.cpp</h4>
+<div class="highlight"><pre tabindex="0" style="color:#1d2432;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#58a1dd">String</span> <span style="color:#58a1dd">VisualShaderNodeTutorialUV</span><span style="color:#ff636f">::</span><span style="color:#58a1dd">get_caption</span>() <span style="color:#ff636f">const</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#ff636f">return</span> <span style="color:#a6be9d">&#34;TutorialUV&#34;</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff636f">int</span> <span style="color:#58a1dd">VisualShaderNodeTutorialUV</span><span style="color:#ff636f">::</span><span style="color:#58a1dd">get_input_port_count</span>() <span style="color:#ff636f">const</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#ff636f">return</span> <span style="color:#a6be9d">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#58a1dd">VisualShaderNodeTutorialUV</span><span style="color:#ff636f">::</span><span style="color:#58a1dd">PortType</span> <span style="color:#58a1dd">VisualShaderNodeTutorialUV</span><span style="color:#ff636f">::</span><span style="color:#58a1dd">get_input_port_type</span>(<span style="color:#ff636f">int</span> <span style="color:#58a1dd">p_port</span>) <span style="color:#ff636f">const</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#ff636f">return</span> <span style="color:#58a1dd">PORT_TYPE_SCALAR</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#58a1dd">String</span> <span style="color:#58a1dd">VisualShaderNodeTutorialUV</span><span style="color:#ff636f">::</span><span style="color:#58a1dd">get_input_port_name</span>(<span style="color:#ff636f">int</span> <span style="color:#58a1dd">p_port</span>) <span style="color:#ff636f">const</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#ff636f">return</span> <span style="color:#a6be9d">&#34;&#34;</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff636f">int</span> <span style="color:#58a1dd">VisualShaderNodeTutorialUV</span><span style="color:#ff636f">::</span><span style="color:#58a1dd">get_output_port_count</span>() <span style="color:#ff636f">const</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#ff636f">return</span> <span style="color:#a6be9d">1</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#58a1dd">VisualShaderNodeTutorialUV</span><span style="color:#ff636f">::</span><span style="color:#58a1dd">PortType</span> <span style="color:#58a1dd">VisualShaderNodeTutorialUV</span><span style="color:#ff636f">::</span><span style="color:#58a1dd">get_output_port_type</span>(<span style="color:#ff636f">int</span> <span style="color:#58a1dd">p_port</span>) <span style="color:#ff636f">const</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#ff636f">return</span> <span style="color:#58a1dd">PORT_TYPE_VECTOR_2D</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#58a1dd">String</span> <span style="color:#58a1dd">VisualShaderNodeTutorialUV</span><span style="color:#ff636f">::</span><span style="color:#58a1dd">get_output_port_name</span>(<span style="color:#ff636f">int</span> <span style="color:#58a1dd">p_port</span>) <span style="color:#ff636f">const</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#ff636f">return</span> <span style="color:#a6be9d">&#34;TutorialUV&#34;</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#58a1dd">String</span> <span style="color:#58a1dd">VisualShaderNodeTutorialUV</span><span style="color:#ff636f">::</span><span style="color:#58a1dd">generate_code</span>(<span style="color:#58a1dd">Shader</span><span style="color:#ff636f">::</span><span style="color:#58a1dd">Mode</span> <span style="color:#58a1dd">p_mode</span>, <span style="color:#58a1dd">VisualShader</span><span style="color:#ff636f">::</span><span style="color:#58a1dd">Type</span> <span style="color:#58a1dd">p_type</span>, <span style="color:#ff636f">int</span> <span style="color:#58a1dd">p_id</span>, <span style="color:#ff636f">const</span> <span style="color:#58a1dd">String</span> <span style="color:#ff636f">*</span><span style="color:#58a1dd">p_input_vars</span>, <span style="color:#ff636f">const</span> <span style="color:#58a1dd">String</span> <span style="color:#ff636f">*</span><span style="color:#58a1dd">p_output_vars</span>, <span style="color:#ff636f">bool</span> <span style="color:#58a1dd">p_for_preview</span>) <span style="color:#ff636f">const</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#58a1dd">String</span> <span style="color:#58a1dd">code</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#58a1dd">code</span> <span style="color:#ff636f">+=</span> <span style="color:#58a1dd">vformat</span>(<span style="color:#a6be9d">&#34;		%s = UV;</span><span style="color:#a6be9d">\n</span><span style="color:#a6be9d">&#34;</span>, <span style="color:#58a1dd">p_output_vars</span>[<span style="color:#a6be9d">0</span>]);
+</span></span><span style="display:flex;"><span>	<span style="color:#ff636f">return</span> <span style="color:#58a1dd">code</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#58a1dd">VisualShaderNodeTutorialUV</span><span style="color:#ff636f">::</span><span style="color:#58a1dd">VisualShaderNodeTutorialUV</span>() {
+</span></span><span style="display:flex;"><span>	<span style="color:#58a1dd">simple_decl</span> <span style="color:#ff636f">=</span> <span style="color:#58a1dd">true</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="visual_shader_nodesh-1">visual_shader_nodes.h</h4>
+<div class="highlight"><pre tabindex="0" style="color:#1d2432;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#ff636f">class</span> <span style="color:#58a1dd">VisualShaderNodeTutorialUV</span> <span style="color:#ff636f">:</span> <span style="color:#ff636f">public</span> <span style="color:#58a1dd">VisualShaderNode</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#58a1dd">GDCLASS</span>(<span style="color:#58a1dd">VisualShaderNodeTutorialUV</span>, <span style="color:#58a1dd">VisualShaderNode</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff636f">public</span><span style="color:#ff636f">:</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#ff636f">virtual</span> <span style="color:#58a1dd">String</span> <span style="color:#58a1dd">get_caption</span>() <span style="color:#ff636f">const</span> <span style="color:#ff636f">override</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#ff636f">virtual</span> <span style="color:#ff636f">int</span> <span style="color:#58a1dd">get_input_port_count</span>() <span style="color:#ff636f">const</span> <span style="color:#ff636f">override</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#ff636f">virtual</span> <span style="color:#58a1dd">PortType</span> <span style="color:#58a1dd">get_input_port_type</span>(<span style="color:#ff636f">int</span> <span style="color:#58a1dd">p_port</span>) <span style="color:#ff636f">const</span> <span style="color:#ff636f">override</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#ff636f">virtual</span> <span style="color:#58a1dd">String</span> <span style="color:#58a1dd">get_input_port_name</span>(<span style="color:#ff636f">int</span> <span style="color:#58a1dd">p_port</span>) <span style="color:#ff636f">const</span> <span style="color:#ff636f">override</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#ff636f">virtual</span> <span style="color:#ff636f">int</span> <span style="color:#58a1dd">get_output_port_count</span>() <span style="color:#ff636f">const</span> <span style="color:#ff636f">override</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#ff636f">virtual</span> <span style="color:#58a1dd">PortType</span> <span style="color:#58a1dd">get_output_port_type</span>(<span style="color:#ff636f">int</span> <span style="color:#58a1dd">p_port</span>) <span style="color:#ff636f">const</span> <span style="color:#ff636f">override</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#ff636f">virtual</span> <span style="color:#58a1dd">String</span> <span style="color:#58a1dd">get_output_port_name</span>(<span style="color:#ff636f">int</span> <span style="color:#58a1dd">p_port</span>) <span style="color:#ff636f">const</span> <span style="color:#ff636f">override</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#ff636f">virtual</span> <span style="color:#58a1dd">String</span> <span style="color:#58a1dd">generate_code</span>(<span style="color:#58a1dd">Shader</span><span style="color:#ff636f">::</span><span style="color:#58a1dd">Mode</span> <span style="color:#58a1dd">p_mode</span>, <span style="color:#58a1dd">VisualShader</span><span style="color:#ff636f">::</span><span style="color:#58a1dd">Type</span> <span style="color:#58a1dd">p_type</span>, <span style="color:#ff636f">int</span> <span style="color:#58a1dd">p_id</span>, <span style="color:#ff636f">const</span> <span style="color:#58a1dd">String</span> <span style="color:#ff636f">*</span><span style="color:#58a1dd">p_input_vars</span>, <span style="color:#ff636f">const</span> <span style="color:#58a1dd">String</span> <span style="color:#ff636f">*</span><span style="color:#58a1dd">p_output_vars</span>, <span style="color:#ff636f">bool</span> <span style="color:#58a1dd">p_for_preview</span> <span style="color:#ff636f">=</span> <span style="color:#58a1dd">false</span>) <span style="color:#ff636f">const</span> <span style="color:#ff636f">override</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#58a1dd">VisualShaderNodeTutorialUV</span>();
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h4 id="register_scene_typescpp-1">register_scene_types.cpp</h4>
+<div class="highlight"><pre tabindex="0" style="color:#1d2432;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#58a1dd">GDREGISTER_CLASS</span>(<span style="color:#58a1dd">VisualShaderNodeRemap</span>);
+</span></span><span style="display:flex;"><span><span style="color:#58a1dd">GDREGISTER_CLASS</span>(<span style="color:#58a1dd">VisualShaderNodeTutorialUV</span>);
+</span></span><span style="display:flex;"><span><span style="color:#58a1dd">GDREGISTER_ABSTRACT_CLASS</span>(<span style="color:#58a1dd">VisualShaderNodeVarying</span>);
+</span></span></code></pre></div><h4 id="visual_shader_editor_plugincpp-1">visual_shader_editor_plugin.cpp</h4>
+<div class="highlight"><pre tabindex="0" style="color:#1d2432;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#58a1dd">add_options</span>.<span style="color:#58a1dd">push_back</span>(<span style="color:#58a1dd">AddOption</span>(<span style="color:#a6be9d">&#34;TutorialUV&#34;</span>, <span style="color:#a6be9d">&#34;Tutorial/UV&#34;</span>, <span style="color:#a6be9d">&#34;VisualShaderNodeTutorialUV&#34;</span>, <span style="color:#58a1dd">TTR</span>(<span style="color:#a6be9d">&#34;This is a tutorial UV node to explain how to contribute to Godot&#39;s Visual Shader system.&#34;</span>), {}, <span style="color:#58a1dd">VisualShaderNode</span><span style="color:#ff636f">::</span><span style="color:#58a1dd">PORT_TYPE_VECTOR_2D</span>, <span style="color:#58a1dd">TYPE_FLAGS_FRAGMENT</span>, <span style="color:#58a1dd">Shader</span><span style="color:#ff636f">::</span><span style="color:#58a1dd">MODE_SPATIAL</span>));
+</span></span></code></pre></div><blockquote>
+<p>&#x1f4dd; If you need to know where exactly I put the snippets, you can check out the <a href="https://github.com/godotengine/godot/commit/3fc4d12a2d5f4cd2d8ae3fff9e33fd45fe8c7a08">branch commit on GitHub</a>.</p>
+</blockquote>
+<h2 id="compiling-godot-from-source">Compiling Godot from source</h2>
+<p>Before we can see the changes inside the editor we need to compile the Godot source code. To check how it is done for your Operating Systen (OS), please refer to the <a href="https://docs.godotengine.org/en/stable/contributing/development/compiling/index.html">official documentation</a>.</p>
+<p>Since I am on Windows I will run</p>
+<div class="highlight"><pre tabindex="0" style="color:#1d2432;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>scons <span style="color:#58a1dd">platform</span><span style="color:#ff636f">=</span>windows
+</span></span></code></pre></div><p>scons will automatically fill out details I haven&rsquo;t supplied such as the cores it will use (it will use <code>N-1</code>  of your available cores).</p>
+<h2 id="using-the-custom-visual-shader-node">Using the custom Visual Shader Node</h2>
+<p>Now that we have everything done, let&rsquo;s see how it looks like in the editor:</p>
+<p><img src="TutorialUVAddNodeDialogue.png" alt="Create Shader Node Dialogue showcasing the Tutorial UV Node"></p>
+<p><img src="TutorialUVShowcase.png" alt="Tutorial UV Node showcase inside the editor by using it on an example mesh"></p>
+<p><strong>That&rsquo;s it! Congratulations!✨✨✨ You just created your own core Visual Shader Node! You also had a little look at how the internal structure of the engine works.</strong></p>
+<p>If you liked this blog post, I would appreciate it if you can share it. In case you want to support my work you can support me on <a href="https://ko-fi.com/flamelizard">Ko-Fi</a>.</p>
+
+            </div>
+        </article></main>
+</div>
+<footer class="footer">
+    <span class="footer_item"> </span>
+    &nbsp;
+
+    <div class="footer_social-icons">
+<a href="https://github.com/paddy-exe" target="_blank" rel="noopener noreferrer me"
+    title="Github">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+    </path>
+</svg>
+</a>
+<a href="https://twitter.com/patrick_exe" target="_blank" rel="noopener noreferrer me"
+    title="Twitter">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z">
+    </path>
+</svg>
+</a>
+<a href="https://ko-fi.com/flamelizard" target="_blank" rel="noopener noreferrer me"
+    title="Kofi">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid meet"
+    viewBox="0 -3 23 27" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+    stroke-linejoin="round">
+    <path
+        d="M23.881 8.948c-.773-4.085-4.859-4.593-4.859-4.593H.723c-.604 0-.679.798-.679.798s-.082 7.324-.022 11.822c.164 2.424 2.586 2.672 2.586 2.672s8.267-.023 11.966-.049c2.438-.426 2.683-2.566 2.658-3.734c4.352.24 7.422-2.831 6.649-6.916zm-11.062 3.511c-1.246 1.453-4.011 3.976-4.011 3.976s-.121.119-.31.023c-.076-.057-.108-.09-.108-.09c-.443-.441-3.368-3.049-4.034-3.954c-.709-.965-1.041-2.7-.091-3.71c.951-1.01 3.005-1.086 4.363.407c0 0 1.565-1.782 3.468-.963c1.904.82 1.832 3.011.723 4.311zm6.173.478c-.928.116-1.682.028-1.682.028V7.284h1.77s1.971.551 1.971 2.638c0 1.913-.985 2.667-2.059 3.015z" />
+</svg>
+</a>
+</div>
+    <small class="footer_copyright">
+        © 2023 Patrick aka 🔥 Lizard.
+        Powered by <a href="https://github.com/hugo-sid/hugo-blog-awesome" target="_blank" rel="noopener">Hugo blog awesome</a>.
+    </small>
+</footer><a href="#" title="Go to top" id="totop">
+    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" stroke="currentColor" viewBox="0 96 960 960">
+    <path d="M283 704.739 234.261 656 480 410.261 725.739 656 677 704.739l-197-197-197 197Z"/>
+</svg>
+
+</a>
+
+
+    
+
+
+
+
+
+
+    
+    <script src="https://paddy-exe.github.io/public/index.html/js/main.min.35f435a5d8eac613c52daa28d8af544a4512337d3e95236e4a4978417b8dcb2f.js" integrity="sha256-NfQ1pdjqxhPFLaoo2K9USkUSM30&#43;lSNuSkl4QXuNyy8="></script>
+
+    
+
+</body>
+</html>

@@ -9,10 +9,6 @@ enableEmoji = true
 # This defines how dates are formatted
 defaultContentLanguage = "en-gb"
 
-# To enable Google Analytics 4 (gtag.js) provide G-MEASUREMENT_ID below.
-# To disable  Google Analytics, simply leave the field empty or remove the next line
-googleAnalytics = 'G-XVEX4GZF4S' # G-MEASUREMENT_ID
-
 # set markup.highlight.noClasses=false to enable code highlight
 [markup]
   [markup.highlight]
@@ -29,50 +25,71 @@ googleAnalytics = 'G-XVEX4GZF4S' # G-MEASUREMENT_ID
     noHl = false
     style = 'hrdark'
     tabWidth = 4
+  [markup.goldmark.renderer]
+    unsafe = true
+    [markup.tableOfContents]
+      startLevel = 2 # ToC starts from H2
+      endLevel = 4 # ToC ends at H4
+      ordered = true # generates <ul> instead of <ol>
 
-[menu]
-  [[menu.main]] 
+############################## English language ################################
+[Languages.en-gb]
+  languageName = "English"
+  languageCode = "en-gb"
+  contentDir = "content/en"
+  weight = 1
+
+  [Languages.en-gb.menu]
+  [[Languages.en-gb.menu.main]]
     # The page reference (pageRef) is useful for menu highlighting
     # When pageRef is set, setting `url` is optional; it will be used as a fallback if the page is not found.
     pageRef="/"
     name = 'Home'
     url = '/'
     weight = 10
-  [[menu.main]]
+  [[Languages.en-gb.menu.main]]
     pageRef="posts"
     name = 'Posts'
     url = '/posts/'
     weight = 20
-  [[menu.main]]
+  [[Languages.en-gb.menu.main]]
     pageRef="about"
     name = 'About'
     url = '/about/'
     weight = 30
 
-[params]
+[Languages.en-gb.params]
   sitename = "🔥 Lizard's Development Blog"
   defaultColor = "auto" # set default color mode: dark or light or auto
   description = "A blog about my programming projects with the Godot Engine 🎮👾, Shaders and VFX ✨ as well as C++ for GDExtension ⚙️"
   mainSections = ['posts']
+  toc = true # set to false to disable table of contents globally
   goToTop = true # set to false to disable 'go to top' button
+  dateFormat = "" # date format used to show dates on various pages. If nothing is specified, then "2 Jan 2006" format is used.
+  rssFeedDescription = "summary" # available options: 1) summary 2) full
+  # summary - includes a short summary of the blog post in the RSS feed. Generated using Hugo .Summary .
+  # full - includes full blog post in the RSS feed. Generated using Hugo .Content .
+  # By default (or if nothing is specified), summary is used.
 
-[params.author]
-  avatar = "images/FlameLizard_Profile.jpg"
+[Languages.en-gb.params.author]
+  avatar = "FlameLizard_Profile.jpg"
   intro = "🔥 Lizard's Development Blog"
   name = "Patrick aka 🔥 Lizard"
   description = "A blog about my programming projects with the Godot Engine 🎮👾, Shaders and VFX ✨ as well as C++ for GDExtension ⚙️"
 
- [[params.socialIcons]] 
+ [[Languages.en-gb.params.socialIcons]]
  name = "github" 
  url = "https://github.com/paddy-exe" 
   
- [[params.socialIcons]] 
+ [[Languages.en-gb.params.socialIcons]]
  name = "twitter" 
  url = "https://twitter.com/patrick_exe" 
 
- [[params.socialIcons]]
+ [[Languages.en-gb.params.socialIcons]]
  name = "kofi"
  url = "https://ko-fi.com/flamelizard"
+
+### LANGUAGE SPECIFICATION END ###
 
 [[params.socialIcons]]
  name = "twitch"

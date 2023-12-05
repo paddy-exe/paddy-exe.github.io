@@ -5,15 +5,29 @@
     <link>https://paddy-exe.github.io/public/index.html/</link>
     <description>Recent content in Home on 🔥 Lizard&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Mon, 28 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://paddy-exe.github.io/public/index.html/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-gb</language>
+    <lastBuildDate>Sat, 22 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://paddy-exe.github.io/public/index.html/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Contributing to Godot - Visual Shaders Nodes</title>
+      <link>https://paddy-exe.github.io/public/index.html/posts/contributing-to-godot-visual-shader-nodes/</link>
+      <pubDate>Sat, 22 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://paddy-exe.github.io/public/index.html/posts/contributing-to-godot-visual-shader-nodes/</guid>
+      
+      <description>&amp;#x1f4dd; The changed Godot icon was made by Yuri Sizov (CC-BY 4.0)
+Introduction If you have ever wondered how (some) new features are getting added to each new iteration of the Godot Engine, you&amp;rsquo;ve come to the right place! In this post I will explain how you can add Visual Shader Nodes to the core engine as I have and get a little insight of the Godot source code.</description>
+      
+    </item>
+    
     <item>
       <title>About Me</title>
-      <link>https://paddy-exe.github.io/public/index.html/about/</link>
+      <link>https://paddy-exe.github.io/public/index.html/pages/about/</link>
       <pubDate>Fri, 10 Mar 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://paddy-exe.github.io/public/index.html/about/</guid>
-      <description>Hi there 👋, my name is Patrick aka 🔥 Lizard. I am a 22y Biomimicry student from Germany. I am interested in game, tool and engine development and have been working and messing around with game dev for over 4 years now. I also have prior (professional) knowledge in Python. Nowadays I work with GodotEngine on several open-source projects such as Godot itself, GDExtension and several VFX and Shader projects.</description>
+      <guid>https://paddy-exe.github.io/public/index.html/pages/about/</guid>
+      
+      <description>Hi there 👋, my name is Patrick aka 🔥 Lizard. I am a Biomimicry student from Germany. I am interested in game, tool and engine development and have been working and messing around with game dev for a while. I also have prior professional knowledge in Python. Nowadays, I work with the Godot Game Engine on several open-source projects such as Godot itself, GDExtension and several VFX and Shader projects.</description>
+      
     </item>
     
     <item>
@@ -22,8 +36,21 @@
       <pubDate>Mon, 28 Nov 2022 00:00:00 +0000</pubDate>
       
       <guid>https://paddy-exe.github.io/public/index.html/posts/gdextension-how-to-write-your-first-extension/</guid>
-      <description>With Godot 4.0 on the horizon a lot of people want to try out the new technologies that are coming with the new version.
+      
+      <description>Introduction With Godot 4.0 on the horizon a lot of people want to try out the new technologies that are coming with the new version.
 One of these is the GDExtension system that will be replacing the older GDNative system. GDNative was introduced as a means to enhance the editor itself by embedding C++ libraries or new language bindings into Godot. This had the advantage that users wouldn&amp;rsquo;t need to build the engine themselves but import a dynamic library.</description>
+      
+    </item>
+    
+    <item>
+      <title>Contributing to Godot - My Journey from awe to first PR</title>
+      <link>https://paddy-exe.github.io/public/index.html/posts/contributing-to-godot-my-journey/</link>
+      <pubDate>Sat, 22 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://paddy-exe.github.io/public/index.html/posts/contributing-to-godot-my-journey/</guid>
+      
+      <description>The Godot Engine is nowadays one of most popular game engines (next to Unreal Engine and Unity) and that while being open-source and free to use without any royalties. There are LOTS of people contributing to the engine and I am very happy that I can now count myself to them. In this blog post, I want to explain how I got started contributing to Godot after being in awe for quite a while.</description>
+      
     </item>
     
   </channel>

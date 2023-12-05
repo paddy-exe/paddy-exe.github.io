@@ -3,9 +3,13 @@ title: About Me
 description: 'About Me page'
 date: 2023-03-10
 author: Patrick Exner
+toc: false
 ---
 
-Hi there 👋, my name is Patrick aka 🔥 Lizard. I am a 22y Biomimicry student from Germany. I am interested in game, tool and engine development and have been working and messing around with game dev for over 4 years now. I also have prior (professional) knowledge in Python. Nowadays I work with GodotEngine on several open-source projects such as Godot itself, GDExtension and several VFX and Shader projects.
+Hi there 👋, my name is Patrick aka 🔥 Lizard. I am a Biomimicry student from Germany. 
+I am interested in game, tool and engine development and have been working and messing around with game dev for a while. 
+I also have prior professional knowledge in Python. Nowadays, I work with the Godot Game Engine on several open-source 
+projects such as Godot itself, GDExtension and several VFX and Shader projects.
 
 Some of the projects I've been involved in are:
 

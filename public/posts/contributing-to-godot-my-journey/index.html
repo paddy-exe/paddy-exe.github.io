@@ -3,11 +3,11 @@
 <meta http-equiv="content-type" content="text/html">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title itemprop="name">Posts | 🔥 Lizard&#39;s Blog</title>
-<meta property="og:title" content="Posts | 🔥 Lizard&#39;s Blog" />
-<meta name="twitter:title" content="Posts | 🔥 Lizard&#39;s Blog" />
-<meta itemprop="name" content="Posts | 🔥 Lizard&#39;s Blog" />
-<meta name="application-name" content="Posts | 🔥 Lizard&#39;s Blog" />
+<title itemprop="name">Contributing to Godot - My Journey from awe to first PR | 🔥 Lizard&#39;s Blog</title>
+<meta property="og:title" content="Contributing to Godot - My Journey from awe to first PR | 🔥 Lizard&#39;s Blog" />
+<meta name="twitter:title" content="Contributing to Godot - My Journey from awe to first PR | 🔥 Lizard&#39;s Blog" />
+<meta itemprop="name" content="Contributing to Godot - My Journey from awe to first PR | 🔥 Lizard&#39;s Blog" />
+<meta name="application-name" content="Contributing to Godot - My Journey from awe to first PR | 🔥 Lizard&#39;s Blog" />
 <meta property="og:site_name" content="🔥 Lizard&#39;s Development Blog" />
 
 <meta name="description" content="A blog about my programming projects with the Godot Engine 🎮👾, Shaders and VFX ✨ as well as C&#43;&#43; for GDExtension ⚙️">
@@ -32,15 +32,10 @@
     
     
     
-    <link rel="first" href="/public/index.html/posts/" />
-    <link rel="last" href="/public/index.html/posts/" />
-    
-    
-    
 
     <meta property="og:type" content="article" />
-    <meta property="og:article:published_time" content=2023-04-22T00:00:00Z />
-    <meta property="article:published_time" content=2023-04-22T00:00:00Z />
+    <meta property="og:article:published_time" content=2022-10-22T00:00:00Z />
+    <meta property="article:published_time" content=2022-10-22T00:00:00Z />
 
     
 
@@ -50,16 +45,16 @@
     {
         "@context": "http://schema.org",
         "@type": "Article",
-        "headline": "Posts",
+        "headline": "Contributing to Godot - My Journey from awe to first PR",
         "author": {
         "@type": "Person",
         "name": ""
         },
-        "datePublished": "2023-04-22",
+        "datePublished": "2022-10-22",
         "description": "",
-        "wordCount":  0 ,
+        "wordCount":  1238 ,
         "mainEntityOfPage": "True",
-        "dateModified": "2023-04-22",
+        "dateModified": "2022-10-22",
         "image": {
         "@type": "imageObject",
         "url": ""
@@ -77,9 +72,7 @@
 
     
 
-    <link rel="canonical" href="https://paddy-exe.github.io/public/index.html/posts/">
-    <link href="/public/index.html/posts/index.xml" rel="alternate" type="application/rss+xml" title="🔥 Lizard&#39;s Blog">
-    <link href="/public/index.html/posts/index.xml" rel="feed" type="application/rss+xml" title="🔥 Lizard&#39;s Blog">
+    <link rel="canonical" href="https://paddy-exe.github.io/public/index.html/posts/contributing-to-godot-my-journey/">
     <link href="/public/index.html/style.min.9bd04d0fad85388343088ec85e9afd787ea003e72914d7f57df39c17ab2e7173.css" rel="stylesheet">
     <link href="/public/index.html/code-highlight.min.706d31975fec544a864cb7f0d847a73ea55ca1df91bf495fd12a177138d807cf.css" rel="stylesheet">
 
@@ -166,79 +159,51 @@ stroke-linejoin="round" class="feather feather-home">
         </div>
     </nav>
 </div>
-<div class="wrapper list-page">
-    <header class="header">
-        <h1 class="header-title center">Posts</h1>
-    </header>
+
+<div class="wrapper post">
     <main class="page-content" aria-label="Content">
-        
-        
-        <h2 class="post-year">2023</h2>
-
-        
-
-        
-
-        <article class="post-item">
-    <h4 class="post-item-title">
-        <a href="/public/index.html/posts/contributing-to-godot-visual-shader-nodes/">Contributing to Godot - Visual Shaders Nodes</a>
-    </h4>
+        <article>
+            <header class="header">
+                <h1 class="header-title">Contributing to Godot - My Journey from awe to first PR</h1>
+                
+                
+                <div class="post-meta">
+                    <time datetime="2022-10-22T00:00:00&#43;00:00" itemprop="datePublished"> 22 Oct 2022 </time>
+                </div>
+                
+            </header>
+            
     
-    
-    
-    <time class="post-item-meta" datetime="2023-04-22T00:00:00Z">
-        22 Apr 2023
-        
-    </time>
-</article>
+    <details class="toc" ZgotmplZ>
+        <summary><b>Table of Contents</b></summary>
+        <nav id="TableOfContents"></nav>
+    </details>
+            <div class="page-content">
+                <p><img src="rendering-code.png" alt="Rendering GLSL code"></p>
+<p>The Godot Engine is nowadays one of most popular game engines (next to Unreal Engine and Unity) and that while being open-source and free to use without any royalties. There are LOTS of people contributing to the engine and I am very happy that I can now count myself to them. In this blog post, I want to explain how I got started contributing to Godot after being in awe for quite a while. I hope you can learn a bit from my experience and take something useful away here.</p>
+<h1 id="first-a-few-things-about-my-journey-with-godot">First a few things about my journey with Godot:</h1>
+<p>I personally stumbled upon Godot in 2020 during the Covid-19 crisis and the following lockdown. I was quite upset before with my use of the Unity Engine. Like many, I had my first contact with game development messing around with objects and assets in there.
+However cool all these possibilities were, I felt like Unity was overwhelming me with options and no clear path. Even with all the professional made tutorials by Unity itself, I felt lost. With more knowledge working with the engine though, I got more and more into it and also more and more frustrated with several problems I had with it.
+The most annoying one I had (that still annoys the heck out of me) is working with git and Unity together. Having first class VCS (version-control system) support is extremely important to me as someone who has several operating systems, works on them interchangeably and always needs the latest version of his work synched across.
+After finally deciding to break up with Unity due to my issues with it, I searched for a good replacement and found Godot after trying out some alternatives such as <a href="https://www.panda3d.org/">Panda3D</a> (C++-based engine/framework with Python bindings, originally made by Disney and now open-source) and <a href="https://www.pygame.org/">PyGame</a> (Python 2D GameDev framework).</p>
+<p>Godot hit all my favourite spots: cross-platform, excellent VCS support (thanks to being text-based from project file to resources), no fees for licensing (which makes more sense for bigger teams but is still pretty cool) and of course - the crême de la crême: being open-source (there are obviously many more cool features but these directly made me fall in love with Godot).</p>
+<p>After getting to know the engine for two years now and messing around with virtually anything, I wanted to give my thanks to all the cool people who already improved the engine to its current state and I wanted to give it my own handprint (contribute to it). Having never programmed with C++ (even though I have some Java experience from school which made itself later useful), I didn&rsquo;t feel quite ready to contribute to the main engine repository. So first, I stalked the godot issues, pull-requests, the &ldquo;good first issue&rdquo; tag there and the other Godot-related repositories. I contributed some German translations for the class reference which was sometimes quite confusing since the passages were taken out of context. This made it sometimes REALLY hard for a context-based language like German. I quickly lost an interest in this due to this.
+My very first &ldquo;real&rdquo; contribution to Godot as a whole was when I <a href="https://github.com/godotengine/godot-cpp/pull/685">added the MacOS target platforms names for the GDExtension example file to the godot-cpp README</a>. (Btw if any core contributor reads this: The &ldquo;Thanks&rdquo; at the end of the merged PR really boosts motivation (at least for me), so I please never stop with this!).
+After getting pumped up with motivation I got more active on <a href="https://chat.godotengine.org/">RocketChat</a> (the main communication platform for Godot contributors, discussions about implementations and questions around implementations, reviews, feedback etc.). I noticed that there was a mistake with the Sky Shader Example in the Documentation when I filed an issue after not being able to compile the example sky shader from the docs and Clay John (Godot Rendering Lead) corrected my assumption that the &ldquo;main&rdquo; function to manipulate the sky appearance in 4.0 is called <code>sky()</code> and not <code>fragment()</code>. He filed a bug report accordingly and let me know that the issue would be tracked independently from my original issue. Since this was quite an &ldquo;easy&rdquo; thing to correct, I got to work and <a href="https://github.com/godotengine/godot-docs/pull/5719">put in my first godot-docs PR</a>!</p>
+<p>I continued my work on the docs and with some shader knowledge I gathered, I noticed together with <a href="https://ko-fi.com/nekoto">NekotoArts</a> that they were lacking information on the retrieval of important and often-used variables like the Object&rsquo;s World Space Position, the Camera&rsquo;s World Space Position etc. So I <a href="https://github.com/godotengine/godot-docs/pull/5895">added them in my next PR</a>. These variables have specific built-in nodes in Unity or Unreal Engine so having this not directly built-in or at least mentioned in the docs was quite a nuisance before. No more! Additionally I <a href="https://github.com/godotengine/godot-docs/pull/5963">created a 3.x variant of this PR</a> so people using this line of Godot could benefit from these docs changes as well.</p>
+<p><img src="fragment-built-ins-spatial-shader.png" alt="Spatial fragment built-ins docs">
+Spatial Shader Reference Documentation: Common Variables calculated using the matrix built-ins</p>
+<p>After some time, <a href="https://twitter.com/AlfredBaudisch">Alfred Reinold Baudisch</a> created a blog post on his website sharing the limitations he experienced working with Godot&rsquo;s 3D Workflow. One of these were the lack of built-in nodes like the Object&rsquo;s World Space Position and the Camera&rsquo;s World Space Position. We got in contact via Twitter and I <a href="https://github.com/godotengine/godot-proposals/issues/4957">created a proposal detailing the idea of adding these nodes as built-in nodes to the engine</a>. It got quite some support on the proposal.</p>
+<p><img src="alfred-baudisch-visual-shader-post.png" alt="Lack of Camera and Position input data in Shaders section from Alfred Baudisch blog">
+A cutoff from Alfred&rsquo;s website detailing the lack of Camera and Position input nodes for the Visual Shader system</p>
+<p>Having had the ambition to contribute to the engine itself for a long time I saw the perfect opportunity. I just didn&rsquo;t really know where to start. Which files do I need to modify and how exactly? I still didn&rsquo;t really know how the internals worked even after watching issues and PRs for quite a while. I remembered though what a very wise man (my dad) told me in those kind of situations: <strong>&ldquo;Asking questions doesn&rsquo;t cost anything&rdquo;</strong>. So I did. I asked Clay John on RocketChat what files I needed to mess with to add these nodes to the list of built-in Visual Shader nodes and he answered with a list of all the things I needed to do (I don&rsquo;t think I would have been able to get this information just by sifting through the source code without guidance so this was really appreciated ). After opening the draft PR to get some early feedback, Calinou asked if adding these built-ins to Godot&rsquo;s shader language would also be arguably in everyone&rsquo;s interest. Definitely! I added them shortly after. So there we have my very first contribution to the Godot Engine! <a href="https://twitter.com/patrick_exe/status/1553065056639885313">I shared my PR on Twitter and it got VERY positive feedback</a>, especially once <a href="https://twitter.com/patrick_exe/status/1563772649104461825">it got merged</a>! I was very moved by all the positive feedback I got. I <a href="https://github.com/godotengine/godot/pull/63971">backported this PR to the 3.x line (available in 3.6)</a> even so the next line of 3.6 should have this nice addition as well.</p>
+<p>All in all I can say that contributing to Godot (whether it&rsquo;s the godot-docs, godot-cpp or the main engine repo), it&rsquo;s HELLA fun! I want to thank everyone involved in giving me a nudge and do this. Most importantly I want to thank all the core contributors for their ongoing support, availability to ask questions and kindness to newcomers like me. You are <strong>AWESOME</strong>! I am looking forward to working more with you!</p>
+<p>Feature Image by <a href="https://unsplash.com/@krishna2803">Krishna Pandey</a> on Unsplash</p>
 
-
-         
-
-        
-        
-        <h2 class="post-year">2022</h2>
-
-        
-
-        
-
-        <article class="post-item">
-    <h4 class="post-item-title">
-        <a href="/public/index.html/posts/gdextension-how-to-write-your-first-extension/">GDExtension - How to Write Your First Extension</a>
-    </h4>
-    
-    
-    
-    <time class="post-item-meta" datetime="2022-11-28T00:00:00Z">
-        28 Nov 2022
-        
-    </time>
-</article>
-
-
-        
-
-        <article class="post-item">
-    <h4 class="post-item-title">
-        <a href="/public/index.html/posts/contributing-to-godot-my-journey/">Contributing to Godot - My Journey from awe to first PR</a>
-    </h4>
-    
-    
-    
-    <time class="post-item-meta" datetime="2022-10-22T00:00:00Z">
-        22 Oct 2022
-        
-    </time>
-</article>
-
-
-         
-
-         
-
-    </main>
-</div><footer class="footer">
+            </div>
+        </article></main>
+</div>
+<footer class="footer">
     <span class="footer_item"> </span>
     &nbsp;
 

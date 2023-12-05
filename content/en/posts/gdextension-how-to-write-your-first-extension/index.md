@@ -25,7 +25,7 @@ Since we settled how useful GDExtension will be for the future of Godot's extens
 ![GDExtensionSummator - How to create a repo from the template](GDExtensionTemplate.png)
 Click on the button "Use this template" which creates a new repository to your GitHub account based on the template
 
-## 0. Compilation requirements
+## Compilation requirements
 To be able to compile and build your extension you will need the same software installed as you need to compile the editor itself.
 
 This means:
@@ -37,7 +37,7 @@ This means:
 
 For further information, please refer to the Godot docs: [Compiling Godot](https://docs.godotengine.org/en/stable/development/compiling/index.html).
 
-## 1. Folder structure
+## Folder structure
 First and foremost you need to start with a project folder. This can be any name you want. You can also still change it later on.
 In this folder you will create another folder called "extension" and in there the folder "src" where all your C++ files will be when developing the extension. You will also create another folder called "game" where your Godot project will lie. The seperation of the Godot project and the extension files is recommended for clarity and for the export of the Godot project (if you do want to develop the game side-by-side with the extension).
 
@@ -51,7 +51,7 @@ GDExtensionSummator
  ┃ ┃ ┗ ...                  <- Godot project
 ```
 
-## 2. godot-cpp bindings
+## godot-cpp bindings
 The godot-cpp repository represents the C++ API for the Godot editor. It is built on top of the godot-headers repository (which is C based). 
 
 We will clone the godot-cpp repo into the top folder.
@@ -76,7 +76,7 @@ git checkout 576bd17
 
  Now we are ready to get into the files themselves.
 
- ## 3. Source files
+ ## Source files
  We will first start with 
  
  ### ``register_types.cpp``
@@ -310,7 +310,7 @@ scons platform=windows target=template_debug -j11
 
 It can also automatically determine the number of my cores (which is 12) and set it to -1 of this number to run the compilation and speed it up since it can use more than one core. Quite clever, isn’t it?
 
-## 4. Compiling your extension
+## Compiling your extension
 
 Since we now have everything together to be able to build our extension, let’s do that, shall we?
 
@@ -340,7 +340,7 @@ The huge pile of text are the object files that were created for the compilation
 
 Next, we go in the top directory and run scons again. This time we are compiling the actual extension. The procedure and outcome message should be the same as for the godot-cpp library. (If you do get any errors up until now, leave either a comment here or hit me up on [Twitter](https://twitter.com/patrick_exe) or [Mastodon](@flamelizard@mastodon.gamedev.place))
 
-## 5. The extension file
+## The extension file
 
 The last step is this here. You need to create a summator.gdextension file which you put in the ``bin/`` folder. This file tells your Godot editor where to load your extension from. You can set different targets depending on release and debug (just like the editor itself). The file should look like this:
 
@@ -365,7 +365,7 @@ The ``[configuration]`` part with the entry_symbol variable is the function that
 
 The ``[libraries]`` part is where you set the versions and flags you want to use for your extension. You can customize this a lot to your needs with the use of your SConstruct file. With that, you can release your extension for MacOS, Windows and Linux as both debug and release versions.
 
-## 6. Using the extension
+## Using the extension
 
 Now let’s open Godot 4.0 beta 6 again and we see … nothing?
 Well, we need to add a script first to use the Summator reference type.
