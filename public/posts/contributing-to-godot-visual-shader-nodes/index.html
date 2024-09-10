@@ -18,17 +18,12 @@
 <meta property="og:locale" content="en-gb" />
 <meta name="language" content="en-gb" />
 
-
-
-  <meta itemprop="image" content="https://paddy-exe.github.io/public/index.html" />
-  <meta property="og:image" content="https://paddy-exe.github.io/public/index.html" />
-  <meta name="twitter:image" content="https://paddy-exe.github.io/public/index.html" />
-  <meta name="twitter:image:src" content="https://paddy-exe.github.io/public/index.html" />
+  <link rel="alternate" hreflang="en-gb" href="https://paddy-exe.github.io/public/index.html/posts/contributing-to-godot-visual-shader-nodes/" title="English" />
 
 
 
 
-    
+
     
     
     
@@ -36,7 +31,13 @@
     <meta property="og:type" content="article" />
     <meta property="og:article:published_time" content=2023-04-22T00:00:00Z />
     <meta property="article:published_time" content=2023-04-22T00:00:00Z />
+    <meta property="og:url" content="https://paddy-exe.github.io/public/index.html/posts/contributing-to-godot-visual-shader-nodes/" />
 
+    
+    <meta property="og:article:author" content="Patrick aka 🔥 Lizard" />
+    <meta property="article:author" content="Patrick aka 🔥 Lizard" />
+    <meta name="author" content="Patrick aka 🔥 Lizard" />
+    
     
 
     
@@ -67,13 +68,38 @@
     </script>
 
 
-<meta name="generator" content="Hugo 0.120.4">
+<meta name="generator" content="Hugo 0.134.2">
     <script async src="https://eu.umami.is/script.js" data-website-id="5e71174a-7f03-4d2c-b04f-adfa793aad77"></script>
+
+    
+    <meta property="og:url" content="https://paddy-exe.github.io/public/index.html/posts/contributing-to-godot-visual-shader-nodes/">
+  <meta property="og:site_name" content="🔥 Lizard&#39;s Blog">
+  <meta property="og:title" content="Contributing to Godot - Visual Shaders Nodes">
+  <meta property="og:description" content="
+📝 The changed Godot icon was made by Yuri Sizov (CC-BY 4.0)
+Introduction If you have ever wondered how (some) new features are getting added to each new iteration of the Godot Engine, you’ve come to the right place! In this post I will explain how you can add Visual Shader Nodes to the core engine as I have and get a little insight of the Godot source code.">
+  <meta property="og:locale" content="en_gb">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2023-04-22T00:00:00+00:00">
+    <meta property="article:modified_time" content="2023-04-22T00:00:00+00:00">
+    <meta property="og:image" content="https://paddy-exe.github.io/public/index.html/posts/contributing-to-godot-visual-shader-nodes/Cover-Godot-VS-Contribution.png">
+
+
+    
+    
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://paddy-exe.github.io/public/index.html/posts/contributing-to-godot-visual-shader-nodes/Cover-Godot-VS-Contribution.png">
+  <meta name="twitter:title" content="Contributing to Godot - Visual Shaders Nodes">
+  <meta name="twitter:description" content="
+📝 The changed Godot icon was made by Yuri Sizov (CC-BY 4.0)
+Introduction If you have ever wondered how (some) new features are getting added to each new iteration of the Godot Engine, you’ve come to the right place! In this post I will explain how you can add Visual Shader Nodes to the core engine as I have and get a little insight of the Godot source code.">
+
 
     
 
     <link rel="canonical" href="https://paddy-exe.github.io/public/index.html/posts/contributing-to-godot-visual-shader-nodes/">
-    <link href="/public/index.html/style.min.9bd04d0fad85388343088ec85e9afd787ea003e72914d7f57df39c17ab2e7173.css" rel="stylesheet">
+    <link href="/public/index.html/style.min.d43bc6c79baa87f006efb2b92be952faeedeb1a3ab626c1d6abda52eae049355.css" rel="stylesheet">
     <link href="/public/index.html/code-highlight.min.706d31975fec544a864cb7f0d847a73ea55ca1df91bf495fd12a177138d807cf.css" rel="stylesheet">
 
     
@@ -224,7 +250,7 @@ stroke-linejoin="round" class="feather feather-home">
 </nav>
     </details>
             <div class="page-content">
-                <p><img src="Cover-Godot-VS-Contribution.png" alt="Contributing Visual Shaders to Godot - Cover"></p>
+                <p><img alt="Contributing Visual Shaders to Godot - Cover" src="/public/index.html/posts/contributing-to-godot-visual-shader-nodes/Cover-Godot-VS-Contribution.png"></p>
 <blockquote>
 <p>&#x1f4dd; The changed Godot icon was made by <a href="https://github.com/YuriSizov/godot-emotes/blob/master/LICENSE">Yuri Sizov (CC-BY 4.0)</a></p>
 </blockquote>
@@ -383,7 +409,7 @@ stroke-linejoin="round" class="feather feather-home">
 </span></span><span style="display:flex;"><span><span style="color:#ff636f">func</span> <span style="color:#58a1dd">_get_code</span>(<span style="color:#58a1dd">input_vars</span>, <span style="color:#58a1dd">output_vars</span>, <span style="color:#58a1dd">mode</span>, <span style="color:#58a1dd">type</span>):
 </span></span><span style="display:flex;"><span>    <span style="color:#ff636f">return</span> <span style="color:#58a1dd">output_vars</span>[<span style="color:#a6be9d">0</span>] <span style="color:#ff636f">+</span> <span style="color:#a6be9d">&#34; = cnoise(vec3((</span><span style="color:#a6be9d">%s</span><span style="color:#a6be9d">.xy + </span><span style="color:#a6be9d">%s</span><span style="color:#a6be9d">.xy) * </span><span style="color:#a6be9d">%s</span><span style="color:#a6be9d">, </span><span style="color:#a6be9d">%s</span><span style="color:#a6be9d">)) * 0.5 + 0.5;&#34;</span> <span style="color:#ff636f">%</span> [<span style="color:#58a1dd">input_vars</span>[<span style="color:#a6be9d">0</span>], <span style="color:#58a1dd">input_vars</span>[<span style="color:#a6be9d">1</span>], <span style="color:#58a1dd">input_vars</span>[<span style="color:#a6be9d">2</span>], <span style="color:#58a1dd">input_vars</span>[<span style="color:#a6be9d">3</span>]]
 </span></span></code></pre></div><p>The meaning behind this can be read in the docs as well but here&rsquo;s a description for each used method so you don&rsquo;t have to look it up yourself:</p>
-<p><img src="VisualShaderNodeAufbau.png" alt="Visual Shader Node - What is what"></p>
+<p><img alt="Visual Shader Node - What is what" src="/public/index.html/posts/contributing-to-godot-visual-shader-nodes/VisualShaderNodeAufbau.png"></p>
 <h3 id="tool"><code>@tool</code></h3>
 <p>Let&rsquo;s this script run in the editor itself instead of only in the running game.</p>
 <h3 id="visualshadernodeperlinnoise3d"><code>VisualShaderNodePerlinNoise3D</code></h3>
@@ -650,8 +676,8 @@ Notice how many parameters there are:</p>
 </span></span></code></pre></div><p>scons will automatically fill out details I haven&rsquo;t supplied such as the cores it will use (it will use <code>N-1</code>  of your available cores).</p>
 <h2 id="using-the-custom-visual-shader-node">Using the custom Visual Shader Node</h2>
 <p>Now that we have everything done, let&rsquo;s see how it looks like in the editor:</p>
-<p><img src="TutorialUVAddNodeDialogue.png" alt="Create Shader Node Dialogue showcasing the Tutorial UV Node"></p>
-<p><img src="TutorialUVShowcase.png" alt="Tutorial UV Node showcase inside the editor by using it on an example mesh"></p>
+<p><img alt="Create Shader Node Dialogue showcasing the Tutorial UV Node" src="/public/index.html/posts/contributing-to-godot-visual-shader-nodes/TutorialUVAddNodeDialogue.png"></p>
+<p><img alt="Tutorial UV Node showcase inside the editor by using it on an example mesh" src="/public/index.html/posts/contributing-to-godot-visual-shader-nodes/TutorialUVShowcase.png"></p>
 <p><strong>That&rsquo;s it! Congratulations!✨✨✨ You just created your own core Visual Shader Node! You also had a little look at how the internal structure of the engine works.</strong></p>
 <p>If you liked this blog post, I would appreciate it if you can share it. In case you want to support my work you can support me on <a href="https://ko-fi.com/flamelizard">Ko-Fi</a>.</p>
 
@@ -692,7 +718,7 @@ Notice how many parameters there are:</p>
 </a>
 </div>
     <small class="footer_copyright">
-        © 2023 Patrick aka 🔥 Lizard.
+        © 2024 Patrick aka 🔥 Lizard.
         Powered by <a href="https://github.com/hugo-sid/hugo-blog-awesome" target="_blank" rel="noopener">Hugo blog awesome</a>.
     </small>
 </footer><a href="#" title="Go to top" id="totop">

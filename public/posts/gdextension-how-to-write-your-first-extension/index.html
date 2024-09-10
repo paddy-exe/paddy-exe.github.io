@@ -18,17 +18,12 @@
 <meta property="og:locale" content="en-gb" />
 <meta name="language" content="en-gb" />
 
-
-
-  <meta itemprop="image" content="https://paddy-exe.github.io/public/index.html" />
-  <meta property="og:image" content="https://paddy-exe.github.io/public/index.html" />
-  <meta name="twitter:image" content="https://paddy-exe.github.io/public/index.html" />
-  <meta name="twitter:image:src" content="https://paddy-exe.github.io/public/index.html" />
+  <link rel="alternate" hreflang="en-gb" href="https://paddy-exe.github.io/public/index.html/posts/gdextension-how-to-write-your-first-extension/" title="English" />
 
 
 
 
-    
+
     
     
     
@@ -36,7 +31,13 @@
     <meta property="og:type" content="article" />
     <meta property="og:article:published_time" content=2022-11-28T00:00:00Z />
     <meta property="article:published_time" content=2022-11-28T00:00:00Z />
+    <meta property="og:url" content="https://paddy-exe.github.io/public/index.html/posts/gdextension-how-to-write-your-first-extension/" />
 
+    
+    <meta property="og:article:author" content="Patrick aka 🔥 Lizard" />
+    <meta property="article:author" content="Patrick aka 🔥 Lizard" />
+    <meta name="author" content="Patrick aka 🔥 Lizard" />
+    
     
 
     
@@ -67,13 +68,38 @@
     </script>
 
 
-<meta name="generator" content="Hugo 0.120.4">
+<meta name="generator" content="Hugo 0.134.2">
     <script async src="https://eu.umami.is/script.js" data-website-id="5e71174a-7f03-4d2c-b04f-adfa793aad77"></script>
+
+    
+    <meta property="og:url" content="https://paddy-exe.github.io/public/index.html/posts/gdextension-how-to-write-your-first-extension/">
+  <meta property="og:site_name" content="🔥 Lizard&#39;s Blog">
+  <meta property="og:title" content="GDExtension - How to Write Your First Extension">
+  <meta property="og:description" content="
+Introduction With Godot 4.0 on the horizon a lot of people want to try out the new technologies that are coming with the new version.
+One of these is the GDExtension system that will be replacing the older GDNative system. GDNative was introduced as a means to enhance the editor itself by embedding C&#43;&#43; libraries or new language bindings into Godot. This had the advantage that users wouldn’t need to build the engine themselves but import a dynamic library. The other way would be to write a custom module for Godot and compile it yourself. Both of these had their own disadvantages. GDNative doesn’t have full access to the C&#43;&#43; engine API as modules do. On the other side, modules need to be compiled on the target computer or you need to have a CI/CD solution like GitHub Actions to compile the editor (like GodotSteam does).">
+  <meta property="og:locale" content="en_gb">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2022-11-28T00:00:00+00:00">
+    <meta property="article:modified_time" content="2022-11-28T00:00:00+00:00">
+    <meta property="og:image" content="https://paddy-exe.github.io/public/index.html/posts/gdextension-how-to-write-your-first-extension/Cover.png">
+
+
+    
+    
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://paddy-exe.github.io/public/index.html/posts/gdextension-how-to-write-your-first-extension/Cover.png">
+  <meta name="twitter:title" content="GDExtension - How to Write Your First Extension">
+  <meta name="twitter:description" content="
+Introduction With Godot 4.0 on the horizon a lot of people want to try out the new technologies that are coming with the new version.
+One of these is the GDExtension system that will be replacing the older GDNative system. GDNative was introduced as a means to enhance the editor itself by embedding C&#43;&#43; libraries or new language bindings into Godot. This had the advantage that users wouldn’t need to build the engine themselves but import a dynamic library. The other way would be to write a custom module for Godot and compile it yourself. Both of these had their own disadvantages. GDNative doesn’t have full access to the C&#43;&#43; engine API as modules do. On the other side, modules need to be compiled on the target computer or you need to have a CI/CD solution like GitHub Actions to compile the editor (like GodotSteam does).">
+
 
     
 
     <link rel="canonical" href="https://paddy-exe.github.io/public/index.html/posts/gdextension-how-to-write-your-first-extension/">
-    <link href="/public/index.html/style.min.9bd04d0fad85388343088ec85e9afd787ea003e72914d7f57df39c17ab2e7173.css" rel="stylesheet">
+    <link href="/public/index.html/style.min.d43bc6c79baa87f006efb2b92be952faeedeb1a3ab626c1d6abda52eae049355.css" rel="stylesheet">
     <link href="/public/index.html/code-highlight.min.706d31975fec544a864cb7f0d847a73ea55ca1df91bf495fd12a177138d807cf.css" rel="stylesheet">
 
     
@@ -198,7 +224,7 @@ stroke-linejoin="round" class="feather feather-home">
 </nav>
     </details>
             <div class="page-content">
-                <p><img src="Cover.png" alt="GDExtension - How to get started in C++"></p>
+                <p><img alt="GDExtension - How to get started in C++" src="/public/index.html/posts/gdextension-how-to-write-your-first-extension/Cover.png"></p>
 <h2 id="introduction">Introduction</h2>
 <p>With Godot 4.0 on the horizon a lot of people want to try out the new technologies that are coming with the new version.</p>
 <p>One of these is the GDExtension system that will be replacing the older GDNative system. GDNative was introduced as a means to enhance the editor itself by embedding C++ libraries or new language bindings into Godot. This had the advantage that users wouldn&rsquo;t need to build the engine themselves but import a dynamic library. The other way would be to write a custom module for Godot and compile it yourself. Both of these had their own disadvantages. GDNative doesn&rsquo;t have full access to the C++ engine API as modules do. On the other side, modules need to be compiled on the target computer or you need to have a CI/CD solution like GitHub Actions to compile the editor (like <a href="https://github.com/Gramps/GodotSteam">GodotSteam</a> does).</p>
@@ -213,7 +239,7 @@ stroke-linejoin="round" class="feather feather-home">
 <blockquote>
 <p>&#x1f4dd; The code here is the same I am using for my <a href="https://github.com/paddy-exe/GDExtensionSummator">GDExtensionSummator template</a>. If you want to built on top of it or just jump right into the action, you can simply use the template and get a headstart.</p>
 </blockquote>
-<p><img src="GDExtensionTemplate.png" alt="GDExtensionSummator - How to create a repo from the template">
+<p><img alt="GDExtensionSummator - How to create a repo from the template" src="/public/index.html/posts/gdextension-how-to-write-your-first-extension/GDExtensionTemplate.png">
 Click on the button &ldquo;Use this template&rdquo; which creates a new repository to your GitHub account based on the template</p>
 <h2 id="compilation-requirements">Compilation requirements</h2>
 <p>To be able to compile and build your extension you will need the same software installed as you need to compile the editor itself.</p>
@@ -465,10 +491,10 @@ scons: Building targets …
 <p>Now let’s open Godot 4.0 beta 6 again and we see … nothing?
 Well, we need to add a script first to use the Summator reference type.</p>
 <p>You can create a simple scene with a Node type as Scene root (any is fine really) and add a script to it. In the script editor, you can now create a new Summator class instance and add numbers to it via the add() method. You can print out the count by calling the get_total() method. This should look similar to this screenshot:</p>
-<p><img src="UsingExtension.png" alt="How to use the extension in editor"></p>
+<p><img alt="How to use the extension in editor" src="/public/index.html/posts/gdextension-how-to-write-your-first-extension/UsingExtension.png"></p>
 <p>Congratulation🎉🎉🎉You created your first extension!</p>
 <p>As a little bonus: When Ctrl+Clicking on the Summator class you can get this here:</p>
-<p><img src="ExtensionDocs.png" alt="Automatic GDExtension Docs"></p>
+<p><img alt="Automatic GDExtension Docs" src="/public/index.html/posts/gdextension-how-to-write-your-first-extension/ExtensionDocs.png"></p>
 <p>Yes, your GDExtension automatically creates docs for you. Adding descriptions isn’t yet possible unfortunately but this is already very cool and useful.</p>
 <p><strong>Thank you very much for reading!</strong></p>
 <p>If this blog post was helpful to you, I’d really appreciate a message, a like where I shared this post or you can support me by buying me a coffee :D.</p>
@@ -511,7 +537,7 @@ Well, we need to add a script first to use the Summator reference type.</p>
 </a>
 </div>
     <small class="footer_copyright">
-        © 2023 Patrick aka 🔥 Lizard.
+        © 2024 Patrick aka 🔥 Lizard.
         Powered by <a href="https://github.com/hugo-sid/hugo-blog-awesome" target="_blank" rel="noopener">Hugo blog awesome</a>.
     </small>
 </footer><a href="#" title="Go to top" id="totop">
