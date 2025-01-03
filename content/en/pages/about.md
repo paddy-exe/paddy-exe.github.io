@@ -6,8 +6,8 @@ author: Patrick Exner
 toc: false
 ---
 
-Hi there 👋, my name is Patrick aka 🔥 Lizard. I am a Biomimicry student from Germany. 
-I am interested in game, tool and engine development and have been working and messing around with game dev for a while. 
+Hi there 👋, my name is Patrick aka 🔥 Lizard. I am a graduated [Biomimicry](https://biomimicry.org/inspiration/what-is-biomimicry/) engineer from Germany now studying game development sciences.
+I am interested in game, tool and engine development and have been working and messing around with game development for a while. 
 I also have prior professional knowledge in Python. Nowadays, I work with the Godot Game Engine on several open-source 
 projects such as Godot itself, GDExtension and several VFX and Shader projects.
 
