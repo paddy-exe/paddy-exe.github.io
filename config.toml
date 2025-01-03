@@ -1,7 +1,7 @@
 title = "🔥 Lizard's Blog"
 baseURL = 'https://paddy-exe.github.io/public/index.html'
 languageCode = 'en-us'
-theme = "hugo-blog-awesome"
+theme = ["hugo-admonitions", "hugo-blog-awesome"]
 
 # Enable emojis globally
 enableEmoji = true
@@ -83,11 +83,19 @@ defaultContentLanguage = "en-gb"
   
  [[Languages.en-gb.params.socialIcons]]
  name = "twitter" 
- url = "https://twitter.com/patrick_exe" 
+ url = "https://twitter.com/patrick_exe"
+
+ [[Languages.en-gb.params.socialIcons]]
+ name = "bluesky"
+ url = "https://bsky.app/profile/flamelizard.bsky.social"
 
  [[Languages.en-gb.params.socialIcons]]
  name = "kofi"
  url = "https://ko-fi.com/flamelizard"
+
+ [[Languages.en-gb.params.socialIcons]]
+ name = "itchio"
+ url = "https://flamelizard.itch.io/"
 
 ### LANGUAGE SPECIFICATION END ###
 
@@ -97,7 +105,7 @@ defaultContentLanguage = "en-gb"
   
  [[params.socialIcons]] 
  name = "Rss" 
- url = "index.xml" 
+ url = "index.xml"
 
 [privacy]
   [privacy.disqus]
