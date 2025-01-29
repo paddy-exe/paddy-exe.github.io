@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SCons on 🔥 Lizard&#39;s Blog</title>
+    <link>http://localhost:1313/public/index.html/tags/scons/</link>
+    <description>Recent content in SCons on 🔥 Lizard&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Sun, 29 Dec 2024 18:00:05 +0100</lastBuildDate><atom:link href="http://localhost:1313/public/index.html/tags/scons/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to use the scons build-system with C&#43;&#43; software package managers (vcpkg, conan)</title>
+      <link>http://localhost:1313/public/index.html/posts/how-to-use-scons-with-cpp-package-managers/</link>
+      <pubDate>Sun, 29 Dec 2024 18:00:05 +0100</pubDate>
+      
+      <guid>http://localhost:1313/public/index.html/posts/how-to-use-scons-with-cpp-package-managers/</guid>
+      
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;As you know from perhaps my previous articles on &lt;a href=&#34;https://paddy-exe.github.io/posts/contributing-to-godot-visual-shader-nodes/&#34;&gt;how to contribute to Godot&lt;/a&gt;,
+&lt;a href=&#34;https://paddy-exe.github.io/posts/gdextension-how-to-write-your-first-extension/&#34;&gt;creating your own GDExtension&lt;/a&gt; or from the official Godot docs,
+Godot uses the &lt;a href=&#34;https://scons.org/&#34;&gt;SCons build-system&lt;/a&gt; to compile the engine code written in C++ to an executable.
+SCons tells the compiler specifically HOW to build together that executable.
+Another build-system you will have probably heard of is the widely popular and de-facto industry standard CMake.&lt;/p&gt;
+&lt;p&gt;These build-systems help you not only to compile your own code but also to combine your code together with C++ code others have written as libraries.
+These libraries also get updates so if you use several libraries in your projects it can get quite tedious managing everything.
+Here come software package manager to your rescue. They let you &amp;ldquo;install&amp;rdquo; a library into your project (meaning they download that source code and compile it)
+and then hold a record of which libraries with what version you have &amp;ldquo;installed&amp;rdquo; in your project.&lt;/p&gt;</description>
+      
+    </item>
+    
+  </channel>
+</rss>

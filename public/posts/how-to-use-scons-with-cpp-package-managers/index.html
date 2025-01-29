@@ -3,11 +3,11 @@
 <meta http-equiv="content-type" content="text/html">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title itemprop="name">How to use the scons build-system with C&#43;&#43; software package managers (vcpkg, conan) | 🔥 Lizard&#39;s Blog</title>
-<meta property="og:title" content="How to use the scons build-system with C&#43;&#43; software package managers (vcpkg, conan) | 🔥 Lizard&#39;s Blog" />
-<meta name="twitter:title" content="How to use the scons build-system with C&#43;&#43; software package managers (vcpkg, conan) | 🔥 Lizard&#39;s Blog" />
-<meta itemprop="name" content="How to use the scons build-system with C&#43;&#43; software package managers (vcpkg, conan) | 🔥 Lizard&#39;s Blog" />
-<meta name="application-name" content="How to use the scons build-system with C&#43;&#43; software package managers (vcpkg, conan) | 🔥 Lizard&#39;s Blog" />
+<title itemprop="name">How to use the SCons build-system with C&#43;&#43; software package managers (vcpkg, conan) | 🔥 Lizard&#39;s Blog</title>
+<meta property="og:title" content="How to use the SCons build-system with C&#43;&#43; software package managers (vcpkg, conan) | 🔥 Lizard&#39;s Blog" />
+<meta name="twitter:title" content="How to use the SCons build-system with C&#43;&#43; software package managers (vcpkg, conan) | 🔥 Lizard&#39;s Blog" />
+<meta itemprop="name" content="How to use the SCons build-system with C&#43;&#43; software package managers (vcpkg, conan) | 🔥 Lizard&#39;s Blog" />
+<meta name="application-name" content="How to use the SCons build-system with C&#43;&#43; software package managers (vcpkg, conan) | 🔥 Lizard&#39;s Blog" />
 <meta property="og:site_name" content="🔥 Lizard&#39;s Development Blog" />
 
 <meta name="description" content="A blog about my programming projects with the Godot Engine 🎮👾, Shaders and VFX ✨ as well as C&#43;&#43; for GDExtension ⚙️">
@@ -46,14 +46,14 @@
     {
         "@context": "http://schema.org",
         "@type": "Article",
-        "headline": "How to use the scons build-system with C++ software package managers (vcpkg, conan)",
+        "headline": "How to use the SCons build-system with C++ software package managers (vcpkg, conan)",
         "author": {
         "@type": "Person",
         "name": ""
         },
         "datePublished": "2024-12-29",
         "description": "",
-        "wordCount":  220 ,
+        "wordCount":  2203 ,
         "mainEntityOfPage": "True",
         "dateModified": "2024-12-29",
         "image": {
@@ -68,14 +68,14 @@
     </script>
 
 
-<meta name="generator" content="Hugo 0.140.1">
+<meta name="generator" content="Hugo 0.140.2">
     <script async src="https://eu.umami.is/script.js" data-website-id="5e71174a-7f03-4d2c-b04f-adfa793aad77"></script>
 
     
     <meta property="og:url" content="http://localhost:1313/public/index.html/posts/how-to-use-scons-with-cpp-package-managers/">
   <meta property="og:site_name" content="🔥 Lizard&#39;s Blog">
-  <meta property="og:title" content="How to use the scons build-system with C&#43;&#43; software package managers (vcpkg, conan)">
-  <meta property="og:description" content="Introduction As you know from perhaps my previous articles on how to contribute to Godot, creating your own GDExtension or from the official Godot docs, Godot uses the scons build-system to compile the engine code written in C&#43;&#43; to an executable. Scons tells the compiler specifically HOW to build together that executable. Another build-system you will have probably heard of is the widely popular and de-facto industry standard CMake.
+  <meta property="og:title" content="How to use the SCons build-system with C&#43;&#43; software package managers (vcpkg, conan)">
+  <meta property="og:description" content="Introduction As you know from perhaps my previous articles on how to contribute to Godot, creating your own GDExtension or from the official Godot docs, Godot uses the SCons build-system to compile the engine code written in C&#43;&#43; to an executable. SCons tells the compiler specifically HOW to build together that executable. Another build-system you will have probably heard of is the widely popular and de-facto industry standard CMake.
 These build-systems help you not only to compile your own code but also to combine your code together with C&#43;&#43; code others have written as libraries. These libraries also get updates so if you use several libraries in your projects it can get quite tedious managing everything. Here come software package manager to your rescue. They let you “install” a library into your project (meaning they download that source code and compile it) and then hold a record of which libraries with what version you have “installed” in your project.">
   <meta property="og:locale" content="en_gb">
   <meta property="og:type" content="article">
@@ -87,8 +87,8 @@ These build-systems help you not only to compile your own code but also to combi
     
     
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="How to use the scons build-system with C&#43;&#43; software package managers (vcpkg, conan)">
-  <meta name="twitter:description" content="Introduction As you know from perhaps my previous articles on how to contribute to Godot, creating your own GDExtension or from the official Godot docs, Godot uses the scons build-system to compile the engine code written in C&#43;&#43; to an executable. Scons tells the compiler specifically HOW to build together that executable. Another build-system you will have probably heard of is the widely popular and de-facto industry standard CMake.
+  <meta name="twitter:title" content="How to use the SCons build-system with C&#43;&#43; software package managers (vcpkg, conan)">
+  <meta name="twitter:description" content="Introduction As you know from perhaps my previous articles on how to contribute to Godot, creating your own GDExtension or from the official Godot docs, Godot uses the SCons build-system to compile the engine code written in C&#43;&#43; to an executable. SCons tells the compiler specifically HOW to build together that executable. Another build-system you will have probably heard of is the widely popular and de-facto industry standard CMake.
 These build-systems help you not only to compile your own code but also to combine your code together with C&#43;&#43; code others have written as libraries. These libraries also get updates so if you use several libraries in your projects it can get quite tedious managing everything. Here come software package manager to your rescue. They let you “install” a library into your project (meaning they download that source code and compile it) and then hold a record of which libraries with what version you have “installed” in your project.">
 
 
@@ -185,7 +185,7 @@ stroke-linejoin="round" class="feather feather-home">
     <main class="page-content" aria-label="Content">
         <article>
             <header class="header">
-                <h1 class="header-title">How to use the scons build-system with C&#43;&#43; software package managers (vcpkg, conan)</h1>
+                <h1 class="header-title">How to use the SCons build-system with C&#43;&#43; software package managers (vcpkg, conan)</h1>
                 
                 
                 <div class="post-meta">
@@ -200,6 +200,42 @@ stroke-linejoin="round" class="feather feather-home">
         <nav id="TableOfContents">
   <ol>
     <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#requirements">Requirements</a></li>
+    <li><a href="#the-manual-way">The manual way</a>
+      <ol>
+        <li><a href="#project-structure">Project structure</a></li>
+        <li><a href="#library-files">Library files</a></li>
+        <li><a href="#main-source-file">Main source file</a></li>
+        <li><a href="#setting-up-the-sconstruct-file">Setting up the SConstruct file</a></li>
+        <li><a href="#compiling-the-program">Compiling the program</a></li>
+        <li><a href="#running-the-program">Running the program</a></li>
+      </ol>
+    </li>
+    <li><a href="#the-package-manager-way">The package manager way</a>
+      <ol>
+        <li><a href="#vcpkg">vcpkg</a>
+          <ol>
+            <li><a href="#installation-of-vcpkg">Installation of vcpkg</a></li>
+            <li><a href="#main-source-file-1">Main source file</a></li>
+            <li><a href="#setting-up-the-sconstruct-file-1">Setting up the SConstruct file</a></li>
+            <li><a href="#compiling-the-program-1">Compiling the program</a></li>
+            <li><a href="#running-the-program-1">Running the program</a></li>
+          </ol>
+        </li>
+        <li><a href="#conan">conan</a>
+          <ol>
+            <li><a href="#installation-of-conan">Installation of conan</a></li>
+            <li><a href="#creating-conanfilepy">Creating conanfile.py</a></li>
+            <li><a href="#main-source-file-2">Main source file</a></li>
+            <li><a href="#setting-up-the-sconstruct-file-2">Setting up the SConstruct file</a></li>
+            <li><a href="#compiling-the-program-2">Compiling the program</a></li>
+            <li><a href="#running-the-program-2">Running the program</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#addendum">Addendum</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
   </ol>
 </nav>
     </details>
@@ -207,8 +243,8 @@ stroke-linejoin="round" class="feather feather-home">
                 <h2 id="introduction">Introduction</h2>
 <p>As you know from perhaps my previous articles on <a href="https://paddy-exe.github.io/posts/contributing-to-godot-visual-shader-nodes/">how to contribute to Godot</a>,
 <a href="https://paddy-exe.github.io/posts/gdextension-how-to-write-your-first-extension/">creating your own GDExtension</a> or from the official Godot docs,
-Godot uses the <a href="https://scons.org/">scons build-system</a> to compile the engine code written in C++ to an executable.
-Scons tells the compiler specifically HOW to build together that executable.
+Godot uses the <a href="https://scons.org/">SCons build-system</a> to compile the engine code written in C++ to an executable.
+SCons tells the compiler specifically HOW to build together that executable.
 Another build-system you will have probably heard of is the widely popular and de-facto industry standard CMake.</p>
 <p>These build-systems help you not only to compile your own code but also to combine your code together with C++ code others have written as libraries.
 These libraries also get updates so if you use several libraries in your projects it can get quite tedious managing everything.
@@ -216,7 +252,365 @@ Here come software package manager to your rescue. They let you &ldquo;install&r
 and then hold a record of which libraries with what version you have &ldquo;installed&rdquo; in your project.</p>
 <p>The best known software package manager for C and C++ are <a href="https://vcpkg.io/en/">vcpkg</a> and <a href="https://conan.io/">conan</a>.
 Both have a lot of features in common and are different in more advanced use-cases in which I won&rsquo;t go into here.
-Both have excellent support for CMake since - again - it is the de-facto standard. However, how do you use them with the scons build-system?</p>
+Both have excellent support for CMake since - again - it is the de-facto standard. However, how do you use them with the SCons build-system?</p>
+<h2 id="requirements">Requirements</h2>
+<p>If you want to follow along this post, you will need recent versions of following software installed:</p>
+<ul>
+<li>Python</li>
+<li>SCons</li>
+<li>CMake</li>
+<li>C++ compiler</li>
+</ul>
+<h2 id="the-manual-way">The manual way</h2>
+<p>To understand how SCons can generally be used with third-party libraries we will first explore the manual way of integrating libraries into our codebase .
+This will later help to understand how it can be done with package managers as well and will show how they help us. So let&rsquo;s create an example project.</p>
+<h3 id="project-structure">Project structure</h3>
+
+        <link rel="stylesheet" href="/public/index.html/css/vendors/admonitions.css">
+  <div class="admonition info">
+    <div class="admonition-header">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336l24 0 0-64-24 0c-13.3 0-24-10.7-24-24s10.7-24 24-24l48 0c13.3 0 24 10.7 24 24l0 88 8 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-80 0c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/></svg>
+      <span>Info</span>
+    </div>
+      <div class="admonition-content">
+        <p>No need to recreate the following project structure yourself by hand. You can check it out <a href="https://github.com/paddy-exe/manual-library-integration-scons">here</a></p>
+      </div>
+  </div>
+<p>Let&rsquo;s consider the following project structure:</p>
+<div class="highlight"><pre tabindex="0" style="color:#1d2432;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>manual-library-integration-scons/ <span style="color:#828b96;font-style:italic"># root folder name</span>
+</span></span><span style="display:flex;"><span>|
+</span></span><span style="display:flex;"><span>+--src/                   <span style="color:#828b96;font-style:italic"># source code of the program</span>
+</span></span><span style="display:flex;"><span>|   |                     <span style="color:#828b96;font-style:italic"># we are building</span>
+</span></span><span style="display:flex;"><span>|   +--helloworld.cpp
+</span></span><span style="display:flex;"><span>|   +--helloworld.h
+</span></span><span style="display:flex;"><span>|
+</span></span><span style="display:flex;"><span>+--sumlib/                <span style="color:#828b96;font-style:italic"># folder of the &#34;external&#34; shared library</span>
+</span></span><span style="display:flex;"><span>|   |
+</span></span><span style="display:flex;"><span>|   +--CMakeLists.txt
+</span></span><span style="display:flex;"><span>|   +--sumlib.cpp
+</span></span><span style="display:flex;"><span>|   +--sumlib.h
+</span></span><span style="display:flex;"><span>|
+</span></span><span style="display:flex;"><span>+--SConstruct             <span style="color:#828b96;font-style:italic"># SCons build file</span>
+</span></span></code></pre></div><h3 id="library-files">Library files</h3>
+<p>The <code>sumlib</code> folder only contains the library code which will be compiled to a dynamic library. Here we have it inside
+our project structure directly, but you can also consider the same procedure when using <a href="https://git-scm.com/book/en/v2/Git-Tools-Submodules">git submodules</a>.</p>
+<p>The contents of the files are purposefully written simple. We are merely creating a class with a static function that
+can add two integers together and returns the result.</p>
+<div class="highlight"><pre tabindex="0" style="color:#1d2432;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#828b96;font-style:italic">// sumlib.hpp header file
+</span></span></span><span style="display:flex;"><span><span style="color:#828b96;font-style:italic"></span><span style="color:#ff636f">class</span> <span style="color:#58a1dd">SumLib</span> {
+</span></span><span style="display:flex;"><span><span style="color:#ff636f">public</span><span style="color:#ff636f">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff636f">static</span> <span style="color:#ff636f">int</span> <span style="color:#58a1dd">add_two</span>(<span style="color:#ff636f">int</span> <span style="color:#58a1dd">p_val_a</span>, <span style="color:#ff636f">int</span> <span style="color:#58a1dd">p_val_b</span>);
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#1d2432;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#828b96;font-style:italic">// sumlib.cpp source file
+</span></span></span><span style="display:flex;"><span><span style="color:#828b96;font-style:italic"></span><span style="color:#828b96;font-style:italic">#include</span> <span style="color:#828b96;font-style:italic">&#34;sumlib.hpp&#34;</span><span style="color:#828b96;font-style:italic">
+</span></span></span><span style="display:flex;"><span><span style="color:#828b96;font-style:italic"></span>
+</span></span><span style="display:flex;"><span><span style="color:#ff636f">int</span> <span style="color:#58a1dd">SumLib</span><span style="color:#ff636f">::</span><span style="color:#58a1dd">add_two</span>(<span style="color:#ff636f">int</span> <span style="color:#58a1dd">p_val_a</span>, <span style="color:#ff636f">int</span> <span style="color:#58a1dd">p_val_b</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff636f">return</span> <span style="color:#58a1dd">p_val_a</span> <span style="color:#ff636f">+</span> <span style="color:#58a1dd">p_val_b</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The more complicated part of this setup is the <code>CMakeLists.txt</code> file.</p>
+<div class="highlight"><pre tabindex="0" style="color:#1d2432;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span><span style="color:#828b96;font-style:italic"># set the minimum required cmake version to compile our library
+</span></span></span><span style="display:flex;"><span><span style="color:#828b96;font-style:italic"></span><span style="color:#58a1dd">cmake_minimum_required</span>(<span style="color:#a6be9d">VERSION</span> <span style="color:#a6be9d">3.10</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#828b96;font-style:italic"># important for building for both archs on Mac
+</span></span></span><span style="display:flex;"><span><span style="color:#828b96;font-style:italic"># will be ignored on non-Apple platforms
+</span></span></span><span style="display:flex;"><span><span style="color:#828b96;font-style:italic"></span><span style="color:#58a1dd">set</span>(<span style="color:#a6be9d">CMAKE_OSX_ARCHITECTURES</span> <span style="color:#a6be9d">&#34;arm64;x86_64&#34;</span> <span style="color:#a6be9d">CACHE</span> <span style="color:#a6be9d">STRING</span> <span style="color:#a6be9d">&#34;&#34;</span> <span style="color:#a6be9d">FORCE</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#828b96;font-style:italic"># name the project
+</span></span></span><span style="display:flex;"><span><span style="color:#828b96;font-style:italic"></span><span style="color:#58a1dd">project</span>(<span style="color:#a6be9d">SumLib</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#828b96;font-style:italic"># set the C++ standard and if it should be required by the compiler to build
+</span></span></span><span style="display:flex;"><span><span style="color:#828b96;font-style:italic"></span><span style="color:#58a1dd">set</span>(<span style="color:#a6be9d">CMAKE_CXX_STANDARD</span> <span style="color:#a6be9d">11</span>)
+</span></span><span style="display:flex;"><span><span style="color:#58a1dd">set</span>(<span style="color:#a6be9d">CMAKE_CXX_STANDARD_REQUIRED</span> <span style="color:#a6be9d">ON</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#828b96;font-style:italic"># set a variable for all source files
+</span></span></span><span style="display:flex;"><span><span style="color:#828b96;font-style:italic"></span><span style="color:#58a1dd">set</span>(<span style="color:#a6be9d">SOURCE_FILES</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6be9d">sumlib.cpp</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#828b96;font-style:italic"># set a variable for all header files
+</span></span></span><span style="display:flex;"><span><span style="color:#828b96;font-style:italic"></span><span style="color:#58a1dd">set</span>(<span style="color:#a6be9d">HEADER_FILES</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6be9d">sumlib.hpp</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#828b96;font-style:italic"># set where the cmake should output the compiled library
+</span></span></span><span style="display:flex;"><span><span style="color:#828b96;font-style:italic"></span><span style="color:#58a1dd">set</span>(<span style="color:#a6be9d">CMAKE_LIBRARY_OUTPUT_DIRECTORY</span> <span style="color:#ff636f">${</span><span style="color:#58a1dd">CMAKE_BINARY_DIR</span><span style="color:#ff636f">}</span><span style="color:#a6be9d">/lib/</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#828b96;font-style:italic"># instruct cmake to compile the header and source files to a shared library
+</span></span></span><span style="display:flex;"><span><span style="color:#828b96;font-style:italic"></span><span style="color:#58a1dd">add_library</span>(<span style="color:#a6be9d">SumLib</span> <span style="color:#a6be9d">SHARED</span> <span style="color:#ff636f">${</span><span style="color:#58a1dd">HEADER_FILES</span><span style="color:#ff636f">}</span> <span style="color:#ff636f">${</span><span style="color:#58a1dd">SOURCE_FILES</span><span style="color:#ff636f">}</span>)
+</span></span></code></pre></div><h3 id="main-source-file">Main source file</h3>
+<p>Our <code>src</code> folder has the following contents.</p>
+
+  <div class="admonition note">
+    <div class="admonition-header">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M0 64C0 28.7 28.7 0 64 0L224 0l0 128c0 17.7 14.3 32 32 32l128 0 0 125.7-86.8 86.8c-10.3 10.3-17.5 23.1-21 37.2l-18.7 74.9c-2.3 9.2-1.8 18.8 1.3 27.5L64 512c-35.3 0-64-28.7-64-64L0 64zm384 64l-128 0L256 0 384 128zM549.8 235.7l14.4 14.4c15.6 15.6 15.6 40.9 0 56.6l-29.4 29.4-71-71 29.4-29.4c15.6-15.6 40.9-15.6 56.6 0zM311.9 417L441.1 287.8l71 71L382.9 487.9c-4.1 4.1-9.2 7-14.9 8.4l-60.1 15c-5.5 1.4-11.2-.2-15.2-4.2s-5.6-9.7-4.2-15.2l15-60.1c1.4-5.6 4.3-10.8 8.4-14.9z"/></svg>
+      <span>Note</span>
+    </div>
+      <div class="admonition-content">
+        <p>Have a look at the line <code>#include &quot;sumlib/sumlib.hpp&quot;</code>. The <code>include</code> preprocessor has no relative path to the file we are including.
+Generally it is recommended to have only paths from the root of your project and avoid <code>include</code> starting with <code>../</code> to have it easier when
+you want to restructure your project later on.
+This can be set by your build-system or the IDE you are using (in Visual Studio or XCode at least) or alternatively by altering the
+<code>CPPPATH</code> variable from your build-system.</p>
+      </div>
+  </div>
+<div class="highlight"><pre tabindex="0" style="color:#1d2432;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#828b96;font-style:italic">// helloworld.cpp source file
+</span></span></span><span style="display:flex;"><span><span style="color:#828b96;font-style:italic"></span><span style="color:#828b96;font-style:italic">#include</span> <span style="color:#828b96;font-style:italic">&#34;sumlib/sumlib.hpp&#34;</span><span style="color:#828b96;font-style:italic">
+</span></span></span><span style="display:flex;"><span><span style="color:#828b96;font-style:italic">#include</span> <span style="color:#828b96;font-style:italic">&lt;iostream&gt;</span><span style="color:#828b96;font-style:italic">
+</span></span></span><span style="display:flex;"><span><span style="color:#828b96;font-style:italic"></span>
+</span></span><span style="display:flex;"><span><span style="color:#ff636f">int</span> <span style="color:#58a1dd">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#58a1dd">std</span><span style="color:#ff636f">::</span><span style="color:#58a1dd">cout</span> <span style="color:#ff636f">&lt;&lt;</span> <span style="color:#58a1dd">SumLib</span><span style="color:#ff636f">::</span><span style="color:#58a1dd">add_two</span>(<span style="color:#a6be9d">5</span>, <span style="color:#a6be9d">2</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#58a1dd">std</span><span style="color:#ff636f">::</span><span style="color:#58a1dd">cout</span> <span style="color:#ff636f">&lt;&lt;</span> <span style="color:#a6be9d">&#34;</span><span style="color:#a6be9d">\n</span><span style="color:#a6be9d">&#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff636f">return</span> <span style="color:#a6be9d">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Here we are including the <code>iostream</code> library to be able to output a string to the console. Also, we are using a relative path for our library
+since it is in our project structure.</p>
+<h3 id="setting-up-the-sconstruct-file">Setting up the SConstruct file</h3>
+<p>The SConstruct build file in the root directory for calling SCons looks like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#1d2432;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span><span style="color:#828b96;font-style:italic">#!/usr/bin/env python</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff636f">import</span> <span style="color:#58a1dd">os</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff636f">import</span> <span style="color:#58a1dd">sys</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#58a1dd">env</span> <span style="color:#ff636f">=</span> <span style="color:#58a1dd">Environment</span>()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#828b96;font-style:italic"># Glob search through source files given a specific pattern</span>
+</span></span><span style="display:flex;"><span><span style="color:#58a1dd">sources</span> <span style="color:#ff636f">=</span> <span style="color:#58a1dd">Glob</span>(<span style="color:#a6be9d">&#34;src/*.cpp&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#58a1dd">env</span><span style="color:#ff636f">.</span><span style="color:#58a1dd">Append</span>(<span style="color:#58a1dd">CPPPATH</span><span style="color:#ff636f">=</span>[<span style="color:#a6be9d">&#34;.&#34;</span>])
+</span></span><span style="display:flex;"><span><span style="color:#58a1dd">env</span><span style="color:#ff636f">.</span><span style="color:#58a1dd">Append</span>(<span style="color:#58a1dd">LIBS</span><span style="color:#ff636f">=</span>[<span style="color:#a6be9d">&#34;libSumLib&#34;</span>])
+</span></span><span style="display:flex;"><span><span style="color:#58a1dd">env</span><span style="color:#ff636f">.</span><span style="color:#58a1dd">Append</span>(<span style="color:#58a1dd">LIBPATH</span><span style="color:#ff636f">=</span>[<span style="color:#a6be9d">&#34;sumlib/lib/&#34;</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#58a1dd">env</span><span style="color:#ff636f">.</span><span style="color:#58a1dd">Append</span>(<span style="color:#58a1dd">LINKFLAGS</span><span style="color:#ff636f">=</span>[<span style="color:#a6be9d">&#34;-Wl,-rpath,&#34;</span> <span style="color:#ff636f">+</span> <span style="color:#58a1dd">os</span><span style="color:#ff636f">.</span><span style="color:#58a1dd">path</span><span style="color:#ff636f">.</span><span style="color:#58a1dd">abspath</span>(<span style="color:#a6be9d">&#34;sumlib/lib/&#34;</span>)])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#828b96;font-style:italic"># set c++ standard to 11</span>
+</span></span><span style="display:flex;"><span><span style="color:#58a1dd">env</span><span style="color:#ff636f">.</span><span style="color:#58a1dd">Append</span>(<span style="color:#58a1dd">CXXFLAGS</span><span style="color:#ff636f">=</span>[<span style="color:#a6be9d">&#39;-std=c++11&#39;</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#828b96;font-style:italic"># Create a runnable program given the source files with all their dependencies</span>
+</span></span><span style="display:flex;"><span><span style="color:#58a1dd">env</span><span style="color:#ff636f">.</span><span style="color:#58a1dd">Program</span>(<span style="color:#a6be9d">&#34;helloworld&#34;</span>, <span style="color:#58a1dd">sources</span>)
+</span></span></code></pre></div><p>We are first creating a <a href="https://scons.org/doc/0.97/HTML/scons-user/c1051.html">construction environment variable</a>.
+SCons fills this automatically upon creation with default settings based on our running system. By appending values to this
+environment we can configure the build process in which SCons tells the compiler how the program should be built.</p>
+<p>Next up, we are collecting all the source files via the <a href="https://scons.org/doc/latest/HTML/scons-user/apd.html#f-Glob"><code>Glob</code> function</a>
+using a specific pattern. Since we need every file in the <code>src</code> directory we use the wildcard character <code>*</code>.</p>
+<p>Now, the <a href="https://scons.org/doc/0.92/HTML/scons-user/x537.html"><code>CPPPATH</code></a> environment variable is for telling the
+compiler where to find the dependencies you are referencing in your files with <code>include</code> statements.</p>
+<p>The <a href="https://scons.org/doc/1.2.0/HTML/scons-user/a4774.html#cv-LIBS"><code>LIBS</code> variable</a> sets the name of libraries which
+will be linked to your program.</p>
+<p><a href="https://scons.org/doc/1.2.0/HTML/scons-user/a4774.html#cv-LIBPATH"><code>LIBPATH</code></a> is the variable for the paths where SCons
+will search for the libraries you are linking to your program. Since CMake will output the dynamic library into the <code>lib</code>
+folder we add this path here.</p>
+<p>Specifically for macOS we need to set extra arguments for <code>LINKFLAGS</code>, as we are adding an extra path to the <code>rpath</code> via the
+<code>-rpath</code> linker flag so macOS or Linux know where the library is when running the program we created.</p>
+
+  <div class="admonition info">
+    <div class="admonition-header">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336l24 0 0-64-24 0c-13.3 0-24-10.7-24-24s10.7-24 24-24l48 0c13.3 0 24 10.7 24 24l0 88 8 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-80 0c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/></svg>
+      <span>Info</span>
+    </div>
+      <div class="admonition-content">
+        <p><code>rpath</code> is the <strong>r</strong>un-time search <strong>path</strong> on Linux and macOS where your executable looks for dynamic libraries.
+On macOS for instance it is usually located inside the <code>*.app/Frameworks</code> folder.
+You can read more about this topic <a href="https://duerrenberger.dev/blog/2021/08/04/understanding-rpath-with-cmake/">here</a> and
+<a href="https://squareys.de/blog/rpath-for-dummies/">here</a></p>
+      </div>
+  </div>
+<p>In addition, we are setting the C++ standard to version 11 using the <code>CXXFLAGS</code> environment variable.</p>
+<p>Lastly, we tell SCons to compile the given source files to an executable with the name <code>helloworld</code>.</p>
+<h3 id="compiling-the-program">Compiling the program</h3>
+<p>To build the executable you need to call SCons in your top project path by using</p>
+<div class="highlight"><pre tabindex="0" style="color:#1d2432;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>scons
+</span></span></code></pre></div><h3 id="running-the-program">Running the program</h3>
+<p>If compiled this program and everything worked you will have created an executable called <code>helloworld</code> as described above in the SConstruct file.
+Now, if you run this program by calling</p>
+<div class="highlight"><pre tabindex="0" style="color:#1d2432;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>./helloworld    <span style="color:#828b96;font-style:italic"># this might have different filenames on e.g. Windows so be sure to add those here too</span>
+</span></span></code></pre></div><p>You will now receive the following output in the console:</p>
+<div class="highlight"><pre tabindex="0" style="color:#1d2432;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#a6be9d">7</span>
+</span></span></code></pre></div><p>Congrats!!! Now you know the basics of using SCons with external libraries. Let&rsquo;s explore how to use it with package managers further down.</p>
+<h2 id="the-package-manager-way">The package manager way</h2>
+<p>As we now have a better understanding of the different environment variables of the SCons built-system, let&rsquo;s explore
+how we can integrate C++ package managers here. For the following examples we will integrate the
+<a href="https://github.com/fmtlib/fmt"><code>fmt</code> formatting library</a> with both vcpkg and conan.</p>
+<h3 id="vcpkg">vcpkg</h3>
+<p>For using the vcpkg package manager we assume similarly to the last section the following folder structure:</p>
+<div class="highlight"><pre tabindex="0" style="color:#1d2432;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>vcpkg-simple-scons-test/ <span style="color:#828b96;font-style:italic"># root folder name</span>
+</span></span><span style="display:flex;"><span>|
+</span></span><span style="display:flex;"><span>+--src/                   <span style="color:#828b96;font-style:italic"># source code of the program</span>
+</span></span><span style="display:flex;"><span>|   |                     <span style="color:#828b96;font-style:italic"># we are building</span>
+</span></span><span style="display:flex;"><span>|   +--helloworld.cpp
+</span></span><span style="display:flex;"><span>|   +--helloworld.h
+</span></span><span style="display:flex;"><span>|
+</span></span><span style="display:flex;"><span>+--SConstruct             <span style="color:#828b96;font-style:italic"># SCons build file</span>
+</span></span></code></pre></div><p>Next up, we will install vcpkg. For that, you will first need to clone vcpkg to a folder of your choice on your system.</p>
+
+  <div class="admonition note">
+    <div class="admonition-header">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M0 64C0 28.7 28.7 0 64 0L224 0l0 128c0 17.7 14.3 32 32 32l128 0 0 125.7-86.8 86.8c-10.3 10.3-17.5 23.1-21 37.2l-18.7 74.9c-2.3 9.2-1.8 18.8 1.3 27.5L64 512c-35.3 0-64-28.7-64-64L0 64zm384 64l-128 0L256 0 384 128zM549.8 235.7l14.4 14.4c15.6 15.6 15.6 40.9 0 56.6l-29.4 29.4-71-71 29.4-29.4c15.6-15.6 40.9-15.6 56.6 0zM311.9 417L441.1 287.8l71 71L382.9 487.9c-4.1 4.1-9.2 7-14.9 8.4l-60.1 15c-5.5 1.4-11.2-.2-15.2-4.2s-5.6-9.7-4.2-15.2l15-60.1c1.4-5.6 4.3-10.8 8.4-14.9z"/></svg>
+      <span>Note</span>
+    </div>
+      <div class="admonition-content">
+        <p>If you want to set up your project to use a CI/CD pipeline like GitHub Actions you will want to move the <code>vcpkg</code> install
+folder inside your project as a git submodule. In this example we will follow the
+<a href="https://learn.microsoft.com/en-us/vcpkg/get_started/get-started?pivots=shell-powershell">official docs instructions</a>
+instead. If you already have vcpkg installed, you can skip this section.</p>
+      </div>
+  </div>
+<h4 id="installation-of-vcpkg">Installation of vcpkg</h4>
+<ol>
+<li>Clone the project via <code>git clone</code> on your system</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#1d2432;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>git clone https://github.com/microsoft/vcpkg.git
+</span></span></code></pre></div><ol start="2">
+<li>Change into the directory</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#1d2432;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#58a1dd">cd</span> vcpkg
+</span></span></code></pre></div><ol start="3">
+<li>Execute the bootstrap script</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#1d2432;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>.<span style="color:#a6be9d">\b</span>ootstrap-vcpkg.bat
+</span></span></code></pre></div><ol start="4">
+<li>Set the environment variables to the path of your vcpkg installation directory</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#1d2432;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#58a1dd">VCPKG_ROOT</span> <span style="color:#ff636f">=</span> <span style="color:#a6be9d">&#34;C:\path\to\vcpkg&#34;</span> <span style="color:#828b96;font-style:italic"># tells vcpkg where it is installed</span>
+</span></span><span style="display:flex;"><span><span style="color:#58a1dd">PATH</span> <span style="color:#ff636f">=</span> <span style="color:#a6be9d">&#34;VCPKG_ROOT&#34;</span>             <span style="color:#828b96;font-style:italic"># add VCPKG_ROOT to your path variable</span>
+</span></span></code></pre></div><ol start="5">
+<li>Switch back to the directory of your C++ project</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#1d2432;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#58a1dd">cd</span> switch/back/to/project
+</span></span></code></pre></div><ol start="6">
+<li>Create a new <code>vcpkg</code> &ldquo;application&rdquo; and thereby a manifest file <code>vcpkg.json</code> in your project directory which gives <code>vcpkg</code> information which dependencies
+you want installed.</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#1d2432;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>vcpkg new --application
+</span></span></code></pre></div>
+  <div class="admonition warning">
+    <div class="admonition-header">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.7 .2 40.1S486.3 480 472 480L40 480c-14.3 0-27.6-7.7-34.7-20.1s-7-27.8 .2-40.1l216-368C228.7 39.5 241.8 32 256 32zm0 128c-13.3 0-24 10.7-24 24l0 112c0 13.3 10.7 24 24 24s24-10.7 24-24l0-112c0-13.3-10.7-24-24-24zm32 224a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"/></svg>
+      <span>Warning</span>
+    </div>
+      <div class="admonition-content">
+        <p>If you get any errors calling <code>vcpkg</code> here saying vcpkg is now a known command your <code>PATH</code> variable may not have been set/updated correctly.</p>
+      </div>
+  </div>
+<ol start="7">
+<li>Next up we will add the <code>fmt</code> library dependency to our <code>vcpkg.json</code></li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#1d2432;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>vcpkg add port fmt
+</span></span></code></pre></div><p>It should now look like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#1d2432;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#58a1dd">&#34;dependencies&#34;</span>: [
+</span></span><span style="display:flex;"><span>        <span style="color:#a6be9d">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>    ]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ol start="8">
+<li>In your project directory instruct vcpkg to install the dependencies described in the <code>vcpkg.json</code></li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#1d2432;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>vcpkg install
+</span></span></code></pre></div><p>If that step has worked correctly you should now have a new folder inside your project directory called <code>vcpkg_installed</code>.
+In there you will see two folders. One named <code>vcpkg</code> which contains some internal vcpkg configuration files.
+The other one will be named after your system configuration. If you are on Windows, it will be called something like <code>x64-windows</code>
+and similarly if you are on macOS or Linux. In there you can find the library header files for the installed <code>fmt</code> library
+(inside <code>include/fmt</code>) and the dynamic library in <code>lib/libfmt.*</code> (The &ldquo;*&rdquo; asterisk is here a placeholder for the file suffix specific to your running system).</p>
+<h4 id="main-source-file-1">Main source file</h4>
+<p>Next up, let&rsquo;s go through the <code>helloworld.cpp</code> file content. Similarly to the section when integrating a library manually, we are including the <code>fmt</code> library.</p>
+<div class="highlight"><pre tabindex="0" style="color:#1d2432;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#828b96;font-style:italic">// helloworld.cpp source file
+</span></span></span><span style="display:flex;"><span><span style="color:#828b96;font-style:italic"></span><span style="color:#828b96;font-style:italic">#include</span> <span style="color:#828b96;font-style:italic">&lt;fmt/core.h&gt;</span><span style="color:#828b96;font-style:italic">
+</span></span></span><span style="display:flex;"><span><span style="color:#828b96;font-style:italic"></span>
+</span></span><span style="display:flex;"><span><span style="color:#ff636f">int</span> <span style="color:#58a1dd">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#58a1dd">fmt</span><span style="color:#ff636f">::</span><span style="color:#58a1dd">print</span>(<span style="color:#a6be9d">&#34;Hello World!</span><span style="color:#a6be9d">\n</span><span style="color:#a6be9d">&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#ff636f">return</span> <span style="color:#a6be9d">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Instead of using the standard library we are including the <code>fmt</code> library and use its print function to output <code>Hello World!</code> to the console.</p>
+<p>Now to finish everything up we will create a new SConstruct file specific to this setup.</p>
+<h4 id="setting-up-the-sconstruct-file-1">Setting up the SConstruct file</h4>
+<p>For now copy this content below, and we will go through it again for the content that is specific to vcpkg.</p>
+<div class="highlight"><pre tabindex="0" style="color:#1d2432;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span><span style="color:#828b96;font-style:italic">#!/usr/bin/env python</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff636f">import</span> <span style="color:#58a1dd">os</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff636f">import</span> <span style="color:#58a1dd">sys</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#58a1dd">env</span> <span style="color:#ff636f">=</span> <span style="color:#58a1dd">Environment</span>()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#828b96;font-style:italic"># Glob search through source files given a specific pattern</span>
+</span></span><span style="display:flex;"><span><span style="color:#58a1dd">sources</span> <span style="color:#ff636f">=</span> <span style="color:#58a1dd">Glob</span>(<span style="color:#a6be9d">&#34;src/*.cpp&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff636f">if</span> <span style="color:#58a1dd">sys</span><span style="color:#ff636f">.</span><span style="color:#58a1dd">platform</span> <span style="color:#ff636f">==</span> <span style="color:#a6be9d">&#34;darwin&#34;</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#58a1dd">vcpkg_lib_path</span> <span style="color:#ff636f">=</span> <span style="color:#a6be9d">&#34;vcpkg_installed/&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#58a1dd">env</span><span style="color:#ff636f">.</span><span style="color:#58a1dd">Append</span>(<span style="color:#58a1dd">CPPPATH</span><span style="color:#ff636f">=</span>[<span style="color:#a6be9d">&#34;vcpkg_installed/arm64-osx/include&#34;</span>])
+</span></span><span style="display:flex;"><span>    <span style="color:#58a1dd">env</span><span style="color:#ff636f">.</span><span style="color:#58a1dd">Append</span>(<span style="color:#58a1dd">LIBPATH</span><span style="color:#ff636f">=</span><span style="color:#a6be9d">&#34;vcpkg_installed/arm64-osx/lib/&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#ff636f">elif</span> <span style="color:#58a1dd">sys</span><span style="color:#ff636f">.</span><span style="color:#58a1dd">platform</span> <span style="color:#ff636f">==</span> <span style="color:#a6be9d">&#34;win32&#34;</span> <span style="color:#ff636f">or</span> <span style="color:#58a1dd">sys</span><span style="color:#ff636f">.</span><span style="color:#58a1dd">platform</span> <span style="color:#ff636f">==</span> <span style="color:#a6be9d">&#34;msys&#34;</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#58a1dd">env</span><span style="color:#ff636f">.</span><span style="color:#58a1dd">Append</span>(<span style="color:#58a1dd">CPPPATH</span><span style="color:#ff636f">=</span>[<span style="color:#a6be9d">&#34;vcpkg_installed/x64-windows/include&#34;</span>])
+</span></span><span style="display:flex;"><span>    <span style="color:#58a1dd">env</span><span style="color:#ff636f">.</span><span style="color:#58a1dd">Append</span>(<span style="color:#58a1dd">LIBPATH</span><span style="color:#ff636f">=</span><span style="color:#a6be9d">&#34;vcpkg_installed/x64-windows/lib/&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#ff636f">elif</span> <span style="color:#58a1dd">sys</span><span style="color:#ff636f">.</span><span style="color:#58a1dd">platform</span> <span style="color:#ff636f">==</span> <span style="color:#a6be9d">&#34;linux&#34;</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#58a1dd">env</span><span style="color:#ff636f">.</span><span style="color:#58a1dd">Append</span>(<span style="color:#58a1dd">CPPPATH</span><span style="color:#ff636f">=</span>[<span style="color:#a6be9d">&#34;vcpkg_installed/x64-linux/include&#34;</span>])
+</span></span><span style="display:flex;"><span>    <span style="color:#58a1dd">env</span><span style="color:#ff636f">.</span><span style="color:#58a1dd">Append</span>(<span style="color:#58a1dd">LIBPATH</span><span style="color:#ff636f">=</span><span style="color:#a6be9d">&#34;vcpkg_installed/x64-linux/lib/&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#ff636f">else</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#58a1dd">print</span>(<span style="color:#a6be9d">&#34;Your system is not supported by the the SConstruct file. Exciting.&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#58a1dd">env</span><span style="color:#ff636f">.</span><span style="color:#58a1dd">Exit</span>(<span style="color:#a6be9d">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#828b96;font-style:italic"># set c++ standard to 11</span>
+</span></span><span style="display:flex;"><span><span style="color:#58a1dd">env</span><span style="color:#ff636f">.</span><span style="color:#58a1dd">Append</span>(<span style="color:#58a1dd">CXXFLAGS</span><span style="color:#ff636f">=</span>[<span style="color:#a6be9d">&#39;-std=c++11&#39;</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#828b96;font-style:italic"># set name of library/ies to be linked</span>
+</span></span><span style="display:flex;"><span><span style="color:#58a1dd">env</span><span style="color:#ff636f">.</span><span style="color:#58a1dd">Append</span>(<span style="color:#58a1dd">LIBS</span><span style="color:#ff636f">=</span>[<span style="color:#a6be9d">&#34;libfmt&#34;</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#828b96;font-style:italic"># Create a runnable program given the source files with all their dependencies</span>
+</span></span><span style="display:flex;"><span><span style="color:#58a1dd">env</span><span style="color:#ff636f">.</span><span style="color:#58a1dd">Program</span>(<span style="color:#a6be9d">&#34;helloworld&#34;</span>, <span style="color:#58a1dd">sources</span>)
+</span></span></code></pre></div><p>The main differences between the vcpkg version and the manual way are two-fold:</p>
+<ol>
+<li>You have to specify a lot of boilerplate code for each operating system to handle the different <code>CPPPATH</code>&rsquo;s and <code>LIBPATH</code>&rsquo;s. This could perhaps be handled differently by giving <code>vcpkg</code> instructions to package every platform library together. I haven&rsquo;t found such a solution (yet).</li>
+<li>You don&rsquo;t need to specify the <code>rpath</code> anymore. This will be automatically handled by <code>vcpkg</code>.</li>
+</ol>
+<p>Your final project structure should now look something like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#1d2432;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>vcpkg-simple-scons-test/      <span style="color:#828b96;font-style:italic"># root folder name</span>
+</span></span><span style="display:flex;"><span>|
+</span></span><span style="display:flex;"><span>+--src/                       <span style="color:#828b96;font-style:italic"># source code of the program</span>
+</span></span><span style="display:flex;"><span>|   |                         <span style="color:#828b96;font-style:italic"># we are building</span>
+</span></span><span style="display:flex;"><span>|   +--helloworld.cpp
+</span></span><span style="display:flex;"><span>|   +--helloworld.h
+</span></span><span style="display:flex;"><span>|
+</span></span><span style="display:flex;"><span>+--vcpkg_installed/           <span style="color:#828b96;font-style:italic"># location of installed libraries sources and binaries and configuration information</span>
+</span></span><span style="display:flex;"><span>|   |                     
+</span></span><span style="display:flex;"><span>|   +--arm64-osx/             <span style="color:#828b96;font-style:italic"># will be named differently for each running platform</span>
+</span></span><span style="display:flex;"><span>|   |
+</span></span><span style="display:flex;"><span>|   +--vcpkg/             
+</span></span><span style="display:flex;"><span>|
+</span></span><span style="display:flex;"><span>+--SConstruct                 <span style="color:#828b96;font-style:italic"># SCons build file</span>
+</span></span><span style="display:flex;"><span>|
+</span></span><span style="display:flex;"><span>+--vcpkg-configuration.json
+</span></span><span style="display:flex;"><span>|
+</span></span><span style="display:flex;"><span>+--vcpkg.json                 <span style="color:#828b96;font-style:italic"># vcpkg library configuration json</span>
+</span></span></code></pre></div><h4 id="compiling-the-program-1">Compiling the program</h4>
+<p>To build the executable you need to call SCons in your top project path by using</p>
+<div class="highlight"><pre tabindex="0" style="color:#1d2432;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>scons
+</span></span></code></pre></div><h4 id="running-the-program-1">Running the program</h4>
+<p>If compiled this program and everything worked you will have created an executable called <code>helloworld</code> as described above in the SConstruct file.
+Now, if you run this program by calling</p>
+<div class="highlight"><pre tabindex="0" style="color:#1d2432;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>./helloworld    <span style="color:#828b96;font-style:italic"># this might have different filenames on e.g. Windows so be sure to add those here too</span>
+</span></span></code></pre></div><p>You will now receive the following output in the console:</p>
+<div class="highlight"><pre tabindex="0" style="color:#1d2432;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>Hello World!
+</span></span></code></pre></div><h3 id="conan">conan</h3>
+<p>For using the conan package manager we assume similarly to the last sections the following folder structure:</p>
+<div class="highlight"><pre tabindex="0" style="color:#1d2432;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>conan-simple-scons-test/ <span style="color:#828b96;font-style:italic"># root folder name</span>
+</span></span><span style="display:flex;"><span>|
+</span></span><span style="display:flex;"><span>+--src/                   <span style="color:#828b96;font-style:italic"># source code of the program</span>
+</span></span><span style="display:flex;"><span>|   |                     <span style="color:#828b96;font-style:italic"># we are building</span>
+</span></span><span style="display:flex;"><span>|   +--helloworld.cpp
+</span></span><span style="display:flex;"><span>|   +--helloworld.h
+</span></span><span style="display:flex;"><span>|
+</span></span><span style="display:flex;"><span>+--SConstruct             <span style="color:#828b96;font-style:italic"># SCons build file</span>
+</span></span></code></pre></div><h4 id="installation-of-conan">Installation of conan</h4>
+<h4 id="creating-conanfilepy">Creating conanfile.py</h4>
+<h4 id="main-source-file-2">Main source file</h4>
+<h4 id="setting-up-the-sconstruct-file-2">Setting up the SConstruct file</h4>
+<h4 id="compiling-the-program-2">Compiling the program</h4>
+<p>To build the executable you need to call SCons in your top project path by using</p>
+<div class="highlight"><pre tabindex="0" style="color:#1d2432;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>scons
+</span></span></code></pre></div><h4 id="running-the-program-2">Running the program</h4>
+<p>If compiled this program and everything worked you will have created an executable called <code>helloworld</code> as described above in the SConstruct file.
+Now, if you run this program by calling</p>
+<div class="highlight"><pre tabindex="0" style="color:#1d2432;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>./helloworld    <span style="color:#828b96;font-style:italic"># this might have different filenames on e.g. Windows so be sure to add those here too</span>
+</span></span></code></pre></div><p>You will now receive the following output in the console:</p>
+<div class="highlight"><pre tabindex="0" style="color:#1d2432;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>Hello World!
+</span></span></code></pre></div><h2 id="addendum">Addendum</h2>
+<h2 id="conclusion">Conclusion</h2>
 
             </div>
         </article></main>
@@ -270,7 +664,7 @@ Both have excellent support for CMake since - again - it is the de-facto standar
 </a>
 </div>
     <small class="footer_copyright">
-        © 2024 Patrick aka 🔥 Lizard.
+        © 2025 Patrick aka 🔥 Lizard.
         Powered by <a href="https://github.com/hugo-sid/hugo-blog-awesome" target="_blank" rel="noopener">Hugo blog awesome</a>.
     </small>
 </footer><a href="#" title="Go to top" id="totop">
