@@ -68,7 +68,7 @@
     </script>
 
 
-<meta name="generator" content="Hugo 0.140.2">
+<meta name="generator" content="Hugo 0.143.1">
     <script async src="https://eu.umami.is/script.js" data-website-id="5e71174a-7f03-4d2c-b04f-adfa793aad77"></script>
 
     
@@ -97,7 +97,7 @@ One of these is the GDExtension system that will be replacing the older GDNative
     
 
     <link rel="canonical" href="https://paddy-exe.github.io/public/index.html/posts/gdextension-how-to-write-your-first-extension/">
-    <link href="/public/index.html/style.min.d43bc6c79baa87f006efb2b92be952faeedeb1a3ab626c1d6abda52eae049355.css" rel="stylesheet">
+    <link href="/public/index.html/style.min.2d921c18cf1ec555ffc03d59a8adc211c402c68c930c27d6a0c306ab175a8d09.css" rel="stylesheet">
     <link href="/public/index.html/code-highlight.min.706d31975fec544a864cb7f0d847a73ea55ca1df91bf495fd12a177138d807cf.css" rel="stylesheet">
 
     
@@ -120,7 +120,9 @@ One of these is the GDExtension system that will be replacing the older GDNative
     <link rel="icon" type="image/svg+xml" href="/public/index.html/icons/favicon.svg">
 
     
-    </head>
+    
+    
+</head>
 <body data-theme = "auto" class="notransition">
 
 <script src="/public/index.html/js/theme.min.8961c317c5b88b953fe27525839672c9343f1058ab044696ca225656c8ba2ab0.js" integrity="sha256-iWHDF8W4i5U/4nUlg5ZyyTQ/EFirBEaWyiJWVsi6KrA="></script>
@@ -191,6 +193,7 @@ stroke-linejoin="round" class="feather feather-home">
                 <h1 class="header-title">GDExtension - How to Write Your First Extension</h1>
                 
                 
+                
                 <div class="post-meta">
                     <time datetime="2022-11-28T00:00:00&#43;00:00" itemprop="datePublished"> 28 Nov 2022 </time>
                 </div>
@@ -229,14 +232,11 @@ stroke-linejoin="round" class="feather feather-home">
 <p>Now, how&rsquo;s GDExtension different? It is designed to have the advantages of both modules and GDNative. You don&rsquo;t need to recompile the engine and you have more in-depth access to the C++ API in the Godot editor.</p>
 <p>Since we settled how useful GDExtension will be for the future of Godot&rsquo;s extensebility, let&rsquo;s write our first GDExtension. For this post here, we will be creating a Reference class which can add numbers together and keep track of its count.</p>
 <blockquote>
-<p>&#x26a0;&#xfe0f;&#x26a0;&#xfe0f;&#x26a0;&#xfe0f; <strong>Disclaimer</strong>: The code snippets here are already outdated and have been updated. The main principles still apply though. Since I contributed the official documentation for it as well, please check that <a href="https://docs.godotengine.org/en/stable/tutorials/scripting/gdextension/what_is_gdextension.html">out as well when getting started with the new system.</a></p>
-</blockquote>
+<p>&#x26a0;&#xfe0f;&#x26a0;&#xfe0f;&#x26a0;&#xfe0f; <strong>Disclaimer</strong>: The code snippets here are already outdated and have been updated. The main principles still apply though. Since I contributed the official documentation for it as well, please check that <a href="https://docs.godotengine.org/en/stable/tutorials/scripting/gdextension/what_is_gdextension.html">out as well when getting started with the new system.</a></p></blockquote>
 <blockquote>
-<p>&#x26a0;&#xfe0f; <strong>Disclaimer</strong>: I have no professional knowledge of C++. I learned everything you see from combing through the godot-cpp code and experimenting with it. Furthermore, I only guess about how the internals really are working. My recommendations for the work with GDExtension worked well for me but don&rsquo;t have to for you. I am not sure if they are as good as they could be. If you do have constructive criticism about this post, I will be happy to improve it.</p>
-</blockquote>
+<p>&#x26a0;&#xfe0f; <strong>Disclaimer</strong>: I have no professional knowledge of C++. I learned everything you see from combing through the godot-cpp code and experimenting with it. Furthermore, I only guess about how the internals really are working. My recommendations for the work with GDExtension worked well for me but don&rsquo;t have to for you. I am not sure if they are as good as they could be. If you do have constructive criticism about this post, I will be happy to improve it.</p></blockquote>
 <blockquote>
-<p>&#x1f4dd; The code here is the same I am using for my <a href="https://github.com/paddy-exe/GDExtensionSummator">GDExtensionSummator template</a>. If you want to built on top of it or just jump right into the action, you can simply use the template and get a headstart.</p>
-</blockquote>
+<p>&#x1f4dd; The code here is the same I am using for my <a href="https://github.com/paddy-exe/GDExtensionSummator">GDExtensionSummator template</a>. If you want to built on top of it or just jump right into the action, you can simply use the template and get a headstart.</p></blockquote>
 <p><img src="/public/index.html/posts/gdextension-how-to-write-your-first-extension/GDExtensionTemplate.png" alt="GDExtensionSummator - How to create a repo from the template">
 Click on the button &ldquo;Use this template&rdquo; which creates a new repository to your GitHub account based on the template</p>
 <h2 id="compilation-requirements">Compilation requirements</h2>
@@ -264,8 +264,7 @@ In this folder you will create another folder called &ldquo;extension&rdquo; and
 <p>The godot-cpp repository represents the C++ API for the Godot editor. It is built on top of the godot-headers repository (which is C based).</p>
 <p>We will clone the godot-cpp repo into the top folder.</p>
 <blockquote>
-<p>&#x1f4dd; If you want to develop your game directly side-by-side you can simply clone the main repository but if you are using git as a version-control anyway I recommend you to add godot-cpp as a submodule.</p>
-</blockquote>
+<p>&#x1f4dd; If you want to develop your game directly side-by-side you can simply clone the main repository but if you are using git as a version-control anyway I recommend you to add godot-cpp as a submodule.</p></blockquote>
 <div class="highlight"><pre tabindex="0" style="color:#1d2432;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>git submodule add -b master https://github.com/godotengine/godot-cpp.git
 </span></span></code></pre></div><p>After that, you will need to initialize the submodule:</p>
 <pre tabindex="0"><code>git submodule init

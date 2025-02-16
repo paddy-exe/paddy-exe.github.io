@@ -1,8 +1,10 @@
 ---
 title: "How to use the SCons build-system with C++ software package managers (vcpkg, conan)"
-date: 2024-12-29T18:00:05+01:00
-draft: true
+date: 2025-02-16
+draft: false
+toc: true
 ---
+![How to use scons with package-managers cover image](how-to-scons-with-package-managers.webp)
 
 ## Introduction
 As you know from perhaps my previous articles on [how to contribute to Godot](https://paddy-exe.github.io/posts/contributing-to-godot-visual-shader-nodes/),
@@ -218,7 +220,7 @@ You will now receive the following output in the console:
 7
 ```
 
-Congrats!!! Now you know the basics of using SCons with external libraries. Let's explore how to use it with package managers further down.
+Congrats!!!🥳🥳🥳 Now you know the basics of using SCons with external libraries. Let's explore how to use it with package managers further down.
 
 ## The package manager way
 As we now have a better understanding of the different environment variables of the SCons built-system, let's explore
@@ -226,6 +228,10 @@ how we can integrate C++ package managers here. For the following examples we wi
 [`fmt` formatting library](https://github.com/fmtlib/fmt) with both vcpkg and conan.
 
 ### vcpkg
+
+> [!INFO]
+> No need to recreate the following project structure yourself by hand. You can check it out [here](https://github.com/paddy-exe/vcpkg-simple-scons-test)
+
 For using the vcpkg package manager we assume similarly to the last section the following folder structure:
 
 ```sh
@@ -270,12 +276,14 @@ VCPKG_ROOT = "C:\path\to\vcpkg" # tells vcpkg where it is installed
 PATH = "VCPKG_ROOT"             # add VCPKG_ROOT to your path variable
 ```
 
-5. Switch back to the directory of your C++ project
+#### Setting up vcpkg for the project and installing dependencies
+
+1. Change into the project directory / Open the project path in the terminal
 ```sh
-cd switch/back/to/project
+cd vcpkg-simple-scons-test/
 ```
 
-6. Create a new ``vcpkg`` "application" and thereby a manifest file `vcpkg.json` in your project directory which gives ``vcpkg`` information which dependencies 
+2. Create a new ``vcpkg`` "application" and thereby a manifest file `vcpkg.json` in your project directory which gives ``vcpkg`` information which dependencies 
 you want installed.
 ```sh
 vcpkg new --application
@@ -284,7 +292,7 @@ vcpkg new --application
 > [!WARNING]
 > If you get any errors calling `vcpkg` here saying vcpkg is now a known command your ``PATH`` variable may not have been set/updated correctly.
 
-7. Next up we will add the `fmt` library dependency to our `vcpkg.json`
+3. Next up we will add the `fmt` library dependency to our `vcpkg.json`
 ```sh
 vcpkg add port fmt
 ```
@@ -298,7 +306,7 @@ It should now look like this:
 }
 ```
 
-8. In your project directory instruct vcpkg to install the dependencies described in the `vcpkg.json`
+4. In your project directory instruct vcpkg to install the dependencies described in the `vcpkg.json`
 ```sh
 vcpkg install
 ```
@@ -365,7 +373,8 @@ env.Program("helloworld", sources)
 ```
 
 The main differences between the vcpkg version and the manual way are two-fold:
-1. You have to specify a lot of boilerplate code for each operating system to handle the different `CPPPATH`'s and `LIBPATH`'s. This could perhaps be handled differently by giving `vcpkg` instructions to package every platform library together. I haven't found such a solution (yet).
+1. You have to specify a lot of boilerplate code for each operating system to handle the different `CPPPATH`'s and `LIBPATH`'s. 
+This could perhaps be handled differently by giving `vcpkg` instructions to package every platform library together. I haven't found such a solution (yet).
 2. You don't need to specify the `rpath` anymore. This will be automatically handled by `vcpkg`.
 
 Your final project structure should now look something like this:
@@ -392,7 +401,7 @@ vcpkg-simple-scons-test/      # root folder name
 ```
 
 #### Compiling the program
-To build the executable you need to call SCons in your top project path by using
+To build the executable you need to call SCons in your top project path:
 
 ```sh
 scons
@@ -412,7 +421,12 @@ You will now receive the following output in the console:
 Hello World!
 ```
 
+Congrats!!! 🥳🥳🥳 Now you know how to integrate third-party libraries using vcpkg into your build process with SCons.
+
 ### conan
+
+> [!INFO]
+> No need to recreate the following project structure yourself by hand. You can check it out [here](https://github.com/paddy-exe/conan-simple-scons-test)
 
 For using the conan package manager we assume similarly to the last sections the following folder structure:
 
@@ -435,16 +449,180 @@ You can install conan via your Python's pip CLI tool like this:
 pip install conan
 ```
 
+Alternatively you can use software package managers such as brew (macOS, Linux) or scoop (Windows).
+
 #### Creating conanfile.py
 
+To use conan you need to configure how it should work. Conan has integrations for various build-systems such as CMake and SCons.
+This means that conan will generate files for the build-system so it knows where the library files are.
+Since we are using SCons we will have to specify that which will make it easier for us later on. 
+Also, we have to set which library we want to be installed (in our case here the ``fmt`` library).
+
+We will then create the ``conanfile.py`` file with the following content.
+
+> [!NOTE]
+> You could alternatively write ``conanfile.txt`` files as well, but I would recommend directly 
+> getting used to the python syntax as it supports more complex setups and scripting support such as with SCons.
+
+```py
+from conan import ConanFile
+
+class ExampleRecipe(ConanFile):
+    generators = "SConsDeps"
+
+    def requirements(self):
+        self.requires("fmt/11.0.2")
+```
+
+We are creating a class for our recipe which conan will use to build our libraries. The class depends on
+the conan class ``ConanFile``. Next up, we will use the ``SConsDeps`` generator for SCons. If you want to 
+change how conan will generate the necessary files so e.g. you can use different build-systems on Windows and macOS
+you can specify that in the [``generate()``](https://docs.conan.io/2/reference/conanfile/methods/generate.html#generate) method. 
+This would be out of bounds for this blog post, so we will only use the given generator.
+
+In the ``requirements()`` method we specify which library (and optionally which version) we want to install.
+Here we specify the ``fmt`` library with the version ``11.0.2``.
+
+The given library/libraries has/have to be present in the [ConanCenter](https://conan.io/center) since conan will use the recipes stored
+there to figure out where to download and how to compile the libraries. You can also [create your own recipe](https://docs.conan.io/2/tutorial/creating_packages/create_your_first_package.html) 
+if the library you want to use doesn't have a recipe available. Explaining how that can be done is also out of scope for this post
+so can take a look at the official documentation.
+
 #### Main source file
+
+The ``helloworld.cpp`` file is the same as in the vcpkg section:
+
+```cpp
+// helloworld.cpp source file
+#include <fmt/core.h>
+
+int main() {
+    fmt::print("Hello World!\n");
+    return 0;
+}
+```
+
+Instead of using the standard library we are including the ``fmt`` library and use its print function to output ``Hello World!`` to the console.
+
+#### Setting up conan for the project and installing dependencies
+
+1. Run conan with the following commands to let conan create a build profile for your development environment.
+This will contain information such as the C/C++ compiler, the operating system, chip architecture and more.
+This file can be edited manually as well. conan will use the command to guess the best fitting profile.
+```sh
+conan profile detect --force
+```
+
+2. Change into the project directory / Open the project path in the terminal
+```sh
+cd conan-simple-scons-test/
+```
+
+3. Call conan to download and compile the libraries specified by the ``conanfile.py`` (or ``.txt``) file
+
+```sh
+conan install . --output-folder=build --build=missing
+```
+
+Within the arguments we are specifying with the ``--output-folder`` where the generated files should be placed in.
+The ``--build`` flag specifies which libraries dependencies should be built from source. Conan by default caches 
+already built libraries to not unnecessarily build them every time. By setting it to ``missing`` we set it to only
+compile the ones which are not already locally cached.
+
+This step will generate the file important for SCons to know where the libraries and their source code are located.
+This file is called ``SConscript_conandeps`` and looks like this:
+
+```py
+conandeps = {
+
+
+        "conandeps" : {
+            "CPPPATH"     : ['/Users/patrick/.conan2/p/b/fmt37ee0f216967f/p/include'],
+            "LIBPATH"     : ['/Users/patrick/.conan2/p/b/fmt37ee0f216967f/p/lib'],
+            "BINPATH"     : ['/Users/patrick/.conan2/p/b/fmt37ee0f216967f/p/bin'],
+            "LIBS"        : ['fmt'],
+            "FRAMEWORKS"  : [],
+            "FRAMEWORKPATH" : [],
+            "CPPDEFINES"  : [],
+            "CXXFLAGS"    : [],
+            "CCFLAGS"     : [],
+            "SHLINKFLAGS" : [],
+            "LINKFLAGS"   : [],
+        },
+        
+        
+
+        "fmt" : {
+            "CPPPATH"     : ['/Users/patrick/.conan2/p/b/fmt37ee0f216967f/p/include'],
+            "LIBPATH"     : ['/Users/patrick/.conan2/p/b/fmt37ee0f216967f/p/lib'],
+            "BINPATH"     : ['/Users/patrick/.conan2/p/b/fmt37ee0f216967f/p/bin'],
+            "LIBS"        : [],
+            "FRAMEWORKS"  : [],
+            "FRAMEWORKPATH" : [],
+            "CPPDEFINES"  : [],
+            "CXXFLAGS"    : [],
+            "CCFLAGS"     : [],
+            "SHLINKFLAGS" : [],
+            "LINKFLAGS"   : [],
+        },
+        "fmt_version" : "11.0.2",
+        
+}
+
+Return('conandeps')
+```
+
+You can see that there is a ``conandeps`` python dictionary in which there are two dictionaries. 
+One called ``conandeps`` and the other ``fmt``. They again contain keys for ``CPPPATH``, ``LIBPATH``
+and ``BINPATH`` which you may recognize from the section about manually integrating libraries.
+This is one of the main advantages of a generator/integration of a build-system into a C/C++ package manager. 
+When we had to manually define and update those variables ourselves in the previous sections we can now let conan 
+take over this tedious task.
+
+This file can be referenced and read by our SConstruct file in the next stage.
+
 #### Setting up the SConstruct file
 
+The SConstruct looks like this:
 
+```py
+#!/usr/bin/env python
+import os
+import sys
+
+env = Environment()
+
+# Glob search through source files given a specific file type pattern
+sources = Glob("src/*.cpp")
+
+# You can use conandeps to get the information
+# for all the dependencies.
+conandeps = SConscript('build/SConscript_conandeps')
+conan_flags = conandeps["conandeps"]
+
+# Or use the name of the requirement if
+# you only want the information about that one.
+fmt_flags = conandeps["fmt"]
+
+# set C++ standard to 11
+env.Append(CXXFLAGS=['-std=c++11'])
+
+# Merge flags with optional other predefined flags 
+env.MergeFlags(conan_flags)
+
+# Create a runnable program given the source files with all their dependencies
+env.Program("helloworld", sources)
+```
+
+In this file we are loading the contents via the `SConscript()` method into a `conandeps` object.
+From this object we are reading out the different flags. We can choose to read out the flags from
+every library which conan installed (here called ``conan_flags``) or only specific library flags 
+(here ``fmt_flags``). We merge those flags with the already predefined environment flags using the
+``MergeFlags`` method.
 
 #### Compiling the program
 
-To build the executable you need to call SCons in your top project path by using
+To build the executable you need to call SCons in your top project path:
 
 ```sh
 scons
@@ -464,6 +642,18 @@ You will now receive the following output in the console:
 Hello World!
 ```
 
-## Addendum
+Congrats!!!🥳🥳🥳 Now you know how to integrate third-party libraries using conan into your build process with SCons.
+
 ## Conclusion
 
+After reading through this (long) post you will have hopefully gained a deeper understanding how library linking
+with SCons works and how package managers can help you automate the tedious parts of library version tracking and
+compilation setup. I myself learned certainly quite a lot in researching this topic as a C++ learner.
+I started this to understand how external libraries can be integrated into Godot using the GDExtension system.
+All of this here can also be directly applied with the GDExtension system when using it with the SCons build-system.
+This post content will also be contributed in a denser format to the official Godot documentation at a later time 
+after publishing.
+
+## Thanks and Support
+If you liked this post and would like to support me with a digital hot beverage as a thank you, you can do so 
+via my [Ko-Fi](https://ko-fi.com/flamelizard). Thank you very much for reading!

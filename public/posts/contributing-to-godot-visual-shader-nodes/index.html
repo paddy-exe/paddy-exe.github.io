@@ -68,7 +68,7 @@
     </script>
 
 
-<meta name="generator" content="Hugo 0.140.2">
+<meta name="generator" content="Hugo 0.143.1">
     <script async src="https://eu.umami.is/script.js" data-website-id="5e71174a-7f03-4d2c-b04f-adfa793aad77"></script>
 
     
@@ -97,7 +97,7 @@ Introduction If you have ever wondered how (some) new features are getting added
     
 
     <link rel="canonical" href="https://paddy-exe.github.io/public/index.html/posts/contributing-to-godot-visual-shader-nodes/">
-    <link href="/public/index.html/style.min.d43bc6c79baa87f006efb2b92be952faeedeb1a3ab626c1d6abda52eae049355.css" rel="stylesheet">
+    <link href="/public/index.html/style.min.2d921c18cf1ec555ffc03d59a8adc211c402c68c930c27d6a0c306ab175a8d09.css" rel="stylesheet">
     <link href="/public/index.html/code-highlight.min.706d31975fec544a864cb7f0d847a73ea55ca1df91bf495fd12a177138d807cf.css" rel="stylesheet">
 
     
@@ -120,7 +120,9 @@ Introduction If you have ever wondered how (some) new features are getting added
     <link rel="icon" type="image/svg+xml" href="/public/index.html/icons/favicon.svg">
 
     
-    </head>
+    
+    
+</head>
 <body data-theme = "auto" class="notransition">
 
 <script src="/public/index.html/js/theme.min.8961c317c5b88b953fe27525839672c9343f1058ab044696ca225656c8ba2ab0.js" integrity="sha256-iWHDF8W4i5U/4nUlg5ZyyTQ/EFirBEaWyiJWVsi6KrA="></script>
@@ -191,6 +193,7 @@ stroke-linejoin="round" class="feather feather-home">
                 <h1 class="header-title">Contributing to Godot - Visual Shaders Nodes</h1>
                 
                 
+                
                 <div class="post-meta">
                     <time datetime="2023-04-22T00:00:00&#43;00:00" itemprop="datePublished"> 22 Apr 2023 </time>
                 </div>
@@ -250,8 +253,7 @@ stroke-linejoin="round" class="feather feather-home">
             <div class="page-content">
                 <p><img src="/public/index.html/posts/contributing-to-godot-visual-shader-nodes/Cover-Godot-VS-Contribution.png" alt="Contributing Visual Shaders to Godot - Cover"></p>
 <blockquote>
-<p>&#x1f4dd; The changed Godot icon was made by <a href="https://github.com/YuriSizov/godot-emotes/blob/master/LICENSE">Yuri Sizov (CC-BY 4.0)</a></p>
-</blockquote>
+<p>&#x1f4dd; The changed Godot icon was made by <a href="https://github.com/YuriSizov/godot-emotes/blob/master/LICENSE">Yuri Sizov (CC-BY 4.0)</a></p></blockquote>
 <h2 id="introduction">Introduction</h2>
 <p>If you have ever wondered how (some) new features are getting added to each new iteration of the Godot Engine, you&rsquo;ve come to the right place! In this post I will explain how you can add Visual Shader Nodes to the core engine <a href="https://github.com/godotengine/godot/pull/64248">as I have</a> and get a little insight of the Godot source code.</p>
 <h2 id="the-structure-of-visual-shaders-nodes">The structure of Visual Shaders Nodes</h2>
@@ -582,13 +584,11 @@ Notice how many parameters there are:</p>
 <div class="highlight"><pre tabindex="0" style="color:#1d2432;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#58a1dd">vformat</span>(<span style="color:#a6be9d">&#34;		%s&#34;</span>, <span style="color:#58a1dd">Variable</span>);
 </span></span></code></pre></div><p>The <code>%s</code> sets the space where the variable is supposed to be pasted in. If there are several <code>%s</code> present, the order of the additional parameters behind the String is parsed through for each item to be replaced.</p>
 <blockquote>
-<p>&#x1f4dd; To prevent variable conflicts in the generated shader file we put <code>{ }</code> around the Node&rsquo;s Shader String.</p>
-</blockquote>
+<p>&#x1f4dd; To prevent variable conflicts in the generated shader file we put <code>{ }</code> around the Node&rsquo;s Shader String.</p></blockquote>
 <p>After we write each line, we <code>return</code> the String back.</p>
 <p>Now for the <code>VisualShaderNodeRemap</code> method there is not much to say except that you can set the default input values. The boolean <code>simple_decl</code> can be set for simple Nodes that only need one line of code. It can be set optionally.</p>
 <blockquote>
-<p>&#x1f4dd; If you use it, you don&rsquo;t need to put <code>{}</code> around your shader code then (see the example below).</p>
-</blockquote>
+<p>&#x1f4dd; If you use it, you don&rsquo;t need to put <code>{}</code> around your shader code then (see the example below).</p></blockquote>
 <h3 id="register_scene_typescpp"><code>register_scene_types.cpp</code></h3>
 <p>The file itself is gigantic so search for <code>Remap</code> to find a line like this:</p>
 <div class="highlight"><pre tabindex="0" style="color:#1d2432;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#58a1dd">GDREGISTER_CLASS</span>(<span style="color:#58a1dd">VisualShaderNodeRemap</span>);
@@ -665,8 +665,7 @@ Notice how many parameters there are:</p>
 </span></span></code></pre></div><h4 id="visual_shader_editor_plugincpp-1">visual_shader_editor_plugin.cpp</h4>
 <div class="highlight"><pre tabindex="0" style="color:#1d2432;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#58a1dd">add_options</span>.<span style="color:#58a1dd">push_back</span>(<span style="color:#58a1dd">AddOption</span>(<span style="color:#a6be9d">&#34;TutorialUV&#34;</span>, <span style="color:#a6be9d">&#34;Tutorial/UV&#34;</span>, <span style="color:#a6be9d">&#34;VisualShaderNodeTutorialUV&#34;</span>, <span style="color:#58a1dd">TTR</span>(<span style="color:#a6be9d">&#34;This is a tutorial UV node to explain how to contribute to Godot&#39;s Visual Shader system.&#34;</span>), {}, <span style="color:#58a1dd">VisualShaderNode</span><span style="color:#ff636f">::</span><span style="color:#58a1dd">PORT_TYPE_VECTOR_2D</span>, <span style="color:#58a1dd">TYPE_FLAGS_FRAGMENT</span>, <span style="color:#58a1dd">Shader</span><span style="color:#ff636f">::</span><span style="color:#58a1dd">MODE_SPATIAL</span>));
 </span></span></code></pre></div><blockquote>
-<p>&#x1f4dd; If you need to know where exactly I put the snippets, you can check out the <a href="https://github.com/godotengine/godot/commit/3fc4d12a2d5f4cd2d8ae3fff9e33fd45fe8c7a08">branch commit on GitHub</a>.</p>
-</blockquote>
+<p>&#x1f4dd; If you need to know where exactly I put the snippets, you can check out the <a href="https://github.com/godotengine/godot/commit/3fc4d12a2d5f4cd2d8ae3fff9e33fd45fe8c7a08">branch commit on GitHub</a>.</p></blockquote>
 <h2 id="compiling-godot-from-source">Compiling Godot from source</h2>
 <p>Before we can see the changes inside the editor we need to compile the Godot source code. To check how it is done for your Operating Systen (OS), please refer to the <a href="https://docs.godotengine.org/en/stable/contributing/development/compiling/index.html">official documentation</a>.</p>
 <p>Since I am on Windows I will run</p>

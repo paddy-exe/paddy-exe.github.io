@@ -6,7 +6,24 @@
     <description>Recent content in Posts on 🔥 Lizard&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Sun, 29 Dec 2024 18:00:05 +0100</lastBuildDate><atom:link href="https://paddy-exe.github.io/public/index.html/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 16 Feb 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://paddy-exe.github.io/public/index.html/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to use the SCons build-system with C&#43;&#43; software package managers (vcpkg, conan)</title>
+      <link>https://paddy-exe.github.io/public/index.html/posts/how-to-use-scons-with-cpp-package-managers/</link>
+      <pubDate>Sun, 16 Feb 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://paddy-exe.github.io/public/index.html/posts/how-to-use-scons-with-cpp-package-managers/</guid>
+      
+      <description>&lt;p&gt;&lt;img src=&#34;https://paddy-exe.github.io/public/index.html/posts/how-to-use-scons-with-cpp-package-managers/how-to-scons-with-package-managers.webp&#34; alt=&#34;How to use scons with package-managers cover image&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;As you know from perhaps my previous articles on &lt;a href=&#34;https://paddy-exe.github.io/posts/contributing-to-godot-visual-shader-nodes/&#34;&gt;how to contribute to Godot&lt;/a&gt;,
+&lt;a href=&#34;https://paddy-exe.github.io/posts/gdextension-how-to-write-your-first-extension/&#34;&gt;creating your own GDExtension&lt;/a&gt; or from the official Godot docs,
+Godot uses the &lt;a href=&#34;https://scons.org/&#34;&gt;SCons build-system&lt;/a&gt; to compile the engine code written in C++ to an executable.
+SCons tells the compiler specifically HOW to build together that executable.
+Another build-system you will have probably heard of is the widely popular and de-facto industry standard CMake.&lt;/p&gt;</description>
+      
+    </item>
+    
     <item>
       <title>Contributing to Godot - Visual Shaders Nodes</title>
       <link>https://paddy-exe.github.io/public/index.html/posts/contributing-to-godot-visual-shader-nodes/</link>
@@ -14,10 +31,9 @@
       
       <guid>https://paddy-exe.github.io/public/index.html/posts/contributing-to-godot-visual-shader-nodes/</guid>
       
-      <description>&lt;p&gt;&lt;img src=&#34;https://paddy-exe.github.io/public/index.html/public/index.html/posts/contributing-to-godot-visual-shader-nodes/Cover-Godot-VS-Contribution.png&#34; alt=&#34;Contributing Visual Shaders to Godot - Cover&#34;&gt;&lt;/p&gt;
+      <description>&lt;p&gt;&lt;img src=&#34;https://paddy-exe.github.io/public/index.html/posts/contributing-to-godot-visual-shader-nodes/Cover-Godot-VS-Contribution.png&#34; alt=&#34;Contributing Visual Shaders to Godot - Cover&#34;&gt;&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&amp;#x1f4dd; The changed Godot icon was made by &lt;a href=&#34;https://github.com/YuriSizov/godot-emotes/blob/master/LICENSE&#34;&gt;Yuri Sizov (CC-BY 4.0)&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;&amp;#x1f4dd; The changed Godot icon was made by &lt;a href=&#34;https://github.com/YuriSizov/godot-emotes/blob/master/LICENSE&#34;&gt;Yuri Sizov (CC-BY 4.0)&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
 &lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
 &lt;p&gt;If you have ever wondered how (some) new features are getting added to each new iteration of the Godot Engine, you&amp;rsquo;ve come to the right place! In this post I will explain how you can add Visual Shader Nodes to the core engine &lt;a href=&#34;https://github.com/godotengine/godot/pull/64248&#34;&gt;as I have&lt;/a&gt; and get a little insight of the Godot source code.&lt;/p&gt;</description>
       
@@ -30,7 +46,7 @@
       
       <guid>https://paddy-exe.github.io/public/index.html/posts/gdextension-how-to-write-your-first-extension/</guid>
       
-      <description>&lt;p&gt;&lt;img src=&#34;https://paddy-exe.github.io/public/index.html/public/index.html/posts/gdextension-how-to-write-your-first-extension/Cover.png&#34; alt=&#34;GDExtension - How to get started in C&amp;#43;&amp;#43;&#34;&gt;&lt;/p&gt;
+      <description>&lt;p&gt;&lt;img src=&#34;https://paddy-exe.github.io/public/index.html/posts/gdextension-how-to-write-your-first-extension/Cover.png&#34; alt=&#34;GDExtension - How to get started in C&amp;#43;&amp;#43;&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
 &lt;p&gt;With Godot 4.0 on the horizon a lot of people want to try out the new technologies that are coming with the new version.&lt;/p&gt;
 &lt;p&gt;One of these is the GDExtension system that will be replacing the older GDNative system. GDNative was introduced as a means to enhance the editor itself by embedding C++ libraries or new language bindings into Godot. This had the advantage that users wouldn&amp;rsquo;t need to build the engine themselves but import a dynamic library. The other way would be to write a custom module for Godot and compile it yourself. Both of these had their own disadvantages. GDNative doesn&amp;rsquo;t have full access to the C++ engine API as modules do. On the other side, modules need to be compiled on the target computer or you need to have a CI/CD solution like GitHub Actions to compile the editor (like &lt;a href=&#34;https://github.com/Gramps/GodotSteam&#34;&gt;GodotSteam&lt;/a&gt; does).&lt;/p&gt;</description>
@@ -44,7 +60,7 @@
       
       <guid>https://paddy-exe.github.io/public/index.html/posts/contributing-to-godot-my-journey/</guid>
       
-      <description>&lt;p&gt;&lt;img src=&#34;https://paddy-exe.github.io/public/index.html/public/index.html/posts/contributing-to-godot-my-journey/rendering-code.png&#34; alt=&#34;Rendering GLSL code&#34;&gt;&lt;/p&gt;
+      <description>&lt;p&gt;&lt;img src=&#34;https://paddy-exe.github.io/public/index.html/posts/contributing-to-godot-my-journey/rendering-code.png&#34; alt=&#34;Rendering GLSL code&#34;&gt;&lt;/p&gt;
 &lt;p&gt;The Godot Engine is nowadays one of most popular game engines (next to Unreal Engine and Unity) and that while being open-source and free to use without any royalties. There are LOTS of people contributing to the engine and I am very happy that I can now count myself to them. In this blog post, I want to explain how I got started contributing to Godot after being in awe for quite a while. I hope you can learn a bit from my experience and take something useful away here.&lt;/p&gt;</description>
       
     </item>
