@@ -1,7 +1,7 @@
 title = "🔥 Lizard's Blog"
 baseURL = 'https://paddy-exe.github.io/public/index.html'
 languageCode = 'en-us'
-theme = ["hugo-admonitions", "hugo-blog-awesome"]
+theme = ["hugo-notice", "hugo-admonitions", "hugo-blog-awesome"]
 
 # Enable emojis globally
 enableEmoji = true
