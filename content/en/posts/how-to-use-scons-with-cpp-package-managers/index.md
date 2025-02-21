@@ -290,7 +290,7 @@ vcpkg new --application
 ```
 
 > [!WARNING]
-> If you get any errors calling `vcpkg` here saying vcpkg is now a known command your ``PATH`` variable may not have been set/updated correctly.
+> If you get any errors calling `vcpkg` here saying vcpkg is not a known command your ``PATH`` variable may not have been set/updated correctly.
 
 3. Next up we will add the `fmt` library dependency to our `vcpkg.json`
 ```sh
